@@ -2449,6 +2449,8 @@ body .page-header {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
   margin: 0;
   padding: 0;
 }
@@ -2458,33 +2460,33 @@ body .page-header {
   box-sizing: border-box;
   margin: 0;
   margin-top: 30px;
-  padding: 0 15px;
+  padding: 0;
   list-style: none;
 }
 .rooms-list li:nth-child(-n+2) {
   margin-top: 0;
 }
-.rooms-list li:nth-child(even) {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
 @media screen and (min-width: 768px) {
   .rooms-list li {
-    width: 50%;
-  }
-  .rooms-list li:nth-child(-n+2) {
-    margin-top: 0;
+    width: calc(50% - 15px);
   }
 }
 
 @media screen and (min-width: 1200px) {
   .rooms-list li {
-    width: 25%;
+    width: calc(25% - 22.5px);
   }
-  .rooms-list li:nth-child(-n+4) {
-    margin-top: 0;
-  }
+}
+
+.rooms-grid-section .container {
+  max-width: 100%;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.rooms-grid-section .row {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* ROOM BOX */
