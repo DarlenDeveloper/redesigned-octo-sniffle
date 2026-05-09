@@ -2453,23 +2453,38 @@ body .page-header {
   padding: 0;
 }
 .rooms-list li {
-  width: 50%;
+  width: 100%;
   display: inline-block;
+  box-sizing: border-box;
   margin: 0;
-  margin-top: 50px;
-  padding: 0;
-  padding-right: 30px;
+  margin-top: 30px;
+  padding: 0 15px;
   list-style: none;
 }
-.rooms-list li:nth-child(1) {
-  margin-top: 0;
-}
-.rooms-list li:nth-child(2) {
+.rooms-list li:nth-child(-n+2) {
   margin-top: 0;
 }
 .rooms-list li:nth-child(even) {
-  padding-right: 0;
-  padding-left: 30px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .rooms-list li {
+    width: 50%;
+  }
+  .rooms-list li:nth-child(-n+2) {
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .rooms-list li {
+    width: 25%;
+  }
+  .rooms-list li:nth-child(-n+4) {
+    margin-top: 0;
+  }
 }
 
 /* ROOM BOX */
@@ -2487,21 +2502,21 @@ body .page-header {
   width: 100%;
 }
 .room-box .content {
-  width: calc(100% - 50px);
+  width: calc(100% - 40px);
   display: flex;
   flex-wrap: wrap;
   background: #fff;
-  margin-top: -50px;
-  margin-left: 50px;
+  margin-top: -40px;
+  margin-left: 40px;
   position: relative;
   z-index: 1;
-  padding: 50px;
+  padding: 35px;
   padding-right: 0;
 }
 .room-box .content .price-line {
   width: 100%;
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 800;
   color: #856d47;
   letter-spacing: 1px;
@@ -2513,9 +2528,15 @@ body .page-header {
 .room-box .content h3 {
   width: 100%;
   display: block;
-  font-size: 36px;
+  font-size: 28px;
   font-family: "Argesta Display";
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+}
+.room-box .content p {
+  width: 100%;
+  margin-bottom: 18px;
+  font-size: 14px;
+  line-height: 1.65;
 }
 .room-box .content .bottom-specs {
   width: 100%;
@@ -2523,22 +2544,22 @@ body .page-header {
   flex-wrap: wrap;
   align-items: center;
   border-top: 1px solid #eee;
-  padding-top: 20px;
-  margin-top: 20px;
+  padding-top: 16px;
+  margin-top: 16px;
 }
 .room-box .content .bottom-specs .icons {
-  width: 50%;
+  width: 60%;
   display: inline-block;
 }
 .room-box .content .bottom-specs .icons img {
-  height: 25px;
+  height: 20px;
   margin-right: 5px;
 }
 .room-box .content .bottom-specs .reviews {
-  width: 50%;
+  width: 40%;
   text-align: right;
   color: #888888;
-  font-size: 15px;
+  font-size: 14px;
 }
 .room-box .content .bottom-specs .reviews span {
   padding: 5px 8px;
