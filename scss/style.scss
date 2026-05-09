@@ -106,7 +106,7 @@ theme.
 
 
 
-$color-main : #856d47;
+$color-main : #286192;
 $color-dark : #141414;
 
 @mixin font-second{font-family: "Argesta Display";}
@@ -886,7 +886,7 @@ body .page-header{transform: scale(1.4); transition-delay: 1.15s; @include trans
 	figure{width: 100%; display: block; margin-bottom: 30px; position: relative; overflow: hidden; background: $color-main;
 		img{ width: 100%; max-width: inherit;  }}
 	.content{ width: 100%; display: flex; flex-wrap: wrap; padding-left: 80px; 
-		.category{display: inline-block; color: #856d47; font-size: 14px; font-weight: 600; position: relative;
+		.category{display: inline-block; color: #286192; font-size: 14px; font-weight: 600; position: relative;
 			&:before{content: ""; width: 60px; height: 1px; background: $color-main; position: absolute; left: -80px; top: calc(50% - 0.5px);}}
 		.date{display: inline-block; font-size: 14px; opacity: 0.5; font-weight: 600; margin-left: 15px;
 			&:before{content: ""; width: 5px; height: 5px; background: $color-dark; display: inline-block; border-radius: 50%; margin-right: 15px; transform: translateY(-2px);}}

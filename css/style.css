@@ -249,7 +249,7 @@ input[type="submit"] {
   font-size: 14px;
   font-weight: 600;
   color: #fff;
-  background: #856d47;
+  background: #286192;
   border: none;
   padding: 0 50px;
 }
@@ -260,7 +260,7 @@ button[type="submit"] {
   font-size: 14px;
   font-weight: 600;
   color: #fff;
-  background: #856d47;
+  background: #286192;
   border: none;
   padding: 0 50px;
 }
@@ -349,7 +349,7 @@ button[type="submit"] i {
 
 .cursor.drag:before {
   transform: scale(1);
-  background: #856d47;
+  background: #286192;
   border-color: transparent;
 }
 
@@ -383,7 +383,7 @@ button[type="submit"] i {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #856d47;
+  background: #286192;
   cursor: pointer;
   -webkit-transition: background .15s ease-in-out;
   transition: background .15s ease-in-out;
@@ -394,22 +394,22 @@ button[type="submit"] i {
   height: 20px;
   border: 0;
   border-radius: 50%;
-  background: #856d47;
+  background: #286192;
   cursor: pointer;
   -moz-transition: background .15s ease-in-out;
   transition: background .15s ease-in-out;
 }
 
 .range-slider__range:active::-moz-range-thumb {
-  background: #856d47;
+  background: #286192;
 }
 
 .range-slider__range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 3px #fff, 0 0 0 6px #856d47;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 6px #286192;
 }
 
 ::-moz-range-track {
-  background: #856d47;
+  background: #286192;
   border: 0;
 }
 
@@ -453,7 +453,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
   border: 1px solid #cbcbcb;
 }
 .accordion .card .card-header a:hover {
-  color: #856d47;
+  color: #286192;
   text-decoration: none;
 }
 .accordion .card .card-body {
@@ -463,8 +463,8 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 }
 .accordion .card [aria-expanded="true"] {
   color: #fff !important;
-  background: #856d47;
-  border-color: #856d47 !important;
+  background: #286192;
+  border-color: #286192 !important;
 }
 
 /* DATE PICKER */
@@ -500,12 +500,12 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 }
 
 .datepicker-panel > ul > li.picked, .datepicker-panel > ul > li.picked:hover {
-  background: #856d47;
+  background: #286192;
   color: #fff;
 }
 
 .datepicker-panel > ul > li.highlighted {
-  background-color: #856d47;
+  background-color: #286192;
 }
 
 .datepicker-panel > ul > li:hover {
@@ -660,7 +660,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
   height: 80px;
   line-height: 80px;
   display: inline-block;
-  background: #856d47;
+  background: #286192;
   padding: 0 50px;
   color: #fff;
   font-size: 13px;
@@ -733,7 +733,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
   width: 0%;
   height: 100%;
   max-height: 6px;
-  background: #856d47;
+  background: #286192;
   position: absolute;
   top: 0;
   left: 0;
@@ -787,7 +787,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  background: #856d47;
+  background: #286192;
   position: fixed;
   top: 0;
   left: 0;
@@ -893,7 +893,7 @@ body .page-header {
   -webkit-transition-duration: 1s;
   transition-timing-function: cubic-bezier(0.86, 0, 0.09, 1);
   -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.09, 1);
-  background: #856d47;
+  background: #286192;
   pointer-events: auto;
 }
 .hamburger-navigation .layer {
@@ -986,7 +986,7 @@ body .page-header {
   font-family: "Argesta Display";
 }
 .hamburger-navigation .nav-menu li a:hover {
-  color: #856d47;
+  color: #286192;
 }
 
 /* HAMBURGER NAGIVATION ACTIVE */
@@ -1140,7 +1140,7 @@ body .page-header {
   line-height: 80px;
   display: inline-block;
   background: #f5f3ec;
-  color: #856d47;
+  color: #286192;
   font-size: 14px;
   font-weight: 600;
   padding: 0 50px;
@@ -1224,7 +1224,7 @@ body .page-header {
   content: "";
   width: 30%;
   height: 6px;
-  background: #856d47;
+  background: #286192;
   position: absolute;
   left: 0;
   top: 0;
@@ -1371,7 +1371,7 @@ body .page-header {
   border-left: 1px solid #eee;
 }
 .filter-option.active {
-  background: #856d47;
+  background: #286192;
   color: #fff;
 }
 
@@ -1401,7 +1401,7 @@ body .page-header {
   width: 1px;
   height: 0;
   animation: 1s scrolldown infinite;
-  background: #856d47;
+  background: #286192;
   position: absolute;
   top: 0;
   left: 0;
@@ -1673,7 +1673,7 @@ body .page-header {
   position: absolute;
   left: calc(50% - 70px);
   top: calc(50% - 70px);
-  color: #856d47;
+  color: #286192;
   font-size: 30px;
   text-align: center;
   border-radius: 50%;
@@ -1684,7 +1684,7 @@ body .page-header {
   transition: all .30s ease-in-out;
 }
 .side-image .video-button:hover {
-  background: #856d47;
+  background: #286192;
   color: #fff;
 }
 .side-image img {
@@ -1757,7 +1757,7 @@ body .page-header {
 }
 .side-hotel-box .info-box span {
   display: inline-block;
-  border-left: 6px solid #856d47;
+  border-left: 6px solid #286192;
   padding-left: 20px;
 }
 .side-hotel-box .info-box b {
@@ -1780,7 +1780,7 @@ body .page-header {
   display: inline-block;
 }
 .side-hotel-box .availability i {
-  color: #856d47;
+  color: #286192;
 }
 
 /* CAROUSEL IMAGE BOX */
@@ -1853,7 +1853,7 @@ body .page-header {
   border-bottom: 4px solid transparent;
 }
 .events-tab .tab-nav li.active {
-  border-color: #856d47;
+  border-color: #286192;
 }
 .events-tab .tab-nav li a {
   display: inline-block;
@@ -1898,7 +1898,7 @@ body .page-header {
   border-bottom: 1px solid #fff;
 }
 .content-tab .tab-nav li.active a {
-  color: #856d47;
+  color: #286192;
   opacity: 1;
 }
 .content-tab .tab-nav li a {
@@ -2026,7 +2026,7 @@ body .page-header {
   margin-bottom: 25px;
 }
 .carousel-events-box figure:before {
-  background: #856d47 !important;
+  background: #286192 !important;
 }
 .carousel-events-box figure img {
   width: 100%;
@@ -2050,7 +2050,7 @@ body .page-header {
   color: #fff;
 }
 .carousel-events-box .content h5 a:hover {
-  color: #856d47;
+  color: #286192;
 }
 .carousel-events-box .content span {
   display: inline-block;
@@ -2116,7 +2116,7 @@ body .page-header {
   display: block;
   font-size: 15px;
   font-weight: 800;
-  color: #856d47;
+  color: #286192;
   letter-spacing: 1px;
 }
 .rooms-slider .swiper-slide .room-detail .price-line span {
@@ -2137,7 +2137,7 @@ body .page-header {
 }
 .rooms-slider .swiper-slide .room-detail .reviews span {
   padding: 5px 8px;
-  background: #856d47;
+  background: #286192;
   color: #fff;
   font-weight: 800;
   margin-left: 5px;
@@ -2189,7 +2189,7 @@ body .page-header {
   content: "";
   width: 60px;
   height: 1px;
-  background: #856d47;
+  background: #286192;
   position: absolute;
   left: -80px;
   top: calc(50% - 0.5px);
@@ -2205,7 +2205,7 @@ body .page-header {
 }
 .recent-news .content ul li a {
   display: inline-block;
-  color: #856d47;
+  color: #286192;
   font-size: 14px;
   font-weight: 600;
 }
@@ -2245,7 +2245,7 @@ body .page-header {
   display: flex;
   flex-wrap: wrap;
   padding: 50px;
-  background: #856d47;
+  background: #286192;
   color: #fff;
   text-align: center;
   position: relative;
@@ -2360,7 +2360,7 @@ body .page-header {
   line-height: 44px;
   display: inline-block;
   text-align: center;
-  background: #856d47;
+  background: #286192;
   color: #fff;
 }
 .member-box figure img {
@@ -2391,7 +2391,7 @@ body .page-header {
 .member-box .content a {
   display: inline-block;
   text-decoration: underline;
-  color: #856d47;
+  color: #286192;
   font-weight: 600;
   font-size: 15px;
 }
@@ -2412,7 +2412,7 @@ body .page-header {
   line-height: 140px;
   display: inline-block;
   background: #fff;
-  color: #856d47;
+  color: #286192;
   font-size: 30px;
   text-align: center;
   border-radius: 50%;
@@ -2424,7 +2424,7 @@ body .page-header {
   margin-bottom: 100px;
 }
 .video-box .play-btn:hover {
-  background: #856d47;
+  background: #286192;
   color: #fff;
 }
 .video-box h2 {
@@ -2457,7 +2457,7 @@ body .page-header {
   float: right;
   margin-top: -56px;
   font-weight: 800;
-  color: #856d47;
+  color: #286192;
 }
 .rooms-filter .price-range .range-slider__value:before {
   content: "$";
@@ -2561,7 +2561,7 @@ body .page-header {
   display: block;
   font-size: 14px;
   font-weight: 800;
-  color: #856d47;
+  color: #286192;
   letter-spacing: 1px;
 }
 .room-box .content .price-line span {
@@ -2606,7 +2606,7 @@ body .page-header {
 }
 .room-box .content .bottom-specs .reviews span {
   padding: 5px 8px;
-  background: #856d47;
+  background: #286192;
   color: #fff;
   font-weight: 800;
   margin-left: 5px;
@@ -2624,7 +2624,7 @@ body .page-header {
   display: block;
   font-size: 15px;
   font-weight: 800;
-  color: #856d47;
+  color: #286192;
   letter-spacing: 1px;
 }
 .room-type .price-line span {
@@ -2666,7 +2666,7 @@ body .page-header {
   margin-right: 10px;
 }
 .recent-testimonial span i {
-  color: #856d47;
+  color: #286192;
   display: inline-block;
   margin: 0 2px;
   font-size: 14px;
@@ -2736,7 +2736,7 @@ body .page-header {
   font-size: 26px;
   font-family: "Argesta Display";
   margin-bottom: 15px;
-  color: #856d47;
+  color: #286192;
 }
 .room-info-box p {
   width: 100%;
@@ -2825,7 +2825,7 @@ body .page-header {
   display: inline-block;
 }
 .meeting-event-box .content h5 a:hover {
-  color: #856d47;
+  color: #286192;
 }
 .meeting-event-box .content span {
   width: 100%;
@@ -2883,7 +2883,7 @@ body .page-header {
   display: inline-block;
 }
 .special-offer-box .content h5 a:hover {
-  color: #856d47;
+  color: #286192;
 }
 .special-offer-box .content p {
   width: 100%;
@@ -2895,7 +2895,7 @@ body .page-header {
 }
 .special-offer-box .content small {
   display: inline-block;
-  background: #856d47;
+  background: #286192;
   padding: 4px 8px;
   color: #fff;
   font-weight: 600;
@@ -2915,7 +2915,7 @@ body .page-header {
   margin-bottom: 10px;
 }
 .event-headline .rating i {
-  color: #856d47;
+  color: #286192;
   display: inline-block;
   margin-right: 4px;
   font-size: 15px;
@@ -2942,7 +2942,7 @@ body .page-header {
 }
 .event-headline address span i {
   display: inline-block;
-  color: #856d47;
+  color: #286192;
   margin-right: 10px;
 }
 
@@ -2963,7 +2963,7 @@ body .page-header {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  background: #856d47;
+  background: #286192;
   color: #fff;
   padding: 50px;
   margin: 15px 0;
@@ -2993,7 +2993,7 @@ body .page-header {
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  background: #856d47;
+  background: #286192;
 }
 .google-maps iframe {
   width: 100%;
@@ -3012,7 +3012,7 @@ body .page-header {
   left: calc(50% - 40px);
   top: calc(50% - 40px);
   font-size: 40px;
-  color: #856d47;
+  color: #286192;
   border-radius: 50%;
 }
 .google-maps:after {
@@ -3052,7 +3052,7 @@ body .page-header {
   margin-bottom: 30px;
   position: relative;
   overflow: hidden;
-  background: #856d47;
+  background: #286192;
 }
 .news-box figure img {
   width: 100%;
@@ -3066,7 +3066,7 @@ body .page-header {
 }
 .news-box .content .category {
   display: inline-block;
-  color: #856d47;
+  color: #286192;
   font-size: 14px;
   font-weight: 600;
   position: relative;
@@ -3075,7 +3075,7 @@ body .page-header {
   content: "";
   width: 60px;
   height: 1px;
-  background: #856d47;
+  background: #286192;
   position: absolute;
   left: -80px;
   top: calc(50% - 0.5px);
@@ -3116,7 +3116,7 @@ body .page-header {
   transition: all .30s ease-in-out;
 }
 .news-box .content h3 a:hover {
-  color: #856d47;
+  color: #286192;
   text-decoration: none;
 }
 .news-box .content .author {
@@ -3150,7 +3150,7 @@ body .page-header {
   display: block;
   padding: 40px;
   background: #f5f3ec;
-  color: #856d47;
+  color: #286192;
   font-size: 22px;
   font-family: "Argesta Display";
   margin: 30px 0;
@@ -3189,7 +3189,7 @@ body .page-header {
   z-index: 1;
   font-weight: 400;
   font-size: 22px;
-  color: #856d47;
+  color: #286192;
   margin-bottom: 30px;
   padding-bottom: 30px;
   font-family: "Argesta Display";
@@ -3198,7 +3198,7 @@ body .page-header {
   content: "";
   width: 50px;
   height: 4px;
-  background: #856d47;
+  background: #286192;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -3242,7 +3242,7 @@ body .page-header {
   font-size: 19px;
 }
 .sidebar .widget .categories li a:hover {
-  color: #856d47;
+  color: #286192;
 }
 .sidebar .widget .widget-gallery {
   width: calc(100% + 4px);
