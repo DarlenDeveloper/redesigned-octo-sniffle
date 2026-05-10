@@ -92,8 +92,8 @@ class SpecialFooter extends HTMLElement {
         <!-- end col-3 -->
         <div class="col-xl-2 col-lg-4">
           <h6 class="widget-title">Location</h6>
-          <p> Kulambiro road, 
-            Kulambiro, Kampala <br>
+          <p>Kololo, Nakasero, Naguru,<br>
+            Bugolobi & more, Kampala <br>
             Uganda </p>
         </div>
         <!-- end col-2 -->
