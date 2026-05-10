@@ -4008,3 +4008,107 @@ body .page-header {
     margin-right: 10px;
   }
 }
+
+/* DEALS CAROUSEL (homepage) */
+.rooms-carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: visible;
+}
+.rooms-carousel.swiper-wrapper {
+  align-items: stretch;
+}
+.rooms-carousel li.swiper-slide {
+  width: 380px;
+  flex-shrink: 0;
+  margin-top: 0;
+}
+@media screen and (max-width: 767px) {
+  .rooms-carousel li.swiper-slide {
+    width: 85vw;
+  }
+}
+
+/* DEALS CAROUSEL card sizing */
+.deals-carousel .swiper-slide {
+  width: 360px;
+  height: auto;
+}
+.deals-carousel .room-box {
+  width: 100%;
+}
+.deals-carousel .room-box > a img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+.deals-carousel .room-box .bottom-specs .icons img {
+  width: auto;
+  height: 20px;
+  object-fit: unset;
+}
+@media screen and (max-width: 767px) {
+  .deals-carousel .swiper-slide {
+    width: 80vw;
+  }
+}
+
+/* PROPERTY SEARCH BAR */
+.property-search-bar {
+  margin-bottom: 40px;
+}
+.property-search-bar h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1a1a1a;
+}
+.search-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  align-items: center;
+}
+.search-fields select {
+  flex: 1;
+  padding: 11px 16px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 0;
+  background: #fff;
+  font-size: 13px;
+  color: #444;
+  appearance: auto;
+  cursor: pointer;
+  height: 42px;
+}
+.search-fields button {
+  padding: 0 28px;
+  background: #286192;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 42px;
+}
+.search-fields button:hover {
+  background: #1e4f78;
+}
+@media screen and (max-width: 767px) {
+  .search-fields select,
+  .search-fields button {
+    flex: 1 1 100%;
+  }
+}
+
+/* DEAL CARD BOXICONS */
+.deals-carousel .bottom-specs .icons i {
+  font-size: 18px;
+  margin-right: 8px;
+  color: #286192;
+}

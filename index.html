@@ -42,6 +42,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -139,87 +140,172 @@
       <div class="row">
         <div class="col-12">
           <div class="section-title">
-            <h6>AN EXTRAORDINARY STAY</h6>
-            <h2>Award winning<br>
-              luxury</h2>
+            <h6>EXCITING DEALS</h6>
+            <h2>Featured<br>
+              properties</h2>
           </div>
-          <!-- end section-title --> 
         </div>
-        <!-- end col-12 -->
         <div class="col-12">
-          <div class="carousel-image-box">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <figure class="reveal-effect"> <img src="images/pic3.jpg" alt="Image" style="background-size:cover;">
-                  <figcaption>
-                    <h5>OUTDOORS</h5>
-                    <p>Cozy and tranquil spaces.<br>
-                      </p>
-                  </figcaption>
-                </figure>
-              </div>
-              <!-- end swiper-slide -->
-              <div class="swiper-slide">
-                <figure class="reveal-effect"> <img src="images/home6.jpeg" alt="Image" style="background-size:cover;">
-                  <figcaption>
-                    <h5>RELAXATION</h5>
-                    <p>The perfect retreat.<br>
-                      </p>
-                  </figcaption>
-                </figure>
-              </div>
-              <!-- end swiper-slide -->
-              
-              <div class="swiper-slide">
-                <figure class="reveal-effect"> <img src="images/home7.jpeg" alt="Image" style="background-size:cover;">
-                  <figcaption>
-                    <h5>LOCATION</h5>
-                    <p>All our spaces are conviently located <br>
-                      around the beautiful streets of kampala</p>
-                  </figcaption>
-                </figure>
-              </div>
-              <!-- end swiper-slide -->
-              <div class="swiper-slide">
-                <figure class="reveal-effect"> <img src="images/pic4.jpg" alt="Image">
-                  <figcaption>
-                    <h5>INDOORS</h5>
-                    <p>Lush interiors.<br>
-                      decorated with high-end design</p>
-                  </figcaption>
-                </figure>
-              </div>
-              <!-- end swiper-slide -->
-              <div class="swiper-slide">
-                <figure class="reveal-effect"> <img src="images/home7.jpeg" alt="Image">
-                  <figcaption>
-                    <h5>MODERN LUXURY</h5>
-                    <p>Live the future of luxury.<br>
-                      escape the ordinary</p>
-                  </figcaption>
-                </figure>
-              </div>
-              <!-- end swiper-slide -->
-              <div class="swiper-slide">
-                <figure class="reveal-effect"> <img src="images/home10.jpeg" alt="Image">
-                  <figcaption>
-                    <h5>BESPOKE FINISHES.</h5>
-                    <p>Crafted to perfection. Defined by you.<br>
-                      </p>
-                  </figcaption>
-                </figure>
-              </div>
-              <!-- end swiper-slide --> 
+          <div class="property-search-bar">
+            <h3>Find What You're Looking For</h3>
+            <div class="search-fields">
+              <select>
+                <option value="">Buy/Rent</option>
+                <option value="buy">Buy</option>
+                <option value="rent">Rent</option>
+                <option value="book">Book a Stay</option>
+              </select>
+              <select>
+                <option value="">Property Type</option>
+                <option value="apartment">Apartment</option>
+                <option value="house">House</option>
+                <option value="land">Land</option>
+              </select>
+              <select>
+                <option value="">Location</option>
+                <option value="kololo">Kololo</option>
+                <option value="nakasero">Nakasero</option>
+                <option value="naguru">Naguru</option>
+                <option value="bugolobi">Bugolobi</option>
+                <option value="mbuga">Mbuga</option>
+              </select>
+              <select>
+                <option value="">Budget</option>
+                <option value="0-100k">Under shs. 100,000</option>
+                <option value="100k-500k">shs. 100,000 – 500,000</option>
+                <option value="500k-2m">shs. 500,000 – 2,000,000</option>
+                <option value="2m+">shs. 2,000,000+</option>
+              </select>
+              <button type="button">Search <i class="lni lni-search-alt"></i></button>
             </div>
           </div>
-          <!-- end carousel-image-box -->
+        </div>
+        <div class="col-12">
+          <div class="carousel-image-box deals-carousel">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="room-box">
+                  <a href="#"><img src="images/home21.jpg" alt="Cinnamon"></a>
+                  <div class="content">
+                    <div class="price-line"><span>SHORT STAY FROM</span> shs. 110,000</div>
+                    <h3><a href="#">Cinnamon</a></h3>
+                    <p>Always dreamed of living like royalty? Discover luxury apartments in the heart of Uganda.</p>
+                    <div class="bottom-specs">
+                      <div class="icons">
+                        <i class="bx bx-bed" title="Bedroom"></i>
+                        <i class="bx bx-tv" title="TV"></i>
+                        <i class="bx bx-building" title="Furnished"></i>
+                        <i class="bx bx-wifi" title="WiFi"></i>
+                        <i class="bx bx-bath" title="Bathroom"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="room-box">
+                  <a href="#"><img src="images/home24.jpg" alt="Cardamom"></a>
+                  <div class="content">
+                    <div class="price-line"><span>FOR RENT FROM</span> shs. 1,500,000</div>
+                    <h3><a href="#">Cardamom</a></h3>
+                    <p>Not just a stay, a statement. Uganda’s finest luxury apartments are waiting for you.</p>
+                    <div class="bottom-specs">
+                      <div class="icons">
+                        <i class="bx bx-bed" title="Bedroom"></i>
+                        <i class="bx bx-tv" title="TV"></i>
+                        <i class="bx bx-building" title="Furnished"></i>
+                        <i class="bx bx-wifi" title="WiFi"></i>
+                        <i class="bx bx-bath" title="Bathroom"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="room-box">
+                  <a href="#"><img src="images/home25.jpg" alt="Cumin"></a>
+                  <div class="content">
+                    <div class="price-line"><span>FOR SALE FROM</span> USD 120,000</div>
+                    <h3><a href="#">Cumin</a></h3>
+                    <p>Castle dreams, city reality. Live regally in Uganda’s most elegant apartments.</p>
+                    <div class="bottom-specs">
+                      <div class="icons">
+                        <i class="bx bx-bed" title="Bedroom"></i>
+                        <i class="bx bx-tv" title="TV"></i>
+                        <i class="bx bx-building" title="Furnished"></i>
+                        <i class="bx bx-wifi" title="WiFi"></i>
+                        <i class="bx bx-bath" title="Bathroom"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="room-box">
+                  <a href="#"><img src="images/home27.jpg" alt="Coriander"></a>
+                  <div class="content">
+                    <div class="price-line"><span>SHORT STAY FROM</span> shs. 110,000</div>
+                    <h3><a href="#">Coriander</a></h3>
+                    <p>From royal fantasy to modern luxury, experience apartment living redefined in Uganda.</p>
+                    <div class="bottom-specs">
+                      <div class="icons">
+                        <i class="bx bx-bed" title="Bedroom"></i>
+                        <i class="bx bx-tv" title="TV"></i>
+                        <i class="bx bx-building" title="Furnished"></i>
+                        <i class="bx bx-wifi" title="WiFi"></i>
+                        <i class="bx bx-bath" title="Bathroom"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="room-box">
+                  <a href="#"><img src="images/home29.jpg" alt="Cloves"></a>
+                  <div class="content">
+                    <div class="price-line"><span>FOR RENT FROM</span> shs. 2,000,000</div>
+                    <h3><a href="#">Cloves</a></h3>
+                    <p>Step into your modern-day castle. Premium apartments crafted for kings and queens.</p>
+                    <div class="bottom-specs">
+                      <div class="icons">
+                        <i class="bx bx-bed" title="Bedroom"></i>
+                        <i class="bx bx-tv" title="TV"></i>
+                        <i class="bx bx-building" title="Furnished"></i>
+                        <i class="bx bx-wifi" title="WiFi"></i>
+                        <i class="bx bx-bath" title="Bathroom"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="room-box">
+                  <a href="#"><img src="images/home30.jpg" alt="Chocolate"></a>
+                  <div class="content">
+                    <div class="price-line"><span>FOR SALE FROM</span> USD 95,000</div>
+                    <h3><a href="#">Chocolate</a></h3>
+                    <p>Your dream home, with a royal touch. Live luxuriously in Uganda’s top-tier apartments.</p>
+                    <div class="bottom-specs">
+                      <div class="icons">
+                        <i class="bx bx-bed" title="Bedroom"></i>
+                        <i class="bx bx-tv" title="TV"></i>
+                        <i class="bx bx-building" title="Furnished"></i>
+                        <i class="bx bx-wifi" title="WiFi"></i>
+                        <i class="bx bx-bath" title="Bathroom"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="swiper-scrollbar"></div>
         </div>
-        <!-- end col-12 --> 
       </div>
-      <!-- end row --> 
     </div>
-    <!-- end container --> 
   </section>
   <!-- end content-section -->
   <section class="content-section no-spacing">
