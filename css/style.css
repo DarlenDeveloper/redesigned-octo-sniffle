@@ -1058,11 +1058,18 @@ body .page-header {
 }
 .navbar .logo a img {
   height: 50px;
+  border-radius: 12px;
+}
+.preloader span img {
+  border-radius: 0;
 }
 .navbar .navbar-text {
   display: inline-block;
   margin: 0 auto;
   color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 1px;
   -webkit-transition: all .35s ease-in-out;
   -moz-transition: all .30s ease-in-out;
   -ms-transition: all .30s ease-in-out;

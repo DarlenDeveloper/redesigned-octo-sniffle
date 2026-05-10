@@ -11,6 +11,9 @@ class SpecialHeader extends HTMLElement {
         <li><a href="index.html">Home</a></li>
         <li><a href="quardo.html">PIXON REAL ESTATE</a></li>
         <li><a href="rooms.html">Apartments</a></li>
+        <li><a href="#">Buy</a></li>
+        <li><a href="#">Book</a></li>
+        <li><a href="#">Rent</a></li>
         <li><a href="contact-us.html">Contact Us</a></li>
       </ul>
       <div class="info-box"> <span>Follow us on Social Media</span>
@@ -28,13 +31,11 @@ class SpecialHeader extends HTMLElement {
   <!-- end hamburger-navigation -->
   <nav class="navbar">
     <div class="container">
-      <div class="logo"> <a href="index.html"><img src="images/logobg.png" alt="Image" style="width:100px; height:100px;"></a> </div>
+      <div class="logo"> <a href="index.html"><img src="images/pixon-logo.jpeg" alt="PIXON REAL ESTATE" style="width:70px; height:70px; border-radius:12px;"></a> </div>
       <!-- end logo -->
-      <div class="navbar-text">Booking 0752707989</div>
-      <div class="navbar-text">Booking 0701654054</div>
-      <div class="navbar-text">
-  <a href="contact-us.html" style="color: inherit; text-decoration: none;">BOOK NOW</a>
-</div>
+      <div class="navbar-text"><a href="#" style="color: inherit; text-decoration: none;">Buy</a></div>
+      <div class="navbar-text"><a href="#" style="color: inherit; text-decoration: none;">Book</a></div>
+      <div class="navbar-text"><a href="#" style="color: inherit; text-decoration: none;">Rent</a></div>
 
       
       <!-- end navbar-text -->
