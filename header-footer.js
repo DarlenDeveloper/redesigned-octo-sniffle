@@ -11,9 +11,9 @@ class SpecialHeader extends HTMLElement {
         <li><a href="index.html">Home</a></li>
         <li><a href="quardo.html">PIXON REAL ESTATE</a></li>
         <li><a href="rooms.html">Apartments</a></li>
-        <li><a href="#">Buy</a></li>
-        <li><a href="#">Book</a></li>
-        <li><a href="#">Rent</a></li>
+        <li><a href="buy.html">Buy</a></li>
+        <li><a href="rooms.html">Book</a></li>
+        <li><a href="rent.html">Rent</a></li>
         <li><a href="contact-us.html">Contact Us</a></li>
       </ul>
       <div class="info-box"> <span>Follow us on Social Media</span>
@@ -33,9 +33,9 @@ class SpecialHeader extends HTMLElement {
     <div class="container">
       <div class="logo"> <a href="index.html"><img src="images/pixon-logo.jpeg" alt="PIXON REAL ESTATE" style="width:70px; height:70px; border-radius:12px;"></a> </div>
       <!-- end logo -->
-      <div class="navbar-text"><a href="#" style="color: inherit; text-decoration: none;">Buy</a></div>
-      <div class="navbar-text"><a href="#" style="color: inherit; text-decoration: none;">Book</a></div>
-      <div class="navbar-text"><a href="#" style="color: inherit; text-decoration: none;">Rent</a></div>
+      <div class="navbar-text"><a href="buy.html" style="color: inherit; text-decoration: none;">Buy</a></div>
+      <div class="navbar-text"><a href="rooms.html" style="color: inherit; text-decoration: none;">Book</a></div>
+      <div class="navbar-text"><a href="rent.html" style="color: inherit; text-decoration: none;">Rent</a></div>
 
       
       <!-- end navbar-text -->
@@ -102,7 +102,7 @@ class SpecialFooter extends HTMLElement {
             <ul class="footer-social">
               <li><a href="https://www.instagram.com/pixonrealestate">Instagram</a></li>
               <li><a href="https://www.tiktok.com/@pixonrealestate">Tiktok</a></li>
-              <li><a href="https://www.airbnb.com/rooms/1389211820281182585?adults=1&search_mode=regular_search&check_in=2025-05-27&source_impression_id=p3_1746201430_P3kIo54nLdaeVEWG&previous_page_section_name=1000&federated_search_id=2bb78f7c-abc6-4c57-967d-e45079ed98f6&guests=1&modal=PHOTO_TOUR_SCROLLABLE">Airbnb</a></li>
+              <li><a href="https://www.airbnb.gy/rooms/1400828857217786785?source_impression_id=p3_1749861386_P35yeBDZvjIPu0sr" target="_blank" rel="noopener">Airbnb</a></li>
             </ul>
             <!-- end footer-social --> 
           </div>

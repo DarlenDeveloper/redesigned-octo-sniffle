@@ -9,9 +9,14 @@
 - [x] Replace icon images with Boxicons CDN
 - [x] Add "View Details" hover overlay on deal card images
 - [x] Replace spice names with location names (Kololo, Nakasero, Naguru, Bugolobi, Mbuga, Kampala)
+- [x] Create buy.html — properties for sale with filter tabs (All / Apartment / House / Land)
+- [x] Create rent.html — long-term rentals with filter tabs (All / Apartment / House)
+- [x] Wire Buy nav link → buy.html
+- [x] Wire Book nav link → Airbnb listing
+- [x] Wire Rent nav link → rent.html
+- [x] Fix hero slide CTAs (Buy → buy.html, Book → Airbnb, Rent → rent.html)
 
 ## Pending
-- [ ] Decide where Buy / Book / Rent nav links point (pages or external URLs)
-- [ ] Link deal cards to actual property pages once they exist
-- [ ] Wire up search bar functionality
-- [ ] Add more property listings or dynamic content
+- [ ] Add hero filter bar to buy.html and rent.html (after client verification)
+- [ ] Wire up search bar functionality on index.html
+- [ ] Link deal cards on homepage to actual property pages
