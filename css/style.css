@@ -4100,9 +4100,10 @@ body .page-header {
   background: #1e4f78;
 }
 @media screen and (max-width: 767px) {
-  .search-fields select,
-  .search-fields button {
-    flex: 1 1 100%;
+  .search-fields select {
+    flex: 1 1 40%;
+    font-size: 11px;
+    padding: 11px 6px;
   }
 }
 
