@@ -9,12 +9,12 @@ class SpecialHeader extends HTMLElement {
       </ul>
       <ul class="nav-menu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="#properties">PIXON REAL ESTATE</a></li>
-        <li><a href="#properties">Apartments</a></li>
-        <li><a href="#properties">Buy</a></li>
-        <li><a href="#properties">Book</a></li>
-        <li><a href="#properties">Rent</a></li>
-        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="index.html#properties">PIXON REAL ESTATE</a></li>
+        <li><a href="index.html#properties">Apartments</a></li>
+        <li><a href="index.html#properties">Buy</a></li>
+        <li><a href="index.html#properties">Book</a></li>
+        <li><a href="index.html#properties">Rent</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
       </ul>
       <div class="info-box"> <span>Follow us on Social Media</span>
         <ul class="nav-social">
@@ -33,10 +33,10 @@ class SpecialHeader extends HTMLElement {
     <div class="container">
       <div class="logo"> <a href="index.html"><img src="images/pixon-logo.jpeg" alt="PIXON REAL ESTATE" style="width:70px; height:70px; border-radius:12px;"></a> </div>
       <!-- end logo -->
-      <div class="navbar-text"><a href="#properties" style="color: inherit; text-decoration: none;">Buy</a></div>
-      <div class="navbar-text"><a href="#properties" style="color: inherit; text-decoration: none;">Book</a></div>
-      <div class="navbar-text"><a href="#properties" style="color: inherit; text-decoration: none;">Rent</a></div>
-      <div class="navbar-text"><a href="#contact" style="color: inherit; text-decoration: none;">Contact</a></div>
+      <div class="navbar-text"><a href="index.html#properties" style="color: inherit; text-decoration: none;">Buy</a></div>
+      <div class="navbar-text"><a href="index.html#properties" style="color: inherit; text-decoration: none;">Book</a></div>
+      <div class="navbar-text"><a href="index.html#properties" style="color: inherit; text-decoration: none;">Rent</a></div>
+      <div class="navbar-text"><a href="index.html#contact" style="color: inherit; text-decoration: none;">Contact</a></div>
 
       
       <!-- end navbar-text -->
