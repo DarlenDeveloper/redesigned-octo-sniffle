@@ -1,187 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="theme-color" content="#286192">
-<title>Property Details | PIXON REAL ESTATE</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#286192">
+  <title>Property Details | PIXON REAL ESTATE</title>
 
-<!-- CSS FILES -->
-<link rel="stylesheet" href="css/lineicons.css">
-<link rel="stylesheet" href="css/fancybox.min.css">
-<link rel="stylesheet" href="css/swiper.min.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css">
+  <!-- CSS FILES -->
+  <link rel="stylesheet" href="css/lineicons.css">
+  <link rel="stylesheet" href="css/fancybox.min.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css">
 
-<style>
-  /* HERO SECTION REDESIGN */
-  .property-hero-wrapper {
-    display: flex;
-    gap: 30px;
-    margin-top: 40px;
-    align-items: flex-start;
-  }
-  
-  .property-main-hero {
-    flex: 0 0 70%;
-    width: 70%;
-    border-radius: 0;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid #eee;
-  }
-  
-  .property-sidebar-hero {
-    flex: 0 0 30%;
-    width: 30%;
-    position: sticky;
-    top: 100px;
-  }
-  
-  .property-hero-slider {
-    width: 100%;
-    height: 600px;
-  }
-  
-  .property-hero-slider img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .swiper-button-next, .swiper-button-prev {
-    color: #fff;
-    background: rgba(0,0,0,0.3);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    backdrop-filter: blur(5px);
-  }
-  
-  .swiper-button-next::after, .swiper-button-prev::after {
-    font-size: 20px;
-  }
-
-  @media (max-width: 991px) {
+  <style>
+    /* HERO SECTION REDESIGN */
     .property-hero-wrapper {
-      flex-direction: column;
+      display: flex;
+      gap: 30px;
+      margin-top: 40px;
+      align-items: flex-start;
     }
-    .property-main-hero, .property-sidebar-hero {
-      flex: 0 0 100%;
-      width: 100%;
+
+    .property-main-hero {
+      flex: 0 0 70%;
+      width: 70%;
+      border-radius: 0;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #eee;
     }
+
     .property-sidebar-hero {
-      position: static;
-      margin-top: 20px;
+      flex: 0 0 30%;
+      width: 30%;
+      position: sticky;
+      top: 100px;
     }
+
     .property-hero-slider {
-      height: 400px;
+      width: 100%;
+      height: 600px;
     }
-  }
-</style>
+
+    .property-hero-slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #fff;
+      background: rgba(0, 0, 0, 0.3);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      backdrop-filter: blur(5px);
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      font-size: 20px;
+    }
+
+    @media (max-width: 991px) {
+      .property-hero-wrapper {
+        flex-direction: column;
+      }
+
+      .property-main-hero,
+      .property-sidebar-hero {
+        flex: 0 0 100%;
+        width: 100%;
+      }
+
+      .property-sidebar-hero {
+        position: static;
+        margin-top: 20px;
+      }
+
+      .property-hero-slider {
+        height: 400px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="preloader">
-  <div class="loadbar"></div>
-  <figure><img src="images/pixon-logo.jpeg" alt="Image"></figure>
-</div>
+  <div class="preloader">
+    <div class="loadbar"></div>
+    <figure><img src="images/pixon-logo.jpeg" alt="Image"></figure>
+  </div>
 
-<special-header></special-header>
+  <special-header></special-header>
 
-<main id="main">
-  <section class="content-section" style="padding-top: 100px; padding-bottom: 60px;">
-    <div class="container-fluid" style="max-width: 1400px; margin: 0 auto; padding: 0 30px;">
-      
-      <!-- Top Info -->
-      <div class="property-top-info" style="margin-bottom: 25px;">
-        <h1 style="font-size: 36px; font-weight: 700; margin-bottom: 10px;">The Willow Apartments</h1>
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-             <p style="margin: 0; color: #717171; font-size: 16px;">
-                <i class="bx bx-map" style="color: #286192;"></i> Kisasi-Kulambiro Road, Kampala, Uganda
-             </p>
-             <div style="display: flex; gap: 20px;">
-                <button style="background: none; border: none; text-decoration: underline; font-weight: 600; cursor: pointer;"><i class="bx bx-share-alt"></i> Share</button>
-                <button style="background: none; border: none; text-decoration: underline; font-weight: 600; cursor: pointer;"><i class="bx bx-heart"></i> Save</button>
-             </div>
-        </div>
-      </div>
+  <main id="main">
+    <section class="content-section" style="padding-top: 100px; padding-bottom: 60px;">
+      <div class="container-fluid" style="max-width: 1400px; margin: 0 auto; padding: 0 30px;">
 
-      <!-- NEW HERO LAYOUT (70:30) -->
-      <div class="property-hero-wrapper">
-        <!-- 70% Slider -->
-        <div class="property-main-hero">
-          <div class="swiper-container property-hero-slider">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="images/home21.jpg" alt="Slide 1"></div>
-              <div class="swiper-slide"><img src="images/home14.jpeg" alt="Slide 2"></div>
-              <div class="swiper-slide"><img src="images/home15.jpeg" alt="Slide 3"></div>
-              <div class="swiper-slide"><img src="images/home16.jpeg" alt="Slide 4"></div>
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-
-        <!-- 30% Booking Card -->
-        <div class="property-sidebar-hero">
-          <div class="booking-card" style="margin: 0; position: static;">
-            <div class="booking-header">
-               <div class="price">
-                 <span>shs. 350,000</span> /night
-               </div>
-               <p>Luxury and security guaranteed</p>
-            </div>
-            
-            <div class="booking-inputs" style="margin-top: 20px;">
-               <div class="input-row">
-                 <div class="input-group">
-                   <label>Check In</label>
-                   <input type="text" value="11/05/2025" readonly>
-                 </div>
-                 <div class="input-group">
-                   <label>Check Out</label>
-                   <input type="text" value="20/05/2025" readonly>
-                 </div>
-               </div>
-               <div class="input-group" style="margin-top: 15px;">
-                 <label>Guests</label>
-                 <select>
-                   <option>02 Guests</option>
-                   <option>01 Guest</option>
-                 </select>
-               </div>
-            </div>
-
-            <div class="booking-actions" style="margin-top: 30px;">
-              <button class="btn-filled" style="background-color: #286192; height: 55px; font-size: 16px; border-radius: 0;">Reserve This Home</button>
-              <p style="text-align: center; margin-top: 15px; font-size: 14px; color: #717171;">Local agent response: < 1 hour</p>
-            </div>
-
-            <div class="price-breakdown" style="border: none; background: #f9f9f9; padding: 20px; border-radius: 0; margin-top: 25px;">
-              <div class="breakdown-item">
-                <span>Total for 9 nights</span>
-                <span>shs. 3,150,000</span>
-              </div>
-              <div class="breakdown-total" style="border-top: 1px solid #ddd; padding-top: 15px; margin-top: 10px;">
-                <span>Total Amount Due</span>
-                <span>shs. 3,150,000</span>
-              </div>
+        <!-- Top Info -->
+        <div class="property-top-info" style="margin-bottom: 25px;">
+          <h1 style="font-size: 36px; font-weight: 700; margin-bottom: 10px;">The Willow Apartments</h1>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p style="margin: 0; color: #717171; font-size: 16px;">
+              <i class="bx bx-map" style="color: #286192;"></i> Kisasi-Kulambiro Road, Kampala, Uganda
+            </p>
+            <div style="display: flex; gap: 20px;">
+              <button
+                style="background: none; border: none; text-decoration: underline; font-weight: 600; cursor: pointer;"><i
+                  class="bx bx-share-alt"></i> Share</button>
+              <button
+                style="background: none; border: none; text-decoration: underline; font-weight: 600; cursor: pointer;"><i
+                  class="bx bx-heart"></i> Save</button>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Secondary Info -->
-      <div class="property-details-info" style="margin-top: 60px; max-width: 70%;">
-        <div class="property-description">
-           <h2 style="font-weight: 700; margin-bottom: 25px;">Welcome to your next home</h2>
-           <p style="font-size: 18px; line-height: 1.7; color: #444;">Step into a world of elegance and tranquility. This property has been curated for the most discerning residents who value both privacy and proximity to the city's pulse.</p>
-           
-           <div class="property-specs-grid" style="margin: 40px 0;">
+        <!-- NEW HERO LAYOUT (70:30) -->
+        <div class="property-hero-wrapper">
+          <!-- 70% Slider -->
+          <div class="property-main-hero">
+            <div class="swiper-container property-hero-slider">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/home21.jpg" alt="Slide 1"></div>
+                <div class="swiper-slide"><img src="images/home14.jpeg" alt="Slide 2"></div>
+                <div class="swiper-slide"><img src="images/home15.jpeg" alt="Slide 3"></div>
+                <div class="swiper-slide"><img src="images/home16.jpeg" alt="Slide 4"></div>
+              </div>
+              <!-- Add Arrows -->
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+              <!-- Add Pagination -->
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <!-- 30% Booking Card -->
+          <div class="property-sidebar-hero">
+            <div class="booking-card" style="margin: 0; position: static;">
+              <div class="booking-header">
+                <div class="price">
+                  <span>shs. 350,000</span> /night
+                </div>
+                <p>Luxury and security guaranteed</p>
+              </div>
+
+              <div class="booking-inputs" style="margin-top: 20px;">
+                <div class="input-row">
+                  <div class="input-group">
+                    <label>Check In</label>
+                    <input type="text" value="11/05/2025" readonly>
+                  </div>
+                  <div class="input-group">
+                    <label>Check Out</label>
+                    <input type="text" value="20/05/2025" readonly>
+                  </div>
+                </div>
+                <div class="input-group" style="margin-top: 15px;">
+                  <label>Guests</label>
+                  <select>
+                    <option>02 Guests</option>
+                    <option>01 Guest</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="booking-actions" style="margin-top: 30px;">
+                <button class="btn-filled"
+                  style="background-color: #286192; height: 55px; font-size: 16px; border-radius: 0;">Reserve This
+                  Home</button>
+                <p style="text-align: center; margin-top: 15px; font-size: 14px; color: #717171;">Local agent response:
+                  < 1 hour</p>
+              </div>
+
+              <div class="price-breakdown"
+                style="border: none; background: #f9f9f9; padding: 20px; border-radius: 0; margin-top: 25px;">
+                <div class="breakdown-item">
+                  <span>Total for 9 nights</span>
+                  <span>shs. 3,150,000</span>
+                </div>
+                <div class="breakdown-total" style="border-top: 1px solid #ddd; padding-top: 15px; margin-top: 10px;">
+                  <span>Total Amount Due</span>
+                  <span>shs. 3,150,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Info -->
+        <div class="property-details-info" style="margin-top: 60px; max-width: 70%;">
+          <div class="property-description">
+            <h2 style="font-weight: 700; margin-bottom: 25px;">Welcome to your next home</h2>
+            <p style="font-size: 18px; line-height: 1.7; color: #444;">Step into a world of elegance and tranquility.
+              This property has been curated for the most discerning residents who value both privacy and proximity to
+              the city's pulse.</p>
+
+            <div class="property-specs-grid" style="margin: 40px 0;">
               <div class="spec-item">
                 <i class="bx bx-bed"></i>
                 <span>Bedrooms</span>
@@ -202,55 +220,56 @@
                 <span>Security</span>
                 <strong>Level 5</strong>
               </div>
-           </div>
+            </div>
 
-           <h3 style="font-weight: 700; margin-top: 40px;">Top Amenities</h3>
-           <div class="amenities-grid" style="margin-top: 20px;">
+            <h3 style="font-weight: 700; margin-top: 40px;">Top Amenities</h3>
+            <div class="amenities-grid" style="margin-top: 20px;">
               <div class="amenity-pill"><i class="bx bx-wifi"></i> Fiber Internet</div>
               <div class="amenity-pill"><i class="bx bx-tv"></i> Smart TV</div>
               <div class="amenity-pill"><i class="bx bx-wind"></i> AC Units</div>
               <div class="amenity-pill"><i class="bx bx-fridge"></i> Modern Kitchen</div>
               <div class="amenity-pill"><i class="bx bx-sun"></i> Solar Backup</div>
               <div class="amenity-pill"><i class="bx bx-water"></i> Warm Water</div>
-           </div>
+            </div>
+          </div>
         </div>
+
       </div>
+    </section>
 
-    </div>
-  </section>
+    <special-footer></special-footer>
+  </main>
 
-  <special-footer></special-footer>
-</main>
+  <!-- JS FILES -->
+  <script src="header-footer.js" defer></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/fancybox.min.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script src="js/datepicker.min.js"></script>
+  <script src="js/smooth-scrollbar.js"></script>
+  <script src="js/overscroll.js"></script>
+  <script src="js/TweenMax.min.js"></script>
+  <script src="js/scripts.js"></script>
 
-<!-- JS FILES --> 
-<script src="header-footer.js" defer></script>
-<script src="js/jquery.min.js"></script> 
-<script src="js/bootstrap.min.js"></script> 
-<script src="js/fancybox.min.js"></script> 
-<script src="js/swiper.min.js"></script> 
-<script src="js/datepicker.min.js"></script> 
-<script src="js/smooth-scrollbar.js"></script> 
-<script src="js/overscroll.js"></script> 
-<script src="js/TweenMax.min.js"></script> 
-<script src="js/scripts.js"></script>
-
-<script>
-  $(document).ready(function() {
-    var heroSwiper = new Swiper('.property-hero-slider', {
-      loop: true,
-      autoplay: {
-        delay: 5000,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
+  <script>
+    $(document).ready(function () {
+      var heroSwiper = new Swiper('.property-hero-slider', {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      });
     });
-  });
-</script>
+  </script>
 </body>
+
 </html>

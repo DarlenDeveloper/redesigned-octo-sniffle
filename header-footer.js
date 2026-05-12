@@ -1,6 +1,6 @@
 class SpecialHeader extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `
+  connectedCallback() {
+    this.innerHTML = `
         <nav class="hamburger-navigation">
     <div class="layer"></div>
     <!-- end layer -->
@@ -59,12 +59,12 @@ class SpecialHeader extends HTMLElement {
     </div>
     <!-- end container --> 
   </nav>`;
-    }
+  }
 }
 
 class SpecialFooter extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `
+  connectedCallback() {
+    this.innerHTML = `
         <footer class="footer">
     <div class="container">
       <div class="row">
@@ -114,7 +114,7 @@ class SpecialFooter extends HTMLElement {
     </div>
     <!-- end container --> 
   </footer>`;
-    }
+  }
 }
 
 
