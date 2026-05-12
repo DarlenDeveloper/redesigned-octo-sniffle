@@ -820,12 +820,55 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 
 /* BODY */
 body .navbar {
+  width: 100%;
+  padding: 30px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   transform: translateY(-100%);
-  transition-delay: 1.3s;
-  transition-duration: 1s;
-  -webkit-transition-duration: 1s;
-  transition-timing-function: cubic-bezier(0.86, 0, 0.09, 1);
-  -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.09, 1);
+  transition: transform 1s cubic-bezier(0.86, 0, 0.09, 1), 
+              top 0.3s ease, 
+              left 0.3s ease, 
+              width 0.3s ease, 
+              padding 0.3s ease, 
+              background 0.3s ease, 
+              border-radius 0.3s ease;
+  transition-delay: 1.3s, 0s, 0s, 0s, 0s, 0s, 0s;
+}
+
+.navbar .container {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar.scrolled {
+  top: 25px !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(0) !important;
+  width: calc(100% - 120px) !important;
+  max-width: 1100px !important;
+  padding: 8px 0 !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(25px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  border: none !important;
+  transition-delay: 0s !important;
+}
+
+.navbar.scrolled .logo img {
+  height: 40px !important;
+}
+
+.navbar.scrolled .navbar-text a {
+  color: #141414 !important;
+}
+
+.navbar.scrolled .hamburger-menu svg path {
+  stroke: #141414 !important;
 }
 
 body .slider .main-slider {
@@ -888,12 +931,17 @@ body .page-header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 1001;
   transition-duration: 1s;
   -webkit-transition-duration: 1s;
   transition-timing-function: cubic-bezier(0.86, 0, 0.09, 1);
   -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.09, 1);
   background: #286192;
+  pointer-events: none; /* Fixed: Don't block scroll when height is 0 */
+  overflow: hidden;
+}
+
+.hamburger-navigation-active .hamburger-navigation {
   pointer-events: auto;
 }
 .hamburger-navigation .layer {
@@ -4111,5 +4159,104 @@ body .page-header {
 .deals-carousel .bottom-specs .icons i {
   font-size: 18px;
   margin-right: 8px;
+  color: #286192;
+}
+
+/* FEATURED GRID REDESIGN */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.featured-grid .room-box {
+  margin-bottom: 0;
+  background: #fff;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.featured-grid .room-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 1200px) {
+  .featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* BOXICONS IN GRID */
+.featured-grid .bottom-specs .icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.featured-grid .bottom-specs .icons i {
+  font-size: 18px;
+  color: #286192;
+}
+
+/* FEATURED GRID REDESIGN */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.featured-grid .room-box {
+  margin-bottom: 0;
+  background: #fff;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.featured-grid .room-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 1200px) {
+  .featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.featured-grid .bottom-specs .icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.featured-grid .bottom-specs .icons i {
+  font-size: 18px;
   color: #286192;
 }
