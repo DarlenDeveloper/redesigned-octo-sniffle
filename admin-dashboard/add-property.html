@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>Add Property | Pixon Admin</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin-dashboard/admin.css">
+  <style>
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: 13px; font-weight: 500; color: #1a2332; }
+    input, select, textarea {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #1a2332;
+      outline: none;
+      transition: border-color 0.2s;
+      background: #fff;
+    }
+    input:focus, select:focus, textarea:focus { border-color: #286192; }
+    textarea { resize: vertical; min-height: 100px; }
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .amenity-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .amenity-check input { width: auto; padding: 0; }
+    .image-upload-area {
+      border: 2px dashed #e2e8f0;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .image-upload-area:hover { border-color: #286192; }
+    .image-upload-area i { font-size: 36px; color: #6b7a8d; }
+    .image-upload-area p { font-size: 14px; color: #6b7a8d; margin-top: 8px; }
+    .image-previews {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .preview-thumb {
+      width: 80px; height: 70px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid #e2e8f0;
+    }
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 8px;
+    }
+    .btn-secondary {
+      background: #f0f4f8;
+      color: #1a2332;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+    }
+    .success-msg {
+      background: #e8f8f0;
+      color: #27ae60;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 14px;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .error-msg {
+      background: #fdecea;
+      color: #e74c3c;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 14px;
+      margin-bottom: 16px;
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img src="../images/pixon-logo.jpeg" alt="Pixon">
+      <span>Pixon</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="/admin-dashboard/index.html" class="nav-item"><i class='bx bxs-dashboard'></i><span>Dashboard</span></a>
+      <a href="/admin-dashboard/properties.html" class="nav-item"><i class='bx bx-building-house'></i><span>Properties</span></a>
+      <a href="/admin-dashboard/inquiries.html" class="nav-item"><i class='bx bx-envelope'></i><span>Inquiries</span></a>
+      <a href="/admin-dashboard/add-property.html" class="nav-item active"><i class='bx bx-plus-circle'></i><span>Add Property</span></a>
+      <a href="/admin-dashboard/settings.html" class="nav-item"><i class='bx bx-cog'></i><span>Settings</span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="../index.html" class="nav-item"><i class='bx bx-globe'></i><span>View Site</span></a>
+      <a href="#" class="nav-item" id="logoutBtn"><i class='bx bx-log-out'></i><span>Logout</span></a>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle"><i class='bx bx-menu'></i></button>
+        <div>
+          <p class="topbar-sub">PIXON REAL ESTATE</p>
+          <h2 class="topbar-title">Add New Property</h2>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="admin-profile">
+          <div class="avatar"><i class='bx bxs-user'></i></div>
+          <div>
+            <p class="admin-name">Admin</p>
+            <p class="admin-role">Property Manager</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="card" style="max-width: 900px;">
+        <div class="success-msg" id="successMsg">Property added successfully!</div>
+        <div class="error-msg" id="errorMsg"></div>
+
+        <form id="addPropertyForm">
+          <div class="form-grid">
+
+            <div class="form-group full">
+              <label>Property Title *</label>
+              <input type="text" name="title" placeholder="e.g. Kololo Executive Apartment" required>
+            </div>
+
+            <div class="form-group">
+              <label>Category *</label>
+              <select name="category" required>
+                <option value="">Select category</option>
+                <option value="buy">For Sale (Buy)</option>
+                <option value="rent">For Rent</option>
+                <option value="book">Short Stay (Book)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Property Type *</label>
+              <select name="type" required>
+                <option value="">Select type</option>
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+                <option value="Penthouse">Penthouse</option>
+                <option value="Villa">Villa</option>
+                <option value="Land">Land</option>
+                <option value="Office">Office</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Location *</label>
+              <select name="location" required>
+                <option value="">Select location</option>
+                <option value="Kololo">Kololo</option>
+                <option value="Nakasero">Nakasero</option>
+                <option value="Naguru">Naguru</option>
+                <option value="Bugolobi">Bugolobi</option>
+                <option value="Mbuga">Mbuga</option>
+                <option value="Kulambiro">Kulambiro</option>
+                <option value="Kampala">Kampala</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Price (UGX) *</label>
+              <input type="number" name="price" placeholder="e.g. 1500000" required>
+            </div>
+
+            <div class="form-group">
+              <label>Price Label</label>
+              <select name="priceLabel">
+                <option value="per night">Per Night</option>
+                <option value="per month">Per Month</option>
+                <option value="total">Total (Sale)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Bedrooms</label>
+              <input type="number" name="bedrooms" placeholder="e.g. 3" min="0">
+            </div>
+
+            <div class="form-group">
+              <label>Bathrooms</label>
+              <input type="number" name="bathrooms" placeholder="e.g. 2" min="0">
+            </div>
+
+            <div class="form-group">
+              <label>Status</label>
+              <select name="status">
+                <option value="Active">Active</option>
+                <option value="Sold Out">Sold Out</option>
+                <option value="Rented">Rented</option>
+                <option value="Booked">Booked</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label>Description *</label>
+              <textarea name="description" placeholder="Describe the property..." required></textarea>
+            </div>
+
+            <div class="form-group full">
+              <label>Amenities</label>
+              <div class="amenities-grid">
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="WiFi"> WiFi</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Smart TV"> Smart TV</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="AC"> AC Units</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Kitchen"> Modern Kitchen</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Solar"> Solar Backup</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Warm Water"> Warm Water</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Parking"> Parking</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Security"> 24/7 Security</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Pool"> Swimming Pool</label>
+              </div>
+            </div>
+
+            <div class="form-group full">
+              <label>Property Images</label>
+              <div class="image-upload-area" id="uploadArea">
+                <i class='bx bx-image-add'></i>
+                <p>Click to upload images or drag & drop</p>
+                <input type="file" id="imageInput" multiple accept="image/*" style="display:none">
+              </div>
+              <div class="image-previews" id="imagePreviews"></div>
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+            <a href="/admin-dashboard/index.html" class="btn-secondary">Cancel</a>
+            <button type="submit" class="btn-primary" id="submitBtn">Add Property</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/admin-dashboard/add-property.js"></script>
+</body>
+</html>

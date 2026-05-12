@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>Pixon Admin</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin-dashboard/admin.css">
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img src="../images/pixon-logo.jpeg" alt="Pixon">
+      <span>Pixon</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="/admin-dashboard/index.html" class="nav-item active" data-page="dashboard">
+        <i class='bx bxs-dashboard'></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="/admin-dashboard/properties.html" class="nav-item" data-page="properties">
+        <i class='bx bxs-buildings'></i>
+        <span>Properties</span>
+      </a>
+      <a href="/admin-dashboard/inquiries.html" class="nav-item" data-page="inquiries">
+        <i class='bx bxs-inbox'></i>
+        <span>Inquiries</span>
+      </a>
+      <a href="/admin-dashboard/add-property.html" class="nav-item" data-page="add">
+        <i class='bx bxs-plus-circle'></i>
+        <span>Add Property</span>
+      </a>
+      <a href="/admin-dashboard/settings.html" class="nav-item" data-page="settings">
+        <i class='bx bxs-cog'></i>
+        <span>Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="../index.html" class="nav-item">
+        <i class='bx bx-globe'></i>
+        <span>View Site</span>
+      </a>
+      <a href="#" class="nav-item" id="logoutBtn">
+        <i class='bx bx-log-out'></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-wrapper">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle"><i class='bx bx-menu'></i></button>
+        <div>
+          <p class="topbar-sub">PIXON REAL ESTATE</p>
+          <h2 class="topbar-title">Welcome back, Admin!</h2>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="icon-btn"><i class='bx bx-search'></i></button>
+        <button class="icon-btn notif-btn">
+          <i class='bx bx-bell'></i>
+          <span class="badge" id="notifBadge">0</span>
+        </button>
+        <div class="admin-profile">
+          <div class="avatar"><i class='bx bxs-user'></i></div>
+          <div>
+            <p class="admin-name">Admin</p>
+            <p class="admin-role">Property Manager</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- STAT CARDS -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class='bx bxs-buildings'></i></div>
+          <div class="stat-info">
+            <p>Active Listings</p>
+            <h3 id="statActive">—</h3>
+            <span class="stat-tag">Total properties live</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class='bx bxs-key'></i></div>
+          <div class="stat-info">
+            <p>For Rent</p>
+            <h3 id="statRent">—</h3>
+            <span class="stat-tag">Long-term rentals</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange"><i class='bx bx-home-smile'></i></div>
+          <div class="stat-info">
+            <p>For Sale</p>
+            <h3 id="statSale">—</h3>
+            <span class="stat-tag">Properties for sale</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class='bx bxs-bed'></i></div>
+          <div class="stat-info">
+            <p>Short Stays</p>
+            <h3 id="statBook">—</h3>
+            <span class="stat-tag">Bookable properties</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM GRID -->
+      <div class="dashboard-grid">
+
+        <!-- ACTIVE LISTINGS TABLE -->
+        <div class="card table-card">
+          <div class="card-header">
+            <h4>Active Listings</h4>
+            <div class="card-actions">
+              <div class="search-box">
+                <i class='bx bx-search'></i>
+                <input type="text" id="tableSearch" placeholder="Search...">
+              </div>
+              <a href="/admin-dashboard/add-property.html" class="btn-primary">+ Add New</a>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Category</th>
+                  <th>Location</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="propertiesTableBody">
+                <tr><td colspan="7" class="loading-row">Loading properties...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="right-panel">
+
+          <!-- BREAKDOWN -->
+          <div class="card">
+            <div class="card-header"><h4>Listings Breakdown</h4></div>
+            <div class="breakdown-list">
+              <div class="breakdown-item">
+                <span class="dot blue"></span>
+                <span>For Rent</span>
+                <strong id="breakRent">0</strong>
+              </div>
+              <div class="breakdown-item">
+                <span class="dot orange"></span>
+                <span>For Sale</span>
+                <strong id="breakSale">0</strong>
+              </div>
+              <div class="breakdown-item">
+                <span class="dot purple"></span>
+                <span>Short Stay</span>
+                <strong id="breakBook">0</strong>
+              </div>
+            </div>
+            <div class="breakdown-bar" id="breakdownBar">
+              <div class="bar-segment blue" id="barRent" style="width:33%"></div>
+              <div class="bar-segment orange" id="barSale" style="width:33%"></div>
+              <div class="bar-segment purple" id="barBook" style="width:34%"></div>
+            </div>
+          </div>
+
+          <!-- RECENT INQUIRIES -->
+          <div class="card">
+            <div class="card-header">
+              <h4>Recent Inquiries</h4>
+              <a href="/admin-dashboard/inquiries.html" class="link-sm">View all</a>
+            </div>
+            <div id="recentInquiries">
+              <p class="empty-msg">No inquiries yet.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script type="module" src="/admin-dashboard/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>Properties | Pixon Admin</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin-dashboard/admin.css">
+  <style>
+    .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+    .filter-btn {
+      padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--white); font-size: 13px; font-weight: 500; cursor: pointer;
+      font-family: inherit; color: var(--text-muted); transition: all 0.2s;
+    }
+    .filter-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); }
+    .empty-state i { font-size: 48px; margin-bottom: 12px; display: block; }
+  </style>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img src="../images/pixon-logo.jpeg" alt="Pixon">
+      <span>Pixon</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="/admin-dashboard/index.html" class="nav-item"><i class='bx bxs-dashboard'></i><span>Dashboard</span></a>
+      <a href="/admin-dashboard/properties.html" class="nav-item active"><i class='bx bxs-buildings'></i><span>Properties</span></a>
+      <a href="/admin-dashboard/inquiries.html" class="nav-item"><i class='bx bxs-inbox'></i><span>Inquiries</span></a>
+      <a href="/admin-dashboard/add-property.html" class="nav-item"><i class='bx bxs-plus-circle'></i><span>Add Property</span></a>
+      <a href="/admin-dashboard/settings.html" class="nav-item"><i class='bx bxs-cog'></i><span>Settings</span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="../index.html" class="nav-item"><i class='bx bx-globe'></i><span>View Site</span></a>
+      <a href="#" class="nav-item" id="logoutBtn"><i class='bx bx-log-out'></i><span>Logout</span></a>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle"><i class='bx bx-menu'></i></button>
+        <div>
+          <p class="topbar-sub">PIXON REAL ESTATE</p>
+          <h2 class="topbar-title">Properties</h2>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="admin-profile">
+          <div class="avatar"><i class='bx bxs-user'></i></div>
+          <div><p class="admin-name">Admin</p><p class="admin-role">Property Manager</p></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="buy">For Sale</button>
+        <button class="filter-btn" data-filter="rent">For Rent</button>
+        <button class="filter-btn" data-filter="book">Short Stay</button>
+        <div class="search-box" style="margin-left:auto;">
+          <i class='bx bx-search'></i>
+          <input type="text" id="propSearch" placeholder="Search properties...">
+        </div>
+        <a href="add-property.html" class="btn-primary">+ Add New</a>
+      </div>
+
+      <div class="card" style="padding:0;">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="propertiesTableBody">
+              <tr><td colspan="7" class="loading-row">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/admin-dashboard/properties.js"></script>
+</body>
+</html>
