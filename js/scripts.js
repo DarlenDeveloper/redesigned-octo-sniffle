@@ -198,7 +198,25 @@
 
 
   Scrollbar.use(OverscrollPlugin);
-  Scrollbar.init(document.querySelector('#main'));
+  var mainScrollbar = Scrollbar.init(document.querySelector('#main'));
+
+  // SMOOTH SCROLL FOR ANCHOR LINKS
+  $('a[href^="#"]').on('click', function (e) {
+    e.preventDefault();
+    var hash = $(this).attr('href');
+    if (hash === '#') return;
+    var target = document.querySelector(hash);
+    if (target) {
+      // If hamburger menu is open, close it
+      if ($("body").hasClass('hamburger-navigation-active')) {
+        $('.hamburger-menu').trigger('click');
+      }
+      mainScrollbar.scrollIntoView(target, {
+        offsetTop: 80,
+        alignToTop: true
+      });
+    }
+  });
 
 
   // Detect request animation frame
