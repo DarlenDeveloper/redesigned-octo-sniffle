@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="format-detection" content="telephone=no">
 <meta name="theme-color" content="#286192">
 <title>Property Details | PIXON REAL ESTATE</title>
 
@@ -14,6 +13,73 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css">
+
+<style>
+  /* HERO SECTION REDESIGN */
+  .property-hero-wrapper {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    align-items: flex-start;
+  }
+  
+  .property-main-hero {
+    flex: 0 0 70%;
+    width: 70%;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #eee;
+  }
+  
+  .property-sidebar-hero {
+    flex: 0 0 30%;
+    width: 30%;
+    position: sticky;
+    top: 100px;
+  }
+  
+  .property-hero-slider {
+    width: 100%;
+    height: 600px;
+  }
+  
+  .property-hero-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .swiper-button-next, .swiper-button-prev {
+    color: #fff;
+    background: rgba(0,0,0,0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+  }
+  
+  .swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 20px;
+  }
+
+  @media (max-width: 991px) {
+    .property-hero-wrapper {
+      flex-direction: column;
+    }
+    .property-main-hero, .property-sidebar-hero {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    .property-sidebar-hero {
+      position: static;
+      margin-top: 20px;
+    }
+    .property-hero-slider {
+      height: 400px;
+    }
+  }
+</style>
 </head>
 <body>
 <div class="preloader">
@@ -25,152 +91,131 @@
 
 <main id="main">
   <section class="content-section" style="padding-top: 100px; padding-bottom: 60px;">
-    <div class="container" style="max-width: 1200px;">
+    <div class="container-fluid" style="max-width: 1400px; margin: 0 auto; padding: 0 30px;">
       
-      <!-- Top Action Bar -->
-      <div class="property-top-bar" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end;">
-        <div class="title-area">
-          <h1 style="font-size: 32px; font-weight: 700; margin: 0 0 5px 0;">The Willow Apartments</h1>
-          <p style="margin: 0; color: #717171; font-size: 15px;">
-            <i class="bx bx-map" style="color: #286192; margin-right: 4px;"></i> 
-            Kisasi-Kulambiro Road, Kampala, Uganda
-          </p>
-        </div>
-        <div class="action-area" style="display: flex; gap: 15px;">
-          <a href="index.html" style="color: #222; text-decoration: underline; font-weight: 600; font-size: 14px; display: flex; align-items: center;">
-            <i class="bx bx-left-arrow-alt" style="font-size: 20px; margin-right: 4px;"></i> Back
-          </a>
-          <button style="background: none; border: none; text-decoration: underline; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center;">
-            <i class="bx bx-share-alt" style="margin-right: 4px;"></i> Share
-          </button>
-          <button style="background: none; border: none; text-decoration: underline; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center;">
-            <i class="bx bx-heart" style="margin-right: 4px;"></i> Save
-          </button>
+      <!-- Top Info -->
+      <div class="property-top-info" style="margin-bottom: 25px;">
+        <h1 style="font-size: 36px; font-weight: 700; margin-bottom: 10px;">The Willow Apartments</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+             <p style="margin: 0; color: #717171; font-size: 16px;">
+                <i class="bx bx-map" style="color: #286192;"></i> Kisasi-Kulambiro Road, Kampala, Uganda
+             </p>
+             <div style="display: flex; gap: 20px;">
+                <button style="background: none; border: none; text-decoration: underline; font-weight: 600; cursor: pointer;"><i class="bx bx-share-alt"></i> Share</button>
+                <button style="background: none; border: none; text-decoration: underline; font-weight: 600; cursor: pointer;"><i class="bx bx-heart"></i> Save</button>
+             </div>
         </div>
       </div>
 
-      <!-- Willow Style Gallery -->
-      <div class="property-gallery" style="box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 16px;">
-        <div class="main-img reveal-effect">
-          <img src="images/home21.jpg" alt="Main Property Image">
-        </div>
-        <div class="side-imgs">
-          <div class="side-img reveal-effect"><img src="images/home14.jpeg" alt="Side 1"></div>
-          <div class="side-img reveal-effect"><img src="images/home15.jpeg" alt="Side 2"></div>
-          <div class="side-img reveal-effect"><img src="images/home16.jpeg" alt="Side 3"></div>
-          <div class="side-img reveal-effect"><img src="images/home12.jpeg" alt="Side 4"></div>
-        </div>
-      </div>
-
-      <div class="property-main-layout" style="margin-top: 40px;">
-        <!-- Left Column -->
-        <div class="property-info-col">
-          <!-- Key Specs -->
-          <div class="property-specs-grid">
-            <div class="spec-item">
-              <i class="bx bx-bed"></i>
-              <span>Bedroom</span>
-              <strong>5 Rooms</strong>
+      <!-- NEW HERO LAYOUT (70:30) -->
+      <div class="property-hero-wrapper">
+        <!-- 70% Slider -->
+        <div class="property-main-hero">
+          <div class="swiper-container property-hero-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="images/home21.jpg" alt="Slide 1"></div>
+              <div class="swiper-slide"><img src="images/home14.jpeg" alt="Slide 2"></div>
+              <div class="swiper-slide"><img src="images/home15.jpeg" alt="Slide 3"></div>
+              <div class="swiper-slide"><img src="images/home16.jpeg" alt="Slide 4"></div>
             </div>
-            <div class="spec-item">
-              <i class="bx bx-bath"></i>
-              <span>Bathrooms</span>
-              <strong>2 Baths</strong>
-            </div>
-            <div class="spec-item">
-              <i class="bx bx-area"></i>
-              <span>Area</span>
-              <strong>8x7.5 m²</strong>
-            </div>
-            <div class="spec-item">
-              <i class="bx bx-car"></i>
-              <span>Parking</span>
-              <strong>Indoor</strong>
-            </div>
-            <div class="spec-item">
-              <div class="safety-dots">
-                <span class="dot active"></span>
-                <span class="dot active"></span>
-                <span class="dot active"></span>
-                <span class="dot active"></span>
-                <span class="dot"></span>
-              </div>
-              <span>Safety</span>
-              <strong>Secure</strong>
-            </div>
-          </div>
-
-          <!-- Description -->
-          <div class="property-description">
-            <h3 style="font-weight: 700; margin-bottom: 20px;">About this home</h3>
-            <p>Experience luxury living at The Willow Apartments, a premier residential community in the heart of Kampala. With stunning modern architecture and thoughtfully designed interiors, this property offers the perfect blend of comfort and style.</p>
-            <p>Each apartment features floor-to-ceiling windows, premium finishes, and state-of-the-art appliances. The spacious open-concept living areas flow seamlessly into chef's kitchens with island seating.</p>
-          </div>
-
-          <!-- Amenities -->
-          <div class="property-amenities" style="margin-top: 40px;">
-            <h3 style="font-weight: 700; margin-bottom: 20px;">What this place offers</h3>
-            <div class="amenities-grid">
-              <div class="amenity-pill"><i class="bx bx-dumbbell" style="margin-right: 8px;"></i> Fitness Center</div>
-              <div class="amenity-pill"><i class="bx bx-water" style="margin-right: 8px;"></i> Swimming Pool</div>
-              <div class="amenity-pill"><i class="bx bx-leaf" style="margin-right: 8px;"></i> Garden View</div>
-              <div class="amenity-pill"><i class="bx bx-coffee" style="margin-right: 8px;"></i> Resident Lounge</div>
-              <div class="amenity-pill"><i class="bx bx-shield-quarter" style="margin-right: 8px;"></i> 24/7 Shield</div>
-              <div class="amenity-pill"><i class="bx bx-parking" style="margin-right: 8px;"></i> Free Parking</div>
-            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
           </div>
         </div>
 
-        <!-- Right Column (Sticky Sidebar) -->
-        <div class="property-sidebar-col">
-          <div class="booking-card">
+        <!-- 30% Booking Card -->
+        <div class="property-sidebar-hero">
+          <div class="booking-card" style="margin: 0; position: static;">
             <div class="booking-header">
-              <div class="price">
-                <span>shs. 350,000</span> /night
-              </div>
-              <p>Inclusive of all service fees</p>
+               <div class="price">
+                 <span>shs. 350,000</span> /night
+               </div>
+               <p>Luxury and security guaranteed</p>
+            </div>
+            
+            <div class="booking-inputs" style="margin-top: 20px;">
+               <div class="input-row">
+                 <div class="input-group">
+                   <label>Check In</label>
+                   <input type="text" value="11/05/2025" readonly>
+                 </div>
+                 <div class="input-group">
+                   <label>Check Out</label>
+                   <input type="text" value="20/05/2025" readonly>
+                 </div>
+               </div>
+               <div class="input-group" style="margin-top: 15px;">
+                 <label>Guests</label>
+                 <select>
+                   <option>02 Guests</option>
+                   <option>01 Guest</option>
+                 </select>
+               </div>
             </div>
 
-            <div class="booking-inputs">
-              <div class="input-row">
-                <div class="input-group">
-                  <label>Arrival</label>
-                  <input type="text" value="11/05/2025" readonly>
-                </div>
-                <div class="input-group">
-                  <label>Departure</label>
-                  <input type="text" value="20/09/2025" readonly>
-                </div>
-              </div>
-              <div class="input-row">
-                <div class="input-group">
-                  <label>Guests</label>
-                  <select>
-                    <option>02 Guests</option>
-                    <option>01 Guest</option>
-                  </select>
-                </div>
-              </div>
+            <div class="booking-actions" style="margin-top: 30px;">
+              <button class="btn-filled" style="background-color: #286192; height: 55px; font-size: 16px; border-radius: 0;">Reserve This Home</button>
+              <p style="text-align: center; margin-top: 15px; font-size: 14px; color: #717171;">Local agent response: < 1 hour</p>
             </div>
 
-            <div class="booking-actions">
-              <button class="btn-filled" style="background-color: #286192; margin-bottom: 10px;">Reserve Now</button>
-              <p style="text-align: center; font-size: 13px; color: #717171;">You won't be charged yet</p>
-            </div>
-
-            <div class="price-breakdown" style="border-top: 1px solid #eee; padding-top: 20px; border: none; background: none;">
+            <div class="price-breakdown" style="border: none; background: #f9f9f9; padding: 20px; border-radius: 0; margin-top: 25px;">
               <div class="breakdown-item">
-                <span style="text-decoration: underline;">shs. 350k x 1 night</span>
-                <span>shs. 350,000</span>
+                <span>Total for 9 nights</span>
+                <span>shs. 3,150,000</span>
               </div>
-              <div class="breakdown-total" style="border-color: #eee;">
-                <span>Total</span>
-                <span>shs. 350,000</span>
+              <div class="breakdown-total" style="border-top: 1px solid #ddd; padding-top: 15px; margin-top: 10px;">
+                <span>Total Amount Due</span>
+                <span>shs. 3,150,000</span>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Secondary Info -->
+      <div class="property-details-info" style="margin-top: 60px; max-width: 70%;">
+        <div class="property-description">
+           <h2 style="font-weight: 700; margin-bottom: 25px;">Welcome to your next home</h2>
+           <p style="font-size: 18px; line-height: 1.7; color: #444;">Step into a world of elegance and tranquility. This property has been curated for the most discerning residents who value both privacy and proximity to the city's pulse.</p>
+           
+           <div class="property-specs-grid" style="margin: 40px 0;">
+              <div class="spec-item">
+                <i class="bx bx-bed"></i>
+                <span>Bedrooms</span>
+                <strong>5 Rooms</strong>
+              </div>
+              <div class="spec-item">
+                <i class="bx bx-bath"></i>
+                <span>Bathrooms</span>
+                <strong>2 Baths</strong>
+              </div>
+              <div class="spec-item">
+                <i class="bx bx-hotel"></i>
+                <span>Type</span>
+                <strong>Penthouse</strong>
+              </div>
+              <div class="spec-item">
+                <i class="bx bx-shield-check"></i>
+                <span>Security</span>
+                <strong>Level 5</strong>
+              </div>
+           </div>
+
+           <h3 style="font-weight: 700; margin-top: 40px;">Top Amenities</h3>
+           <div class="amenities-grid" style="margin-top: 20px;">
+              <div class="amenity-pill"><i class="bx bx-wifi"></i> Fiber Internet</div>
+              <div class="amenity-pill"><i class="bx bx-tv"></i> Smart TV</div>
+              <div class="amenity-pill"><i class="bx bx-wind"></i> AC Units</div>
+              <div class="amenity-pill"><i class="bx bx-fridge"></i> Modern Kitchen</div>
+              <div class="amenity-pill"><i class="bx bx-sun"></i> Solar Backup</div>
+              <div class="amenity-pill"><i class="bx bx-water"></i> Warm Water</div>
+           </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -188,5 +233,24 @@
 <script src="js/overscroll.js"></script> 
 <script src="js/TweenMax.min.js"></script> 
 <script src="js/scripts.js"></script>
+
+<script>
+  $(document).ready(function() {
+    var heroSwiper = new Swiper('.property-hero-slider', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  });
+</script>
 </body>
 </html>

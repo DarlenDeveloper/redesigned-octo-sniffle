@@ -214,6 +214,7 @@ textarea {
   height: 140px;
   padding: 30px;
   border: 1px solid #cecece;
+  border-radius: 0;
 }
 
 select {
@@ -222,6 +223,7 @@ select {
   height: 80px;
   padding: 0 30px;
   border: 1px solid #cecece;
+  border-radius: 0;
 }
 
 select {
@@ -4244,7 +4246,7 @@ body .page-header {
 .featured-grid .room-box {
   margin-bottom: 0;
   background: #fff;
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
   border: 1px solid #f0f0f0;
   transition: all 0.3s ease;
@@ -4474,7 +4476,7 @@ body .page-header {
 
 .spec-item {
   border: 1px solid #eee;
-  border-radius: 12px;
+  border-radius: 0;
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -4539,7 +4541,7 @@ body .page-header {
 .amenity-pill {
   background: #f7f7f7;
   padding: 12px 15px;
-  border-radius: 12px;
+  border-radius: 0;
   font-size: 14px;
   color: #222;
   text-align: center;
@@ -4549,9 +4551,8 @@ body .page-header {
 /* Sidebar Booking Card */
 .booking-card {
   border: 1px solid #eee;
-  border-radius: 20px;
+  border-radius: 0;
   padding: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   position: sticky;
   top: 20px;
   background: #fff;
@@ -4602,7 +4603,7 @@ body .page-header {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 14px;
 }
 
@@ -4610,7 +4611,7 @@ body .page-header {
   border: 1px dashed #ff5a5f;
   background: #fffafa;
   padding: 16px;
-  border-radius: 12px;
+  border-radius: 0;
   margin-bottom: 24px;
 }
 
@@ -4647,7 +4648,7 @@ body .page-header {
 .booking-actions button {
   width: 100%;
   padding: 14px;
-  border-radius: 12px;
+  border-radius: 0;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
