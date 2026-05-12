@@ -1,6 +1,6 @@
 import { db, auth } from '../js/firebase-config.js';
 import {
-  collection, getDocs, deleteDoc, doc, query, orderBy, limit
+  collection, getDocs, deleteDoc, doc, query, orderBy, limit, updateDoc, serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 import { signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { requireAuth, logout } from './auth-guard.js';
@@ -30,6 +30,7 @@ async function loadDashboard() {
     console.log('Firestore snapshot size:', snapshot.size);
     const properties = [];
     snapshot.forEach(d => properties.push({ id: d.id, ...d.data() }));
+    allPropertiesCache = properties;
 
     // Stats
     const rent  = properties.filter(p => p.category === 'rent').length;
@@ -104,7 +105,7 @@ function renderTable(properties) {
         <td><span class="status-badge ${statusClass}">${p.status || 'Active'}</span></td>
         <td>
           <div class="action-btns">
-            <a href="/admin-dashboard/edit-property.html?id=${p.id}" class="action-btn" title="Edit"><i class='bx bx-edit'></i></a>
+            <a href="#" class="action-btn" title="Edit" onclick="openEditModal('${p.id}'); return false;"><i class='bx bx-edit'></i></a>
             <button class="action-btn del" title="Delete" onclick="deleteProperty('${p.id}')"><i class='bx bx-trash'></i></button>
           </div>
         </td>
@@ -160,3 +161,65 @@ async function loadInquiries() {
 
 loadDashboard();
 loadInquiries();
+
+
+// ── EDIT MODAL ──
+let editingPropertyId = null;
+let allPropertiesCache = [];
+
+window.openEditModal = async (id) => {
+  editingPropertyId = id;
+  const property = allPropertiesCache.find(p => p.id === id);
+  if (!property) return;
+
+  const form = document.getElementById('editForm');
+  form.querySelector('[name="title"]').value = property.title || '';
+  form.querySelector('[name="category"]').value = property.category || 'buy';
+  form.querySelector('[name="type"]').value = property.type || 'Apartment';
+  form.querySelector('[name="location"]').value = property.location || 'Kampala';
+  form.querySelector('[name="price"]').value = property.price || '';
+  form.querySelector('[name="status"]').value = property.status || 'Active';
+  form.querySelector('[name="bedrooms"]').value = property.bedrooms || '';
+  form.querySelector('[name="description"]').value = property.description || '';
+
+  document.getElementById('editModal').style.display = 'block';
+};
+
+document.getElementById('closeModal').addEventListener('click', () => {
+  document.getElementById('editModal').style.display = 'none';
+});
+
+document.getElementById('cancelEdit').addEventListener('click', () => {
+  document.getElementById('editModal').style.display = 'none';
+});
+
+document.getElementById('editForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('saveEdit');
+  btn.disabled = true;
+  btn.textContent = 'Saving...';
+
+  const form = e.target;
+  try {
+    await updateDoc(doc(db, 'properties', editingPropertyId), {
+      title: form.querySelector('[name="title"]').value.trim(),
+      category: form.querySelector('[name="category"]').value,
+      type: form.querySelector('[name="type"]').value,
+      location: form.querySelector('[name="location"]').value,
+      price: Number(form.querySelector('[name="price"]').value),
+      status: form.querySelector('[name="status"]').value,
+      bedrooms: Number(form.querySelector('[name="bedrooms"]').value) || 0,
+      description: form.querySelector('[name="description"]').value.trim(),
+      updatedAt: serverTimestamp(),
+    });
+
+    document.getElementById('editModal').style.display = 'none';
+    loadDashboard();
+  } catch (err) {
+    alert('Failed to update property.');
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Save Changes';
+  }
+});

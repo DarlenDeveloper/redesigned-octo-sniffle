@@ -204,5 +204,79 @@
   </div>
 
   <script type="module" src="/admin-dashboard/dashboard.js"></script>
+  
+  <!-- EDIT MODAL -->
+  <div id="editModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; overflow-y:auto;">
+    <div style="max-width:800px; margin:40px auto; background:#fff; border-radius:12px; padding:32px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+        <h2 style="font-size:20px; font-weight:700;">Edit Property</h2>
+        <button id="closeModal" style="background:none; border:none; font-size:28px; cursor:pointer; color:#6b7a8d;">&times;</button>
+      </div>
+      
+      <form id="editForm">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div style="grid-column:1/-1;">
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Title</label>
+            <input type="text" name="title" required style="width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px;">
+          </div>
+          <div>
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Category</label>
+            <select name="category" required style="width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px;">
+              <option value="buy">For Sale</option>
+              <option value="rent">For Rent</option>
+              <option value="book">Short Stay</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Type</label>
+            <select name="type" required style="width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px;">
+              <option value="Apartment">Apartment</option>
+              <option value="House">House</option>
+              <option value="Penthouse">Penthouse</option>
+              <option value="Villa">Villa</option>
+              <option value="Land">Land</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Location</label>
+            <select name="location" required style="width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px;">
+              <option value="Kololo">Kololo</option>
+              <option value="Nakasero">Nakasero</option>
+              <option value="Naguru">Naguru</option>
+              <option value="Bugolobi">Bugolobi</option>
+              <option value="Mbuga">Mbuga</option>
+              <option value="Kulambiro">Kulambiro</option>
+              <option value="Kampala">Kampala</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Price (UGX)</label>
+            <input type="number" name="price" required style="width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px;">
+          </div>
+          <div>
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Status</label>
+            <select name="status" style="width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px;">
+              <option value="Active">Active</option>
+              <option value="Sold Out">Sold Out</option>
+              <option value="Rented">Rented</option>
+              <option value="Booked">Booked</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Bedrooms</label>
+            <input type="number" name="bedrooms" min="0" style="width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px;">
+          </div>
+          <div style="grid-column:1/-1;">
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Description</label>
+            <textarea name="description" required style="width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px; min-height:80px;"></textarea>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:24px; justify-content:flex-end;">
+          <button type="button" id="cancelEdit" style="padding:10px 20px; border:1px solid #e2e8f0; background:#fff; border-radius:8px; cursor:pointer; font-weight:600;">Cancel</button>
+          <button type="submit" id="saveEdit" style="padding:10px 20px; border:none; background:#286192; color:#fff; border-radius:8px; cursor:pointer; font-weight:600;">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

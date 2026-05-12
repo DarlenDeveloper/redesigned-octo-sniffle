@@ -3,17 +3,21 @@ import { requireAuth, logout } from './auth-guard.js';
 import { doc, getDoc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 
-requireAuth(() => loadProperty());
-
-document.getElementById('logoutBtn').addEventListener('click', (e) => { e.preventDefault(); logout(); });
-document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('open'));
-
 const params = new URLSearchParams(window.location.search);
 const propertyId = params.get('id');
 let existingImages = [];
 let newFiles = [];
 
-if (!propertyId) window.location.href = 'properties.html';
+requireAuth(() => {
+  if (!propertyId) {
+    window.location.href = '/admin-dashboard/properties.html';
+    return;
+  }
+  loadProperty();
+});
+
+document.getElementById('logoutBtn').addEventListener('click', (e) => { e.preventDefault(); logout(); });
+document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('open'));
 
 async function loadProperty() {
   try {
@@ -25,16 +29,16 @@ async function loadProperty() {
     existingImages = p.images || [];
 
     // Populate fields
-    form.title.value       = p.title || '';
-    form.category.value    = p.category || 'buy';
-    form.type.value        = p.type || 'Apartment';
-    form.location.value    = p.location || 'Kampala';
-    form.price.value       = p.price || '';
-    form.priceLabel.value  = p.priceLabel || 'per month';
-    form.bedrooms.value    = p.bedrooms || '';
-    form.bathrooms.value   = p.bathrooms || '';
-    form.status.value      = p.status || 'Active';
-    form.description.value = p.description || '';
+    form.querySelector('[name="title"]').value       = p.title || '';
+    form.querySelector('[name="category"]').value    = p.category || 'buy';
+    form.querySelector('[name="type"]').value        = p.type || 'Apartment';
+    form.querySelector('[name="location"]').value    = p.location || 'Kampala';
+    form.querySelector('[name="price"]').value       = p.price || '';
+    form.querySelector('[name="priceLabel"]').value  = p.priceLabel || 'per month';
+    form.querySelector('[name="bedrooms"]').value    = p.bedrooms || '';
+    form.querySelector('[name="bathrooms"]').value   = p.bathrooms || '';
+    form.querySelector('[name="status"]').value      = p.status || 'Active';
+    form.querySelector('[name="description"]').value = p.description || '';
 
     // Amenities
     if (p.amenities) {
@@ -103,16 +107,16 @@ document.getElementById('editPropertyForm').addEventListener('submit', async (e)
     const amenities = [...form.querySelectorAll('input[name="amenities"]:checked')].map(cb => cb.value);
 
     await updateDoc(doc(db, 'properties', propertyId), {
-      title:       form.title.value.trim(),
-      category:    form.category.value,
-      type:        form.type.value,
-      location:    form.location.value,
-      price:       Number(form.price.value),
-      priceLabel:  form.priceLabel.value,
-      bedrooms:    Number(form.bedrooms.value) || 0,
-      bathrooms:   Number(form.bathrooms.value) || 0,
-      status:      form.status.value,
-      description: form.description.value.trim(),
+      title:       form.querySelector('[name="title"]').value.trim(),
+      category:    form.querySelector('[name="category"]').value,
+      type:        form.querySelector('[name="type"]').value,
+      location:    form.querySelector('[name="location"]').value,
+      price:       Number(form.querySelector('[name="price"]').value),
+      priceLabel:  form.querySelector('[name="priceLabel"]').value,
+      bedrooms:    Number(form.querySelector('[name="bedrooms"]').value) || 0,
+      bathrooms:   Number(form.querySelector('[name="bathrooms"]').value) || 0,
+      status:      form.querySelector('[name="status"]').value,
+      description: form.querySelector('[name="description"]').value.trim(),
       amenities,
       images:      [...existingImages, ...newUrls],
       updatedAt:   serverTimestamp(),
