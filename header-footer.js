@@ -18,7 +18,7 @@ class SpecialHeader extends HTMLElement {
       </ul>
       <div class="info-box"> <span>Follow us on Social Media</span>
         <ul class="nav-social">
-            <li><a href="https://www.airbnb.gy/rooms/1400828857217786785?source_impression_id=p3_1749861386_P35yeBDZvjIPu0sr">Airbnb</a></li>
+
          <li><a href="https://www.tiktok.com/@pixonrealestate"><i class="fab fa-tiktok"></i></a></li>
           <li><a href="https://www.instagram.com/pixonrealestate"><i class="lni lni-instagram"></i></a></li>
 
@@ -78,9 +78,9 @@ class SpecialFooter extends HTMLElement {
         <div class="col-xl-3 col-lg-3">
           <h6 class="widget-title">Contact</h6>
           <p>info@pixonrealestate.com<br>
-            +256-752-707989<br>
-            +256-748-917389<br>
-            +256-701-654054<br>
+            +256 701 234 567<br>
+            +256 701 234 568<br>
+            +256 701 234 569<br>
             <!--     <a href="https://www.google.com/maps/search/?api=1&amp;query=centurylink+field" data-fancybox="" data-width="640" data-height="360">Discover On Map</a></p> -->
             <a href="https://www.google.com/maps/search/?api=1&query=Plot+421+Kulambiro+Kisasi+Ring+Road+Kampala+Uganda" 
             data-fancybox="" 
@@ -103,7 +103,6 @@ class SpecialFooter extends HTMLElement {
             <ul class="footer-social">
               <li><a href="https://www.instagram.com/pixonrealestate">Instagram</a></li>
               <li><a href="https://www.tiktok.com/@pixonrealestate">Tiktok</a></li>
-              <li><a href="https://www.airbnb.gy/rooms/1400828857217786785?source_impression_id=p3_1749861386_P35yeBDZvjIPu0sr" target="_blank" rel="noopener">Airbnb</a></li>
             </ul>
             <!-- end footer-social --> 
           </div>
