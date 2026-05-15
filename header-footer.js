@@ -73,9 +73,7 @@ class SpecialFooter extends HTMLElement {
         <div class="col-xl-3 col-lg-3">
           <h6 class="widget-title">Contact</h6>
           <p>info@pixonrealestate.com<br>
-            +256 701 234 567<br>
-            +256 701 234 568<br>
-            +256 701 234 569<br>
+            +256 782 603 730<br>
             <!--     <a href="https://www.google.com/maps/search/?api=1&amp;query=centurylink+field" data-fancybox="" data-width="640" data-height="360">Discover On Map</a></p> -->
             <a href="https://www.google.com/maps/search/?api=1&query=Plot+421+Kulambiro+Kisasi+Ring+Road+Kampala+Uganda" 
             data-fancybox="" 
