@@ -23,6 +23,9 @@ async function loadProperties() {
         
         filteredProperties = [...allProperties];
         
+        // Populate dynamic filters based on actual data
+        populateDynamicFilters();
+
         // Timeout to simulate "premium" loading feel as requested
         setTimeout(() => {
             renderProperties();
@@ -136,18 +139,46 @@ function hideLoading() {
     if (loader) loader.style.display = 'none';
 }
 
+function populateDynamicFilters() {
+    const locationSelect = document.getElementById('searchLocation');
+    const typeSelect = document.getElementById('searchType');
+    
+    if (!locationSelect || !typeSelect) return;
+
+    // Get unique locations and types
+    const locations = [...new Set(allProperties.map(p => p.location).filter(Boolean))];
+    const types = [...new Set(allProperties.map(p => p.type).filter(Boolean))];
+
+    // Preserve first option (placeholder)
+    const locPlaceholder = locationSelect.options[0].text;
+    const typePlaceholder = typeSelect.options[0].text;
+
+    locationSelect.innerHTML = `<option value="">${locPlaceholder}</option>`;
+    locations.sort().forEach(loc => {
+        locationSelect.innerHTML += `<option value="${loc.toLowerCase()}">${loc}</option>`;
+    });
+
+    typeSelect.innerHTML = `<option value="">${typePlaceholder}</option>`;
+    types.sort().forEach(t => {
+        typeSelect.innerHTML += `<option value="${t.toLowerCase()}">${t}</option>`;
+    });
+}
+
 // ── SEARCH LOGIC ──
 function handleSearch() {
-    const category = document.getElementById('searchCategory').value;
-    const type = document.getElementById('searchType').value;
-    const location = document.getElementById('searchLocation').value;
-    // Budget range logic (simplified for memory filtering)
+    const category = document.getElementById('searchCategory').value.toLowerCase();
+    const type = document.getElementById('searchType').value.toLowerCase();
+    const location = document.getElementById('searchLocation').value.toLowerCase();
     const budget = document.getElementById('searchBudget').value;
 
     filteredProperties = allProperties.filter(p => {
-        const matchCategory = !category || p.category === category;
-        const matchType = !type || p.type === type;
-        const matchLocation = !location || (p.location && p.location.toLowerCase().includes(location.toLowerCase()));
+        const pCategory = (p.category || '').toLowerCase();
+        const pType = (p.type || '').toLowerCase();
+        const pLocation = (p.location || '').toLowerCase();
+
+        const matchCategory = !category || pCategory === category;
+        const matchType = !type || pType === type;
+        const matchLocation = !location || pLocation.includes(location);
         
         let matchBudget = true;
         if (budget) {
