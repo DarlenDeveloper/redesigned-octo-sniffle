@@ -16,14 +16,6 @@ class SpecialHeader extends HTMLElement {
         <li><a href="index.html#listings">Rent</a></li>
         <li><a href="index.html#contact">Contact Us</a></li>
       </ul>
-      <div class="info-box"> <span>Follow us on Social Media</span>
-        <ul class="nav-social">
-
-         <li><a href="https://www.tiktok.com/@pixonrealestate"><i class="fab fa-tiktok"></i></a></li>
-          <li><a href="https://www.instagram.com/pixonrealestate"><i class="lni lni-instagram"></i></a></li>
-
-        </ul>
-      </div>
       <!-- end info-box --> 
     </div>
     <!-- end container --> 
@@ -103,10 +95,6 @@ class SpecialFooter extends HTMLElement {
         <!-- end col-2 -->
         <div class="col-12">
           <div class="bottom-bar"> <span>© 2025 PIXON REAL ESTATE | Premium Listings</span>
-            <ul class="footer-social">
-              <li><a href="https://www.instagram.com/pixonrealestate">Instagram</a></li>
-              <li><a href="https://www.tiktok.com/@pixonrealestate">Tiktok</a></li>
-            </ul>
             <!-- end footer-social --> 
           </div>
           <!-- end bottom-bar --> 
