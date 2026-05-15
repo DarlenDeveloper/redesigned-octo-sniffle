@@ -155,6 +155,14 @@
                 <option value="Booked">Booked</option>
               </select>
             </div>
+
+            <div class="form-group">
+              <label>Availability Date</label>
+              <div style="display:flex; gap:8px;">
+                <input type="date" name="availability" id="availInput" style="flex:1;">
+                <button type="button" class="btn-primary" style="padding: 8px 12px; background: #27ae60;" onclick="document.getElementById('availInput').value = new Date().toISOString().split('T')[0]">Today</button>
+              </div>
+            </div>
             <div class="form-group full">
               <label>Description *</label>
               <textarea name="description" required></textarea>
@@ -171,8 +179,11 @@
                 <label class="amenity-check"><input type="checkbox" name="amenities" value="Parking"> Parking</label>
                 <label class="amenity-check"><input type="checkbox" name="amenities" value="Security"> 24/7 Security</label>
                 <label class="amenity-check"><input type="checkbox" name="amenities" value="Pool"> Swimming Pool</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Fully Serviced"> Fully Serviced</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Fully Furnished"> Fully Furnished</label>
               </div>
             </div>
+
             <div class="form-group full">
               <label>Add More Images</label>
               <div class="image-upload-area" id="uploadArea">

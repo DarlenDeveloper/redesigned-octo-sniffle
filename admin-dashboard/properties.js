@@ -104,7 +104,14 @@ window.openEditModal = async (id) => {
   form.querySelector('[name="price"]').value = property.price || '';
   form.querySelector('[name="status"]').value = property.status || 'Active';
   form.querySelector('[name="bedrooms"]').value = property.bedrooms || '';
+  form.querySelector('[name="availability"]').value = property.availability || '';
   form.querySelector('[name="description"]').value = property.description || '';
+  
+  // Amenities
+  const amens = property.amenities || [];
+  form.querySelectorAll('input[name="amenities"]').forEach(cb => {
+    cb.checked = amens.includes(cb.value);
+  });
 
   document.getElementById('editModal').style.display = 'block';
 };
@@ -133,7 +140,9 @@ document.getElementById('editForm').addEventListener('submit', async (e) => {
       price: Number(form.querySelector('[name="price"]').value),
       status: form.querySelector('[name="status"]').value,
       bedrooms: Number(form.querySelector('[name="bedrooms"]').value) || 0,
+      availability: form.querySelector('[name="availability"]').value.trim(),
       description: form.querySelector('[name="description"]').value.trim(),
+      amenities: [...form.querySelectorAll('input[name="amenities"]:checked')].map(cb => cb.value),
       updatedAt: serverTimestamp(),
     });
 

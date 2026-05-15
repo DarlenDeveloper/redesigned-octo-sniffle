@@ -80,6 +80,18 @@ function renderProperties() {
             </a>
             <div class="content">
                 <div class="price-line"><span>${categoryLabel}</span> ${pricePrefix}${formattedPrice}</div>
+                ${(() => {
+                    if (!p.availability) return '';
+                    const availDate = new Date(p.availability);
+                    const today = new Date();
+                    today.setHours(0,0,0,0);
+                    if (availDate <= today) {
+                        return `<div class="availability-badge" style="font-size: 12px; color: #27ae60; font-weight: 700; margin-bottom: 5px; text-transform: uppercase;">• Available Now</div>`;
+                    } else {
+                        const dateStr = availDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+                        return `<div class="availability-badge" style="font-size: 12px; color: #286192; font-weight: 700; margin-bottom: 5px; text-transform: uppercase;">• Available on ${dateStr}</div>`;
+                    }
+                })()}
                 <h3><a href="room-detail.html?id=${p.id}">${p.title}</a></h3>
                 <p>${p.description ? p.description.substring(0, 100) + '...' : 'Luxury living in the heart of Kampala.'}</p>
                 <div class="bottom-specs">
@@ -110,7 +122,7 @@ function renderPagination() {
 
     let paginationHtml = '<ul class="pagination">';
     for (let i = 1; i <= totalPages; i++) {
-        paginationHtml += `<li><a href="#properties" class="${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</a></li>`;
+        paginationHtml += `<li><a href="#listings" class="${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</a></li>`;
     }
     paginationHtml += '</ul>';
     
@@ -217,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Check if we arrived with a hash (e.g., from Buy/Rent nav link on another page)
     const hash = window.location.hash;
-    if (hash === '#properties') {
+    if (hash === '#listings') {
         const urlParams = new URL(window.location.href);
         // We can't easily pass category in hash without query params, 
         // but we can check if there's a need to trigger.
@@ -237,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const href = navLink.getAttribute('href');
         if (!href) return;
 
-        if (href.includes('#properties')) {
+        if (href.includes('#listings')) {
             const text = navLink.innerText.toLowerCase().trim();
             if (text === 'buy') {
                 window.triggerSearch('buy');

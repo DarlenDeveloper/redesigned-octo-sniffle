@@ -38,6 +38,7 @@ async function loadProperty() {
     form.querySelector('[name="bedrooms"]').value    = p.bedrooms || '';
     form.querySelector('[name="bathrooms"]').value   = p.bathrooms || '';
     form.querySelector('[name="status"]').value      = p.status || 'Active';
+    form.querySelector('[name="availability"]').value = p.availability || '';
     form.querySelector('[name="description"]').value = p.description || '';
 
     // Amenities
@@ -116,6 +117,7 @@ document.getElementById('editPropertyForm').addEventListener('submit', async (e)
       bedrooms:    Number(form.querySelector('[name="bedrooms"]').value) || 0,
       bathrooms:   Number(form.querySelector('[name="bathrooms"]').value) || 0,
       status:      form.querySelector('[name="status"]').value,
+      availability: form.querySelector('[name="availability"]').value.trim(),
       description: form.querySelector('[name="description"]').value.trim(),
       amenities,
       images:      [...existingImages, ...newUrls],

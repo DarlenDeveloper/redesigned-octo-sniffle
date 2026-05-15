@@ -30,7 +30,16 @@ async function loadPropertyDetails() {
         document.getElementById('propType').innerText = p.type || 'Apartment';
         document.getElementById('propBedrooms').innerText = `${p.bedrooms || 0} Rooms`;
         document.getElementById('propBathrooms').innerText = `${p.bathrooms || 0} Baths`;
-        document.getElementById('propStatus').innerText = p.status || 'Luxury and security guaranteed';
+        const availText = (() => {
+            if (!p.availability) return p.status || 'Luxury and security guaranteed';
+            const availDate = new Date(p.availability);
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            if (availDate <= today) return 'Available Now';
+            const dateStr = availDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+            return `Available on ${dateStr}`;
+        })();
+        document.getElementById('propStatus').innerText = availText;
 
         // Price formatting
         const price = p.price ? Number(p.price).toLocaleString() : 'TBD';
@@ -42,11 +51,25 @@ async function loadPropertyDetails() {
 
         // Dynamic Amenities
         const amenitiesContainer = document.getElementById('propAmenities');
-        if (amenitiesContainer && p.amenities && p.amenities.length > 0) {
-            amenitiesContainer.innerHTML = p.amenities.map(a => `
-                <div class="amenity-pill"><i class="bx bx-check-circle"></i> ${a}</div>
-            `).join('');
+        if (amenitiesContainer) {
+            if (p.amenities && p.amenities.length > 0) {
+                amenitiesContainer.innerHTML = p.amenities.map(a => {
+                    let icon = 'bx-check-circle';
+                    if (a.toLowerCase().includes('serviced')) icon = 'bx-heart';
+                    if (a.toLowerCase().includes('furnished')) icon = 'bx-home-alt';
+                    if (a.toLowerCase().includes('wifi')) icon = 'bx-wifi';
+                    if (a.toLowerCase().includes('pool')) icon = 'bx-water';
+                    if (a.toLowerCase().includes('gym')) icon = 'bx-dumbbell';
+                    if (a.toLowerCase().includes('security')) icon = 'bx-shield-quarter';
+                    
+                    return `<div class="amenity-pill"><i class="bx ${icon}"></i> ${a}</div>`;
+                }).join('');
+            } else {
+                amenitiesContainer.innerHTML = '<p>No amenities listed.</p>';
+            }
         }
+
+
 
         // Hide/Show booking logic based on category
         const breakdown = document.getElementById('bookingBreakdown');
@@ -105,6 +128,35 @@ async function loadPropertyDetails() {
             });
         }
 
+        // WhatsApp Reservation functionality
+        const reserveBtn = document.getElementById('reserveBtn');
+        if (reserveBtn) {
+            reserveBtn.addEventListener('click', () => {
+                const checkIn = document.getElementById('checkIn')?.value || 'N/A';
+                const checkOut = document.getElementById('checkOut')?.value || 'N/A';
+                const totalText = document.getElementById('breakdownTotal')?.innerText || 'N/A';
+                
+                let message = `Hello Pixon Real Estate! I am interested in *${p.title}* (%0ALink: ${window.location.href}).%0A%0A`;
+                
+                if (p.category === 'book') {
+                    message += `*Service*: Short Stay%0A`;
+                    message += `*Dates*: ${checkIn} to ${checkOut}%0A`;
+                    message += `*Estimated Total*: ${totalText}`;
+                } else if (p.category === 'buy') {
+                    message += `*Service*: Property Purchase%0A`;
+                    message += `*Price*: ${totalText}`;
+                } else {
+                    message += `*Service*: Rental Inquiry%0A`;
+                    message += `*Price*: ${totalText}`;
+                }
+
+                const phoneNumber = "256782603730"; // Geoffrey's real number
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+                
+                window.open(whatsappUrl, '_blank');
+            });
+        }
+
         window.initHeroSwiper();
 
     } catch (error) {
@@ -156,13 +208,13 @@ window.initHeroSwiper = function() {
     window.heroSwiper = new Swiper('.property-hero-slider', {
         loop: true,
         autoplay: { delay: 5000 },
+        forceToKeepLoop: true,
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         pagination: { el: '.swiper-pagination', clickable: true },
     });
 
     // Handle date changes
     $('[data-toggle="datepicker"]').on('pick.datepicker', function (e) {
-        // Delay to allow input value to update
         setTimeout(updatePriceCalculation, 100);
     });
 };

@@ -26,7 +26,7 @@
       </a>
       <a href="/admin-dashboard/properties.html" class="nav-item" data-page="properties">
         <i class='bx bxs-buildings'></i>
-        <span>Properties</span>
+        <span>Listings</span>
       </a>
       <a href="/admin-dashboard/inquiries.html" class="nav-item" data-page="inquiries">
         <i class='bx bxs-inbox'></i>
@@ -34,7 +34,7 @@
       </a>
       <a href="/admin-dashboard/add-property.html" class="nav-item" data-page="add">
         <i class='bx bxs-plus-circle'></i>
-        <span>Add Property</span>
+        <span>Add Listing</span>
       </a>
       <a href="/admin-dashboard/settings.html" class="nav-item" data-page="settings">
         <i class='bx bxs-cog'></i>
@@ -263,8 +263,23 @@
             </select>
           </div>
           <div>
-            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Bedrooms</label>
-            <input type="number" name="bedrooms" min="0" style="width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px;">
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Availability Date</label>
+            <div style="display:flex; gap:6px;">
+              <input type="date" name="availability" style="flex:1; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px;">
+              <button type="button" style="padding:0 12px; border:none; background:#27ae60; color:#fff; border-radius:8px; font-size:12px; cursor:pointer;" onclick="this.previousElementSibling.value = new Date().toISOString().split('T')[0]">Today</button>
+            </div>
+          </div>
+          <div style="grid-column:1/-1;">
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:10px;">Amenities</label>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:10px;">
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="WiFi"> WiFi</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Parking"> Parking</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Swimming Pool"> Pool</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Gym"> Gym</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Security"> Security</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Fully Serviced"> Serviced</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Fully Furnished"> Furnished</label>
+            </div>
           </div>
           <div style="grid-column:1/-1;">
             <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Description</label>

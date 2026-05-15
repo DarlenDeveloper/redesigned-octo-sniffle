@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="googlebot" content="noindex, nofollow">
-  <title>Properties | Pixon Admin</title>
+  <title>Listings | Pixon Admin</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/admin-dashboard/admin.css">
@@ -29,7 +29,7 @@
     </div>
     <nav class="sidebar-nav">
       <a href="/admin-dashboard/index.html" class="nav-item"><i class='bx bxs-dashboard'></i><span>Dashboard</span></a>
-      <a href="/admin-dashboard/properties.html" class="nav-item active"><i class='bx bxs-buildings'></i><span>Properties</span></a>
+      <a href="/admin-dashboard/properties.html" class="nav-item active"><i class='bx bxs-buildings'></i><span>Listings</span></a>
       <a href="/admin-dashboard/inquiries.html" class="nav-item"><i class='bx bxs-inbox'></i><span>Inquiries</span></a>
       <a href="/admin-dashboard/add-property.html" class="nav-item"><i class='bx bxs-plus-circle'></i><span>Add Property</span></a>
       <a href="/admin-dashboard/settings.html" class="nav-item"><i class='bx bxs-cog'></i><span>Settings</span></a>
@@ -46,7 +46,7 @@
         <button class="menu-toggle" id="menuToggle"><i class='bx bx-menu'></i></button>
         <div>
           <p class="topbar-sub">PIXON REAL ESTATE</p>
-          <h2 class="topbar-title">Properties</h2>
+          <h2 class="topbar-title">Listings</h2>
         </div>
       </div>
       <div class="topbar-right">
@@ -65,7 +65,7 @@
         <button class="filter-btn" data-filter="book">Short Stay</button>
         <div class="search-box" style="margin-left:auto;">
           <i class='bx bx-search'></i>
-          <input type="text" id="propSearch" placeholder="Search properties...">
+          <input type="text" id="propSearch" placeholder="Search listings...">
         </div>
         <a href="add-property.html" class="btn-primary">+ Add New</a>
       </div>
@@ -75,7 +75,7 @@
           <table>
             <thead>
               <tr>
-                <th>Property</th>
+                <th>Listing</th>
                 <th>Type</th>
                 <th>Category</th>
                 <th>Location</th>
@@ -155,6 +155,25 @@
           <div>
             <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Bedrooms</label>
             <input type="number" name="bedrooms" min="0" style="width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px;">
+          </div>
+          <div>
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Availability Date</label>
+            <div style="display:flex; gap:6px;">
+              <input type="date" name="availability" style="flex:1; padding:10px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px;">
+              <button type="button" style="padding:0 12px; border:none; background:#27ae60; color:#fff; border-radius:8px; font-size:12px; cursor:pointer;" onclick="this.previousElementSibling.value = new Date().toISOString().split('T')[0]">Today</button>
+            </div>
+          </div>
+          <div style="grid-column:1/-1;">
+            <label style="display:block; font-size:13px; font-weight:500; margin-bottom:10px;">Amenities</label>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:10px;">
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="WiFi"> WiFi</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Parking"> Parking</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Swimming Pool"> Pool</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Gym"> Gym</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Security"> Security</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Fully Serviced"> Serviced</label>
+              <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" name="amenities" value="Fully Furnished"> Furnished</label>
+            </div>
           </div>
           <div style="grid-column:1/-1;">
             <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px;">Description</label>

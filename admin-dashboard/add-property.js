@@ -103,6 +103,7 @@ document.getElementById('addPropertyForm').addEventListener('submit', async (e) 
       bedrooms:    Number(form.querySelector('[name="bedrooms"]').value) || 0,
       bathrooms:   Number(form.querySelector('[name="bathrooms"]').value) || 0,
       status:      form.querySelector('[name="status"]').value,
+      availability: form.querySelector('[name="availability"]').value.trim(),
       description: form.querySelector('[name="description"]').value.trim(),
       amenities,
       images:      imageUrls,

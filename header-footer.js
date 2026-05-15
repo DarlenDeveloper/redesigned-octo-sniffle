@@ -9,11 +9,11 @@ class SpecialHeader extends HTMLElement {
       </ul>
       <ul class="nav-menu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#properties">PIXON REAL ESTATE</a></li>
-        <li><a href="index.html#properties">Apartments</a></li>
-        <li><a href="index.html#properties">Buy</a></li>
-        <li><a href="index.html#properties">Book</a></li>
-        <li><a href="index.html#properties">Rent</a></li>
+        <li><a href="index.html#listings">PIXON REAL ESTATE</a></li>
+        <li><a href="index.html#listings">Apartments</a></li>
+        <li><a href="index.html#listings">Buy</a></li>
+        <li><a href="index.html#listings">Book</a></li>
+        <li><a href="index.html#listings">Rent</a></li>
         <li><a href="index.html#contact">Contact Us</a></li>
       </ul>
       <div class="info-box"> <span>Follow us on Social Media</span>
@@ -40,9 +40,9 @@ class SpecialHeader extends HTMLElement {
       <div class="site-menu">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#properties">Buy</a></li>
-          <li><a href="index.html#properties">Rent</a></li>
-          <li><a href="index.html#properties">Book</a></li>
+          <li><a href="index.html#listings">Buy</a></li>
+          <li><a href="index.html#listings">Rent</a></li>
+          <li><a href="index.html#listings">Book</a></li>
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </div>
@@ -73,7 +73,7 @@ class SpecialFooter extends HTMLElement {
       <div class="row">
         <div class="col-lg-4">
           <h6 class="widget-title">PIXON REAL ESTATE</h6>
-          <p>Discover unparalleled luxury at PIXON REAL ESTATE in Kampala <u>Uganda</u> Nestled in premium locations, our exclusive properties blend historic charm with modern elegance.</p>
+          <p>Discover unparalleled luxury at PIXON REAL ESTATE in Kampala <u>Uganda</u> Nestled in premium locations, our exclusive listings blend historic charm with modern elegance.</p>
         </div>
         <!-- end col-4 -->
         <div class="col-xl-3 col-lg-1"> </div>
@@ -102,7 +102,7 @@ class SpecialFooter extends HTMLElement {
         </div>
         <!-- end col-2 -->
         <div class="col-12">
-          <div class="bottom-bar"> <span>© 2025 PIXON REAL ESTATE | Premium Properties</span>
+          <div class="bottom-bar"> <span>© 2025 PIXON REAL ESTATE | Premium Listings</span>
             <ul class="footer-social">
               <li><a href="https://www.instagram.com/pixonrealestate">Instagram</a></li>
               <li><a href="https://www.tiktok.com/@pixonrealestate">Tiktok</a></li>
