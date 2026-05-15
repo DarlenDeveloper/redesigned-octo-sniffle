@@ -21,6 +21,7 @@ async function loadPropertyDetails() {
         }
 
         const p = snapshot.data();
+        window.currentProperty = p; // Store globally for price updates
 
         // Update DOM elements
         document.getElementById('propTitle').innerText = p.title || 'Untitled Property';
@@ -45,6 +46,20 @@ async function loadPropertyDetails() {
             amenitiesContainer.innerHTML = p.amenities.map(a => `
                 <div class="amenity-pill"><i class="bx bx-check-circle"></i> ${a}</div>
             `).join('');
+        }
+
+        // Hide/Show booking logic based on category
+        const breakdown = document.getElementById('bookingBreakdown');
+        const inputs = document.querySelector('.booking-inputs');
+        if (p.category === 'buy') {
+            if (inputs) inputs.style.display = 'none';
+            if (breakdown) {
+                 document.getElementById('breakdownLabel').innerText = 'Total Purchase Price';
+                 updatePriceCalculation();
+            }
+        } else {
+            if (inputs) inputs.style.display = 'block';
+            updatePriceCalculation();
         }
 
         // Load Images into Swiper
@@ -87,12 +102,58 @@ async function loadPropertyDetails() {
     }
 }
 
+function updatePriceCalculation() {
+    const p = window.currentProperty;
+    if (!p) return;
+
+    const checkInInput = document.getElementById('checkIn');
+    const checkOutInput = document.getElementById('checkOut');
+    
+    let nights = 1;
+    if (checkInInput && checkOutInput && p.category !== 'buy') {
+        const start = parseDate(checkInInput.value);
+        const end = parseDate(checkOutInput.value);
+        if (start && end && end > start) {
+            const diffTime = Math.abs(end - start);
+            nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        }
+    }
+
+    const price = Number(p.price) || 0;
+    const isShortStay = p.category === 'book';
+    const totalPrice = isShortStay ? price * nights : price;
+    
+    const pricePrefix = (p.category === 'rent' || p.category === 'book') ? 'shs. ' : 'UGX ';
+    const formattedTotal = totalPrice.toLocaleString();
+
+    if (isShortStay) {
+        document.getElementById('breakdownLabel').innerText = `Total for ${nights} ${nights === 1 ? 'night' : 'nights'}`;
+    }
+    
+    document.getElementById('breakdownSubtotal').innerText = `${pricePrefix}${formattedTotal}`;
+    document.getElementById('breakdownTotal').innerText = `${pricePrefix}${formattedTotal}`;
+}
+
+// Helper to parse DD/MM/YYYY
+function parseDate(str) {
+    if (!str) return null;
+    const parts = str.split('/');
+    if (parts.length !== 3) return null;
+    return new Date(parts[2], parts[1] - 1, parts[0]);
+}
+
 window.initHeroSwiper = function() {
     window.heroSwiper = new Swiper('.property-hero-slider', {
         loop: true,
         autoplay: { delay: 5000 },
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         pagination: { el: '.swiper-pagination', clickable: true },
+    });
+
+    // Handle date changes
+    $('[data-toggle="datepicker"]').on('pick.datepicker', function (e) {
+        // Delay to allow input value to update
+        setTimeout(updatePriceCalculation, 100);
     });
 };
 

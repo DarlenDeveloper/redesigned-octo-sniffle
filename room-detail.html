@@ -149,11 +149,11 @@
                 <div class="input-row">
                   <div class="input-group">
                     <label>Check In</label>
-                    <input type="text" value="11/05/2025" readonly>
+                    <input type="text" id="checkIn" data-toggle="datepicker" value="11/05/2025">
                   </div>
                   <div class="input-group">
                     <label>Check Out</label>
-                    <input type="text" value="20/05/2025" readonly>
+                    <input type="text" id="checkOut" data-toggle="datepicker" value="20/05/2025">
                   </div>
                 </div>
                 <div class="input-group" style="margin-top: 15px;">
@@ -173,15 +173,15 @@
                   < 1 hour</p>
               </div>
 
-              <div class="price-breakdown"
+              <div id="bookingBreakdown" class="price-breakdown"
                 style="border: none; background: #f9f9f9; padding: 20px; border-radius: 0; margin-top: 25px;">
                 <div class="breakdown-item">
-                  <span>Total for 9 nights</span>
-                  <span>shs. 3,150,000</span>
+                  <span id="breakdownLabel">Total for 9 nights</span>
+                  <span id="breakdownSubtotal">shs. 0</span>
                 </div>
                 <div class="breakdown-total" style="border-top: 1px solid #ddd; padding-top: 15px; margin-top: 10px;">
                   <span>Total Amount Due</span>
-                  <span>shs. 3,150,000</span>
+                  <span id="breakdownTotal">shs. 0</span>
                 </div>
               </div>
             </div>
