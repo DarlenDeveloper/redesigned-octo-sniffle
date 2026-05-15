@@ -30,22 +30,27 @@ class SpecialHeader extends HTMLElement {
   </nav>
   <!-- end hamburger-navigation -->
   <nav class="navbar">
-    <div class="container">
-      <div class="logo"> <a href="index.html"><img src="images/pixon-logo.jpeg" alt="PIXON REAL ESTATE" style="width:70px; height:70px; border-radius:12px;"></a> </div>
-      <!-- end logo -->
-      <div class="navbar-text"><a href="index.html#properties" style="color: inherit; text-decoration: none;">Buy</a></div>
-      <div class="navbar-text"><a href="index.html#properties" style="color: inherit; text-decoration: none;">Book</a></div>
-      <div class="navbar-text"><a href="index.html#properties" style="color: inherit; text-decoration: none;">Rent</a></div>
-      <div class="navbar-text"><a href="index.html#contact" style="color: inherit; text-decoration: none;">Contact</a></div>
-
+    <div class="container navbar-pill">
+      <div class="logo"> 
+        <a href="index.html">
+          <img src="images/pixon-logo.jpeg" alt="PIXON REAL ESTATE">
+        </a> 
+      </div>
       
-      <!-- end navbar-text -->
-      <!-- <div class="site-menu">
-      <ul>
-        <li><a href="quardo.html">PIXON REAL ESTATE</a></li> 
-      </ul>
-    </div> -->  
-      <!-- end site-menu -->
+      <div class="site-menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#properties">Buy</a></li>
+          <li><a href="index.html#properties">Rent</a></li>
+          <li><a href="index.html#properties">Book</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="navbar-button">
+        <a href="index.html#contact" class="nav-btn">Reserve Now</a>
+      </div>
+
       <div class="hamburger-menu">
         <button class="menu">
         <svg width="45" height="45" viewBox="0 0 100 100">
@@ -55,9 +60,7 @@ class SpecialHeader extends HTMLElement {
         </svg>
         </button>
       </div>
-      <!-- end hamburger-menu --> 
     </div>
-    <!-- end container --> 
   </nav>`;
   }
 }
