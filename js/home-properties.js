@@ -135,7 +135,7 @@ function renderPagination() {
             currentPage = parseInt(e.target.dataset.page);
             renderProperties();
             // Scroll back to top of grid
-            document.getElementById('properties').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('listings').scrollIntoView({ behavior: 'smooth' });
         });
     });
 }

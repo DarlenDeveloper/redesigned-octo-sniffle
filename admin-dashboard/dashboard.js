@@ -1,7 +1,8 @@
-import { db, auth } from '../js/firebase-config.js';
+import { db, auth, storage } from '../js/firebase-config.js';
 import {
   collection, getDocs, deleteDoc, doc, query, orderBy, limit, updateDoc, serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 import { signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { requireAuth, logout } from './auth-guard.js';
 
@@ -164,6 +165,8 @@ async function loadInquiries() {
 // ── EDIT MODAL ──
 let editingPropertyId = null;
 let allPropertiesCache = [];
+let modalNewFiles = [];
+let modalExistingImages = [];
 
 window.openEditModal = async (id) => {
   editingPropertyId = id;
@@ -187,8 +190,59 @@ window.openEditModal = async (id) => {
     cb.checked = amens.includes(cb.value);
   });
 
+  // Images
+  modalExistingImages = property.images || [];
+  modalNewFiles = [];
+  renderModalImagePreviews();
+
   document.getElementById('editModal').style.display = 'block';
 };
+
+function renderModalImagePreviews() {
+  const container = document.getElementById('modalImagePreviews');
+  container.innerHTML = '';
+  
+  // Existing
+  modalExistingImages.forEach((url, index) => {
+    const div = document.createElement('div');
+    div.style = 'position:relative; width:80px; height:60px;';
+    div.innerHTML = `
+      <img src="${url}" style="width:100%; height:100%; object-fit:cover; border-radius:4px;">
+      <button type="button" style="position:absolute; top:-5px; right:-5px; background:red; color:white; border:none; border-radius:50%; width:18px; height:18px; font-size:12px; cursor:pointer;" onclick="removeModalExistingImage(${index})">&times;</button>
+    `;
+    container.appendChild(div);
+  });
+  
+  // New
+  modalNewFiles.forEach((file, index) => {
+    const div = document.createElement('div');
+    div.style = 'position:relative; width:80px; height:60px;';
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      div.innerHTML = `
+        <img src="${e.target.result}" style="width:100%; height:100%; object-fit:cover; border-radius:4px; border:2px solid var(--blue);">
+        <button type="button" style="position:absolute; top:-5px; right:-5px; background:red; color:white; border:none; border-radius:50%; width:18px; height:18px; font-size:12px; cursor:pointer;" onclick="removeModalNewFile(${index})">&times;</button>
+      `;
+    };
+    reader.readAsDataURL(file);
+    container.appendChild(div);
+  });
+}
+
+window.removeModalExistingImage = (index) => {
+  modalExistingImages.splice(index, 1);
+  renderModalImagePreviews();
+};
+
+window.removeModalNewFile = (index) => {
+  modalNewFiles.splice(index, 1);
+  renderModalImagePreviews();
+};
+
+document.getElementById('modalImageInput').addEventListener('change', (e) => {
+  modalNewFiles = [...modalNewFiles, ...e.target.files];
+  renderModalImagePreviews();
+});
 
 document.getElementById('closeModal').addEventListener('click', () => {
   document.getElementById('editModal').style.display = 'none';
@@ -206,6 +260,15 @@ document.getElementById('editForm').addEventListener('submit', async (e) => {
 
   const form = e.target;
   try {
+    // Upload new images
+    const newUrls = [];
+    for (const file of modalNewFiles) {
+      const storageRef = ref(storage, `properties/${Date.now()}_${file.name}`);
+      const snapshot = await uploadBytes(storageRef, file);
+      const url = await getDownloadURL(snapshot.ref);
+      newUrls.push(url);
+    }
+
     await updateDoc(doc(db, 'properties', editingPropertyId), {
       title: form.querySelector('[name="title"]').value.trim(),
       category: form.querySelector('[name="category"]').value,
@@ -217,6 +280,7 @@ document.getElementById('editForm').addEventListener('submit', async (e) => {
       availability: form.querySelector('[name="availability"]').value.trim(),
       description: form.querySelector('[name="description"]').value.trim(),
       amenities: [...form.querySelectorAll('input[name="amenities"]:checked')].map(cb => cb.value),
+      images: [...modalExistingImages, ...newUrls],
       updatedAt: serverTimestamp(),
     });
 

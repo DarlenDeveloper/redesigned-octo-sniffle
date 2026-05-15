@@ -4567,7 +4567,7 @@ only screen and (max-device-width: 767px) {
 }
 
 /* PROPERTY SEARCH BAR */
-.property-search-bar {
+.listing-search-bar {
   margin-bottom: 60px;
   text-align: center;
   max-width: 900px;
@@ -4575,7 +4575,7 @@ only screen and (max-device-width: 767px) {
   margin-right: auto;
 }
 
-.property-search-bar h3 {
+.listing-search-bar h3 {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 24px;
@@ -4588,9 +4588,9 @@ only screen and (max-device-width: 767px) {
   gap: 0;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   overflow: hidden;
+  border: 1px solid #eee;
 }
 
 .search-fields select {
