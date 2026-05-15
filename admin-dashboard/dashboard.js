@@ -159,8 +159,6 @@ async function loadInquiries() {
   }
 }
 
-loadDashboard();
-loadInquiries();
 
 
 // ── EDIT MODAL ──
