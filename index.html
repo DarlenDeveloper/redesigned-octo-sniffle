@@ -174,13 +174,10 @@
                   <option value="bugolobi">Bugolobi</option>
                   <option value="mbuga">Mbuga</option>
                 </select>
-                <select id="searchBudget">
-                  <option value="">Budget</option>
-                  <option value="0-100k">Under shs. 100,000</option>
-                  <option value="100k-500k">shs. 100,000 – 500,000</option>
-                  <option value="500k-2m">shs. 500,000 – 2,000,000</option>
-                  <option value="2m+">shs. 2,000,000+</option>
-                </select>
+                <div class="price-slider-wrapper">
+                  <label>Max Price: <span id="priceValue">shs. 5,000,000</span></label>
+                  <input type="range" id="searchBudgetSlider" min="0" max="10000000" step="50000" value="5000000" class="custom-range-slider">
+                </div>
                 <button type="button" id="searchBtn">Search <i class="lni lni-search-alt"></i></button>
               </div>
             </div>

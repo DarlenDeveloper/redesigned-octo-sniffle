@@ -25,6 +25,7 @@ async function loadProperties() {
         
         // Populate dynamic filters based on actual data
         populateDynamicFilters();
+        initPriceSlider();
 
         // Timeout to simulate "premium" loading feel as requested
         setTimeout(() => {
@@ -195,14 +196,9 @@ function handleSearch() {
         const matchType = !type || pType === type;
         const matchLocation = !location || pLocation.includes(location);
         
-        let matchBudget = true;
-        if (budget) {
-            const price = Number(p.price);
-            if (budget === '0-100k') matchBudget = price < 100000;
-            else if (budget === '100k-500k') matchBudget = price >= 100000 && price <= 500000;
-            else if (budget === '500k-2m') matchBudget = price > 500000 && price <= 2000000;
-            else if (budget === '2m+') matchBudget = price > 2000000;
-        }
+        const price = Number(p.price);
+        const maxBudget = Number(document.getElementById('searchBudgetSlider')?.value) || Infinity;
+        const matchBudget = !maxBudget || price <= maxBudget;
 
         return matchCategory && matchType && matchLocation && matchBudget;
     });
@@ -261,3 +257,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+function initPriceSlider() {
+    const slider = document.getElementById('searchBudgetSlider');
+    const display = document.getElementById('priceValue');
+    if (!slider || !display) return;
+
+    // Find min/max from actual data
+    const prices = allProperties.map(p => Number(p.price)).filter(p => !isNaN(p));
+    if (prices.length > 0) {
+        const maxPrice = Math.max(...prices);
+        slider.max = maxPrice;
+        slider.value = maxPrice;
+        // Adjust step based on magnitude
+        slider.step = maxPrice > 1000000 ? 50000 : 5000;
+        
+        display.innerText = `shs. ${maxPrice.toLocaleString()}`;
+    }
+
+    slider.addEventListener('input', (e) => {
+        const val = Number(e.target.value);
+        display.innerText = `shs. ${val.toLocaleString()}`;
+        handleSearch(); // Trigger search dynamically
+    });
+}
