@@ -5136,3 +5136,47 @@ only screen and (max-device-width: 767px) {
     padding: 20px 10px;
   }
 }
+
+/* CUSTOM SPINNER */
+.custom-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f5f3ec;
+  border-top: 4px solid #286192;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* PAGINATION */
+.pagination {
+  display: flex !important;
+  justify-content: center !important;
+  list-style: none !important;
+  padding: 40px 0 !important;
+  gap: 15px !important;
+  width: 100% !important;
+}
+
+.pagination li a {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f3ec;
+  color: #141414;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.pagination li a.active, .pagination li a:hover {
+  background: #286192;
+  color: #fff;
+  text-decoration: none;
+}

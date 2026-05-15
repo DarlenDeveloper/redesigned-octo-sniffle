@@ -103,13 +103,13 @@
 
         <!-- Top Info -->
         <div class="property-top-info" style="margin-bottom: 25px;">
-          <h1 style="font-size: 36px; font-weight: 700; margin-bottom: 10px;">The Willow Apartments</h1>
+          <h1 id="propTitle" style="font-size: 36px; font-weight: 700; margin-bottom: 10px;">Loading...</h1>
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <p style="margin: 0; color: #717171; font-size: 16px;">
-              <i class="bx bx-map" style="color: #286192;"></i> Kisasi-Kulambiro Road, Kampala, Uganda
+            <p id="propLocation" style="margin: 0; color: #717171; font-size: 16px;">
+              <i class="bx bx-map" style="color: #286192;"></i> Kampala, Uganda
             </p>
             <div style="display: flex; gap: 20px;">
-              <button
+              <button id="shareBtn"
                 style="background: none; border: none; text-decoration: underline; font-weight: 600; cursor: pointer;"><i
                   class="bx bx-share-alt"></i> Share</button>
               <button
@@ -124,11 +124,8 @@
           <!-- 70% Slider -->
           <div class="property-main-hero">
             <div class="swiper-container property-hero-slider">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="images/home21.jpg" alt="Slide 1"></div>
-                <div class="swiper-slide"><img src="images/home14.jpeg" alt="Slide 2"></div>
-                <div class="swiper-slide"><img src="images/home15.jpeg" alt="Slide 3"></div>
-                <div class="swiper-slide"><img src="images/home16.jpeg" alt="Slide 4"></div>
+              <div id="propImages" class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/pixon-logo.jpeg" alt="Loading"></div>
               </div>
               <!-- Add Arrows -->
               <div class="swiper-button-next"></div>
@@ -143,9 +140,9 @@
             <div class="booking-card" style="margin: 0; position: static;">
               <div class="booking-header">
                 <div class="price">
-                  <span>shs. 350,000</span> /night
+                  <span id="propPrice">Loading...</span> <span id="priceUnit">/night</span>
                 </div>
-                <p>Luxury and security guaranteed</p>
+                <p id="propStatus">Luxury and security guaranteed</p>
               </div>
 
               <div class="booking-inputs" style="margin-top: 20px;">
@@ -195,30 +192,28 @@
         <div class="property-details-info" style="margin-top: 60px; max-width: 70%;">
           <div class="property-description">
             <h2 style="font-weight: 700; margin-bottom: 25px;">Welcome to your next home</h2>
-            <p style="font-size: 18px; line-height: 1.7; color: #444;">Step into a world of elegance and tranquility.
-              This property has been curated for the most discerning residents who value both privacy and proximity to
-              the city's pulse.</p>
+            <p id="propDescription" style="font-size: 18px; line-height: 1.7; color: #444;">Loading property description...</p>
 
             <div class="property-specs-grid" style="margin: 40px 0;">
               <div class="spec-item">
                 <i class="bx bx-bed"></i>
                 <span>Bedrooms</span>
-                <strong>5 Rooms</strong>
+                <strong id="propBedrooms">...</strong>
               </div>
               <div class="spec-item">
                 <i class="bx bx-bath"></i>
                 <span>Bathrooms</span>
-                <strong>2 Baths</strong>
+                <strong id="propBathrooms">...</strong>
               </div>
               <div class="spec-item">
                 <i class="bx bx-hotel"></i>
                 <span>Type</span>
-                <strong>Penthouse</strong>
+                <strong id="propType">...</strong>
               </div>
               <div class="spec-item">
                 <i class="bx bx-shield-check"></i>
                 <span>Security</span>
-                <strong>Level 5</strong>
+                <strong id="propSecurity">Level 5</strong>
               </div>
             </div>
 
@@ -251,23 +246,11 @@
   <script src="js/overscroll.js"></script>
   <script src="js/TweenMax.min.js"></script>
   <script src="js/scripts.js"></script>
+  <script type="module" src="js/room-detail.js"></script>
 
   <script>
     $(document).ready(function () {
-      var heroSwiper = new Swiper('.property-hero-slider', {
-        loop: true,
-        autoplay: {
-          delay: 5000,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-      });
+      // Swiper is now initialized inside js/room-detail.js after images are loaded
     });
   </script>
 </body>

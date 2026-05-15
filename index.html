@@ -154,19 +154,19 @@
             <div class="property-search-bar">
               <h3>Find What You're Looking For</h3>
               <div class="search-fields">
-                <select>
+                <select id="searchCategory">
                   <option value="">Buy/Rent</option>
                   <option value="buy">Buy</option>
                   <option value="rent">Rent</option>
                   <option value="book">Book a Stay</option>
                 </select>
-                <select>
+                <select id="searchType">
                   <option value="">Property Type</option>
                   <option value="apartment">Apartment</option>
                   <option value="house">House</option>
                   <option value="land">Land</option>
                 </select>
-                <select>
+                <select id="searchLocation">
                   <option value="">Location</option>
                   <option value="kololo">Kololo</option>
                   <option value="nakasero">Nakasero</option>
@@ -174,14 +174,14 @@
                   <option value="bugolobi">Bugolobi</option>
                   <option value="mbuga">Mbuga</option>
                 </select>
-                <select>
+                <select id="searchBudget">
                   <option value="">Budget</option>
                   <option value="0-100k">Under shs. 100,000</option>
                   <option value="100k-500k">shs. 100,000 – 500,000</option>
                   <option value="500k-2m">shs. 500,000 – 2,000,000</option>
                   <option value="2m+">shs. 2,000,000+</option>
                 </select>
-                <button type="button">Search <i class="lni lni-search-alt"></i></button>
+                <button type="button" id="searchBtn">Search <i class="lni lni-search-alt"></i></button>
               </div>
             </div>
           </div>
@@ -379,8 +379,12 @@
               </div>
             </div>
           </div>
-          <div class="col-12 text-center load-more-container">
-            <a href="#properties" class="custom-button">LOAD MORE</a>
+          <div id="grid-loader" class="col-12 text-center" style="display: none; padding: 40px;">
+            <div class="custom-spinner"></div>
+            <p style="margin-top: 15px; font-weight: 600; letter-spacing: 2px;">DISCOVERING PROPERTIES...</p>
+          </div>
+          <div class="col-12 pagination-container text-center">
+            <!-- Pagination will be injected here -->
           </div>
         </div>
       </div>
@@ -586,6 +590,7 @@
   <script src="js/overscroll.js"></script>
   <script src="js/TweenMax.min.js"></script>
   <script src="js/scripts.js"></script>
+  <script type="module" src="js/home-properties.js"></script>
 </body>
 
 </html>
