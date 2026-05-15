@@ -28,15 +28,24 @@ async function loadPropertyDetails() {
         document.getElementById('propDescription').innerText = p.description || 'No description available.';
         document.getElementById('propType').innerText = p.type || 'Apartment';
         document.getElementById('propBedrooms').innerText = `${p.bedrooms || 0} Rooms`;
+        document.getElementById('propBathrooms').innerText = `${p.bathrooms || 0} Baths`;
         document.getElementById('propStatus').innerText = p.status || 'Luxury and security guaranteed';
 
         // Price formatting
         const price = p.price ? Number(p.price).toLocaleString() : 'TBD';
-        const priceUnit = p.category === 'book' ? '/night' : '';
+        const priceSuffix = p.priceLabel ? `/ ${p.priceLabel}` : (p.category === 'book' ? '/ night' : '');
         const pricePrefix = (p.category === 'rent' || p.category === 'book') ? 'shs. ' : 'UGX ';
         
         document.getElementById('propPrice').innerText = `${pricePrefix}${price}`;
-        document.getElementById('priceUnit').innerText = priceUnit;
+        document.getElementById('priceUnit').innerText = priceSuffix;
+
+        // Dynamic Amenities
+        const amenitiesContainer = document.getElementById('propAmenities');
+        if (amenitiesContainer && p.amenities && p.amenities.length > 0) {
+            amenitiesContainer.innerHTML = p.amenities.map(a => `
+                <div class="amenity-pill"><i class="bx bx-check-circle"></i> ${a}</div>
+            `).join('');
+        }
 
         // Load Images into Swiper
         const imagesContainer = document.getElementById('propImages');
@@ -62,7 +71,6 @@ async function loadPropertyDetails() {
                     if (navigator.share) {
                         await navigator.share(shareData);
                     } else {
-                        // Fallback to clipboard
                         await navigator.clipboard.writeText(shareData.url);
                         alert('Link copied to clipboard!');
                     }
@@ -79,21 +87,12 @@ async function loadPropertyDetails() {
     }
 }
 
-// Global function to initialize swiper (to be called after images load)
 window.initHeroSwiper = function() {
     window.heroSwiper = new Swiper('.property-hero-slider', {
         loop: true,
-        autoplay: {
-            delay: 5000,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
+        autoplay: { delay: 5000 },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        pagination: { el: '.swiper-pagination', clickable: true },
     });
 };
 

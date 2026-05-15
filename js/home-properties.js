@@ -81,10 +81,9 @@ function renderProperties() {
                 <div class="bottom-specs">
                     <div class="icons">
                         <i class="bx bx-bed" title="${p.bedrooms || 0} Bedrooms"></i>
-                        <i class="bx bx-tv" title="TV"></i>
+                        <i class="bx bx-bath" title="${p.bathrooms || 0} Bathrooms"></i>
                         <i class="bx bx-building" title="${p.type || 'Apartment'}"></i>
                         <i class="bx bx-wifi" title="WiFi"></i>
-                        <i class="bx bx-bath" title="Bathroom"></i>
                     </div>
                 </div>
             </div>
