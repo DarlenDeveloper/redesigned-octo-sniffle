@@ -5180,3 +5180,44 @@ only screen and (max-device-width: 767px) {
   color: #fff;
   text-decoration: none;
 }
+
+/* WATERMARK & PROTECTION (Jiji Style) */
+.room-box figure, .swiper-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+/* BLOCK RIGHT-CLICK & SAVING */
+.protection-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"); /* Transparent GIF hack */
+}
+
+.watermark-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  height: 65%;
+  opacity: 0.5;
+  background-image: url('../images/pixon-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 5;
+  user-select: none;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.2));
+}
+
+.no-copy {
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+  pointer-events: none !important;
+}

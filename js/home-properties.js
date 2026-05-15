@@ -72,7 +72,11 @@ function renderProperties() {
         card.className = 'room-box';
         card.innerHTML = `
             <a href="room-detail.html?id=${p.id}">
-                <figure><img src="${mainImage}" alt="${p.title}" onerror="this.src='images/pixon-logo.jpeg'"></figure>
+                <figure>
+                    <img src="${mainImage}" class="no-copy" alt="${p.title}" onerror="this.src='images/pixon-logo.jpeg'">
+                    <div class="watermark-overlay"></div>
+                    <div class="protection-overlay"></div>
+                </figure>
             </a>
             <div class="content">
                 <div class="price-line"><span>${categoryLabel}</span> ${pricePrefix}${formattedPrice}</div>

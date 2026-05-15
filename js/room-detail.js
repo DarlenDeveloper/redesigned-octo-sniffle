@@ -66,10 +66,20 @@ async function loadPropertyDetails() {
         const imagesContainer = document.getElementById('propImages');
         if (p.images && p.images.length > 0) {
             imagesContainer.innerHTML = p.images.map(img => `
-                <div class="swiper-slide"><img src="${img}" alt="${p.title}" onerror="this.src='images/pixon-logo.jpeg'"></div>
+                <div class="swiper-slide">
+                    <img src="${img}" class="no-copy" alt="${p.title}" onerror="this.src='images/pixon-logo.jpeg'">
+                    <div class="watermark-overlay"></div>
+                    <div class="protection-overlay"></div>
+                </div>
             `).join('');
         } else {
-            imagesContainer.innerHTML = `<div class="swiper-slide"><img src="images/pixon-logo.jpeg" alt="No image available"></div>`;
+            imagesContainer.innerHTML = `
+                <div class="swiper-slide">
+                    <img src="images/pixon-logo.jpeg" class="no-copy" alt="No image available">
+                    <div class="watermark-overlay"></div>
+                    <div class="protection-overlay"></div>
+                </div>
+            `;
         }
 
         // Share functionality

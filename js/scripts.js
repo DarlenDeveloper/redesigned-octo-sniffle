@@ -599,4 +599,25 @@
   }, time);
 
 
+  // ANTI-COPY & SCREENSHOT PROTECTION
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target.tagName === 'IMG' || e.target.classList.contains('watermark-overlay')) {
+      e.preventDefault();
+    }
+  }, false);
+
+  document.addEventListener('dragstart', function (e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  }, false);
+
+  // Partial protection against common screenshot shortcuts (PrintScreen)
+  document.addEventListener('keyup', function (e) {
+    if (e.key === 'PrintScreen') {
+      navigator.clipboard.writeText('');
+      alert('Screenshots are discouraged to protect property privacy.');
+    }
+  });
+
 })(jQuery);
