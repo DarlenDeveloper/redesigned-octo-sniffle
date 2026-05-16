@@ -30,6 +30,7 @@ async function loadProperties() {
         // Timeout to simulate "premium" loading feel as requested
         setTimeout(() => {
             renderProperties();
+            renderMap();
             hideLoading();
         }, 800);
 
@@ -207,6 +208,7 @@ function handleSearch() {
     showLoading();
     setTimeout(() => {
         renderProperties();
+        renderMap();
         hideLoading();
     }, 600);
 }
@@ -223,15 +225,7 @@ window.triggerSearch = function(category) {
 document.addEventListener('DOMContentLoaded', () => {
     loadProperties();
     
-    // Check if we arrived with a hash (e.g., from Buy/Rent nav link on another page)
-    const hash = window.location.hash;
-    if (hash === '#listings') {
-        const urlParams = new URL(window.location.href);
-        // We can't easily pass category in hash without query params, 
-        // but we can check if there's a need to trigger.
-        // For now, let's just listen for the click events which handle internal navigation.
-    }
-
+    // Bind search button
     const searchBtn = document.getElementById('searchBtn');
     if (searchBtn) {
         searchBtn.addEventListener('click', handleSearch);
@@ -279,5 +273,79 @@ function initPriceSlider() {
         const val = Number(e.target.value);
         display.innerText = `shs. ${val.toLocaleString()}`;
         handleSearch(); // Trigger search dynamically
+    });
+}
+
+// Map Integration
+const locationCoords = {
+    'kololo': [0.3297, 32.5898],
+    'nakasero': [0.3228, 32.5786],
+    'naguru': [0.3340, 32.6133],
+    'bugolobi': [0.3150, 32.6200],
+    'kisaasi': [0.3705, 32.6160],
+    'kisasi': [0.3705, 32.6160],
+    'garuga': [0.0384, 32.5020],
+    'ntinda': [0.3475, 32.6160],
+    'muyenga': [0.2942, 32.6145],
+    'kampala': [0.3136, 32.5811]
+};
+
+let propertyMap = null;
+function renderMap() {
+    const mapDiv = document.getElementById('dynamicPropertyMap');
+    if (!mapDiv) return;
+    
+    if (!propertyMap) {
+        propertyMap = L.map('dynamicPropertyMap').setView([0.3136, 32.5811], 12);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+        }).addTo(propertyMap);
+    }
+    
+    // Clear existing markers
+    propertyMap.eachLayer((layer) => {
+        if (layer instanceof L.Marker) {
+            propertyMap.removeLayer(layer);
+        }
+    });
+
+    const customIcon = L.divIcon({
+        className: 'custom-pin',
+        html: `<i class="bx bxs-map" style="font-size: 36px; color: #286192; filter: drop-shadow(0 4px 4px rgba(0,0,0,0.3));"></i>`,
+        iconSize: [36, 36],
+        iconAnchor: [18, 36],
+        popupAnchor: [0, -36]
+    });
+
+    filteredProperties.forEach(p => {
+        const locName = (p.location || 'Kampala').toLowerCase();
+        let coords = null;
+        
+        for (const key in locationCoords) {
+            if (locName.includes(key)) {
+                coords = locationCoords[key];
+                break;
+            }
+        }
+        // Default to Kampala city center if unknown
+        if (!coords) coords = locationCoords['kampala'];
+        
+        // Add tiny random jitter so properties in the exact same neighborhood don't overlap completely
+        const jitterLat = coords[0] + (Math.random() - 0.5) * 0.01;
+        const jitterLng = coords[1] + (Math.random() - 0.5) * 0.01;
+
+        const mainImage = p.images?.length > 0 ? p.images[0] : 'images/pixon-logo.jpeg';
+        const price = p.price ? Number(p.price).toLocaleString() : 'TBD';
+
+        const marker = L.marker([jitterLat, jitterLng], {icon: customIcon}).addTo(propertyMap);
+        marker.bindPopup(`
+            <div style="font-family: 'Outfit', sans-serif; text-align: center; width: 160px; padding: 5px;">
+                <a href="room-detail.html?id=${p.id}" onclick="localStorage.setItem('currentPropertyId', '${p.id}')" style="text-decoration: none;">
+                    <img src="${mainImage}" style="width: 100%; height: 90px; object-fit: cover; border-radius: 6px; margin-bottom: 10px;">
+                    <strong style="display:block; color: #111; font-size: 14px; margin-bottom: 5px; line-height: 1.2;">${p.title}</strong>
+                </a>
+                <span style="color: #286192; font-weight: 700; font-size: 13px;">UGX ${price}</span>
+            </div>
+        `);
     });
 }

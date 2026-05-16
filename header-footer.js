@@ -91,7 +91,7 @@ class SpecialFooter extends HTMLElement {
         </div>
         <!-- end col-2 -->
         <div class="col-12">
-          <div class="bottom-bar"> <span>© 2025 PIXON REAL ESTATE | Premium Listings</span>
+          <div class="bottom-bar"> <span>© 2026 PIXON REAL ESTATE | Premium Listings</span>
             <!-- end footer-social --> 
           </div>
           <!-- end bottom-bar --> 
