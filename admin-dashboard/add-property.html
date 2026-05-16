@@ -27,6 +27,73 @@
     }
     input:focus, select:focus, textarea:focus { border-color: #286192; }
     textarea { resize: vertical; min-height: 100px; }
+    
+    /* Progress Steps */
+    .progress-steps {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .progress-steps::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #e2e8f0;
+      z-index: 0;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+    .step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #f0f4f8;
+      color: #6b7a8d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+    .step.active .step-circle {
+      background: #286192;
+      color: white;
+    }
+    .step.completed .step-circle {
+      background: #27ae60;
+      color: white;
+    }
+    .step-label {
+      font-size: 12px;
+      color: #6b7a8d;
+      font-weight: 500;
+      text-align: center;
+    }
+    .step.active .step-label {
+      color: #286192;
+      font-weight: 600;
+    }
+    
+    /* Form Steps */
+    .form-step {
+      display: none;
+    }
+    .form-step.active {
+      display: block;
+    }
+    
     .amenities-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -66,8 +133,8 @@
     .form-actions {
       display: flex;
       gap: 12px;
-      justify-content: flex-end;
-      margin-top: 8px;
+      justify-content: space-between;
+      margin-top: 24px;
     }
     .btn-secondary {
       background: #f0f4f8;
@@ -80,6 +147,9 @@
       cursor: pointer;
       font-family: inherit;
       text-decoration: none;
+    }
+    .btn-secondary:hover {
+      background: #e2e8f0;
     }
     .success-msg {
       background: #e8f8f0;
@@ -99,10 +169,12 @@
       margin-bottom: 16px;
       display: none;
     }
+    .hidden { display: none !important; }
     @media (max-width: 768px) {
       .form-grid { grid-template-columns: 1fr; }
       .form-group.full { grid-column: 1; }
       .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .step-label { font-size: 10px; }
     }
   </style>
 </head>
@@ -151,117 +223,229 @@
         <div class="success-msg" id="successMsg">Property added successfully!</div>
         <div class="error-msg" id="errorMsg"></div>
 
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+          <div class="step active" data-step="1">
+            <div class="step-circle">1</div>
+            <div class="step-label">Basic Info</div>
+          </div>
+          <div class="step" data-step="2">
+            <div class="step-circle">2</div>
+            <div class="step-label">Property Details</div>
+          </div>
+          <div class="step" data-step="3">
+            <div class="step-circle">3</div>
+            <div class="step-label">Amenities</div>
+          </div>
+          <div class="step" data-step="4">
+            <div class="step-circle">4</div>
+            <div class="step-label">Images & Finish</div>
+          </div>
+        </div>
+
         <form id="addPropertyForm">
-          <div class="form-grid">
+          
+          <!-- STEP 1: Basic Info -->
+          <div class="form-step active" data-step="1">
+            <div class="form-grid">
+              <div class="form-group full">
+                <label>Property Title *</label>
+                <input type="text" name="title" placeholder="e.g. Kololo Executive Apartment" required>
+              </div>
 
-            <div class="form-group full">
-              <label>Property Title *</label>
-              <input type="text" name="title" placeholder="e.g. Kololo Executive Apartment" required>
-            </div>
+              <div class="form-group">
+                <label>Category *</label>
+                <select name="category" id="categorySelect" required>
+                  <option value="">Select category</option>
+                  <option value="buy">For Sale (Buy)</option>
+                  <option value="rent">For Rent</option>
+                  <option value="book">Short Stay (Book)</option>
+                </select>
+              </div>
 
-            <div class="form-group">
-              <label>Category *</label>
-              <select name="category" required>
-                <option value="">Select category</option>
-                <option value="buy">For Sale (Buy)</option>
-                <option value="rent">For Rent</option>
-                <option value="book">Short Stay (Book)</option>
-              </select>
-            </div>
+              <div class="form-group">
+                <label>Property Type *</label>
+                <select name="type" id="typeSelect" required>
+                  <option value="">Select type</option>
+                  <option value="Apartment">Apartment</option>
+                  <option value="House">House</option>
+                  <option value="Penthouse">Penthouse</option>
+                  <option value="Villa">Villa</option>
+                  <option value="Land">Land</option>
+                  <option value="Office">Office</option>
+                  <option value="Commercial">Commercial</option>
+                </select>
+              </div>
 
-            <div class="form-group">
-              <label>Property Type *</label>
-              <select name="type" required>
-                <option value="">Select type</option>
-                <option value="Apartment">Apartment</option>
-                <option value="House">House</option>
-                <option value="Penthouse">Penthouse</option>
-                <option value="Villa">Villa</option>
-                <option value="Land">Land</option>
-                <option value="Office">Office</option>
-              </select>
-            </div>
+              <div class="form-group">
+                <label>Location *</label>
+                <select name="location" required>
+                  <option value="">Select location</option>
+                  <option value="Kololo">Kololo</option>
+                  <option value="Nakasero">Nakasero</option>
+                  <option value="Naguru">Naguru</option>
+                  <option value="Bugolobi">Bugolobi</option>
+                  <option value="Mbuga">Mbuga</option>
+                  <option value="Kulambiro">Kulambiro</option>
+                  <option value="Ntinda">Ntinda</option>
+                  <option value="Muyenga">Muyenga</option>
+                  <option value="Kampala">Kampala</option>
+                </select>
+              </div>
 
-            <div class="form-group">
-              <label>Location *</label>
-              <select name="location" required>
-                <option value="">Select location</option>
-                <option value="Kololo">Kololo</option>
-                <option value="Nakasero">Nakasero</option>
-                <option value="Naguru">Naguru</option>
-                <option value="Bugolobi">Bugolobi</option>
-                <option value="Mbuga">Mbuga</option>
-                <option value="Kulambiro">Kulambiro</option>
-                <option value="Kampala">Kampala</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Price (UGX) *</label>
-              <input type="number" name="price" placeholder="e.g. 1500000" required>
-            </div>
-
-            <div class="form-group">
-              <label>Price Label</label>
-              <select name="priceLabel">
-                <option value="per night">Per Night</option>
-                <option value="per month">Per Month</option>
-                <option value="total">Total (Sale)</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Bedrooms</label>
-              <input type="number" name="bedrooms" placeholder="e.g. 3" min="0">
-            </div>
-
-            <div class="form-group">
-              <label>Bathrooms</label>
-              <input type="number" name="bathrooms" placeholder="e.g. 2" min="0">
-            </div>
-
-            <div class="form-group">
-              <label>Status</label>
-              <select name="status">
-                <option value="Active">Active</option>
-                <option value="Sold Out">Sold Out</option>
-                <option value="Rented">Rented</option>
-                <option value="Booked">Booked</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Availability Date</label>
-              <div style="display:flex; gap:8px;">
-                <input type="date" name="availability" id="availInput" style="flex:1;">
-                <button type="button" class="btn-primary" style="padding: 8px 12px; background: #27ae60;" onclick="document.getElementById('availInput').value = new Date().toISOString().split('T')[0]">Today</button>
+              <div class="form-group">
+                <label>Status *</label>
+                <select name="status" required>
+                  <option value="">Select status</option>
+                  <option value="Active">Active</option>
+                  <option value="Sold Out">Sold Out</option>
+                  <option value="Rented">Rented</option>
+                  <option value="Booked">Booked</option>
+                </select>
               </div>
             </div>
+          </div>
 
-            <div class="form-group full">
-              <label>Description *</label>
-              <textarea name="description" placeholder="Describe the property..." required></textarea>
+          <!-- STEP 2: Property Details -->
+          <div class="form-step" data-step="2">
+            <div class="form-grid">
+              
+              <!-- For Land -->
+              <div class="form-group land-only hidden">
+                <label>Land Size (Acres)</label>
+                <input type="number" name="landSizeAcres" placeholder="e.g. 2.5" step="0.01">
+              </div>
+
+              <div class="form-group land-only hidden">
+                <label>Land Size (Sq Meters)</label>
+                <input type="number" name="landSizeSqm" placeholder="e.g. 10000">
+              </div>
+
+              <div class="form-group land-only hidden">
+                <label>Title Deed Status</label>
+                <select name="titleDeed">
+                  <option value="Available">Available</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Leasehold">Leasehold</option>
+                  <option value="Freehold">Freehold</option>
+                </select>
+              </div>
+
+              <!-- For Buildings (Not Land) -->
+              <div class="form-group building-only">
+                <label>Bedrooms</label>
+                <input type="number" name="bedrooms" placeholder="e.g. 3" min="0">
+              </div>
+
+              <div class="form-group building-only">
+                <label>Bathrooms</label>
+                <input type="number" name="bathrooms" placeholder="e.g. 2" min="0">
+              </div>
+
+              <div class="form-group building-only">
+                <label>Floor Area (Sq Meters)</label>
+                <input type="number" name="floorArea" placeholder="e.g. 120">
+              </div>
+
+              <!-- Pricing -->
+              <div class="form-group">
+                <label id="priceLabel">Price (UGX) *</label>
+                <input type="number" name="price" placeholder="e.g. 1500000" required>
+              </div>
+
+              <div class="form-group">
+                <label>Price Label</label>
+                <select name="priceLabel" id="priceLabelSelect">
+                  <option value="">Select</option>
+                  <option value="per night">Per Night</option>
+                  <option value="per month">Per Month</option>
+                  <option value="total">Total (Sale)</option>
+                </select>
+              </div>
+
+              <!-- For Rent -->
+              <div class="form-group rent-only hidden">
+                <label>Security Deposit (UGX)</label>
+                <input type="number" name="deposit" placeholder="e.g. 3000000">
+              </div>
+
+              <div class="form-group rent-only hidden">
+                <label>Utilities Included</label>
+                <select name="utilitiesIncluded">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="Partial">Partial</option>
+                </select>
+              </div>
+
+              <!-- For Book -->
+              <div class="form-group book-only hidden">
+                <label>Minimum Stay (Nights)</label>
+                <input type="number" name="minStay" placeholder="e.g. 2" min="1">
+              </div>
+
+              <div class="form-group book-only hidden">
+                <label>Check-in Time</label>
+                <input type="time" name="checkInTime" value="14:00">
+              </div>
+
+              <div class="form-group book-only hidden">
+                <label>Check-out Time</label>
+                <input type="time" name="checkOutTime" value="11:00">
+              </div>
+
+              <div class="form-group">
+                <label>Availability Date *</label>
+                <div style="display:flex; gap:8px;">
+                  <input type="date" name="availability" id="availInput" style="flex:1;" required>
+                  <button type="button" class="btn-primary" style="padding: 8px 12px; background: #27ae60;" onclick="document.getElementById('availInput').value = new Date().toISOString().split('T')[0]">Today</button>
+                </div>
+              </div>
+
+              <div class="form-group full">
+                <label>Description *</label>
+                <textarea name="description" placeholder="Describe the property..." required></textarea>
+              </div>
             </div>
+          </div>
 
+          <!-- STEP 3: Amenities -->
+          <div class="form-step" data-step="3">
             <div class="form-group full">
-              <label>Amenities</label>
+              <label>Select Amenities * (At least one required)</label>
               <div class="amenities-grid">
                 <label class="amenity-check"><input type="checkbox" name="amenities" value="WiFi"> WiFi</label>
                 <label class="amenity-check"><input type="checkbox" name="amenities" value="Smart TV"> Smart TV</label>
-                <label class="amenity-check"><input type="checkbox" name="amenities" value="AC"> AC Units</label>
-                <label class="amenity-check"><input type="checkbox" name="amenities" value="Kitchen"> Modern Kitchen</label>
-                <label class="amenity-check"><input type="checkbox" name="amenities" value="Solar"> Solar Backup</label>
-                <label class="amenity-check"><input type="checkbox" name="amenities" value="Warm Water"> Warm Water</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="DSTV"> DSTV/Cable</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="AC Units"> AC Units</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Modern Kitchen"> Modern Kitchen</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Washing Machine"> Washing Machine</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Solar Backup"> Solar Backup</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Generator"> Generator</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Water Tank"> Water Tank</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Borehole"> Borehole</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Warm Water"> Hot Water</label>
                 <label class="amenity-check"><input type="checkbox" name="amenities" value="Parking"> Parking</label>
-                <label class="amenity-check"><input type="checkbox" name="amenities" value="Security"> 24/7 Security</label>
-                <label class="amenity-check"><input type="checkbox" name="amenities" value="Pool"> Swimming Pool</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="24/7 Security"> 24/7 Security</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="CCTV"> CCTV</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Gated Community"> Gated Community</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Swimming Pool"> Swimming Pool</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Gym"> Gym</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Elevator"> Elevator</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Balcony"> Balcony/Terrace</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Garden"> Garden</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Study Room"> Study Room</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Servant Quarters"> Servant Quarters</label>
                 <label class="amenity-check"><input type="checkbox" name="amenities" value="Fully Serviced"> Fully Serviced</label>
                 <label class="amenity-check"><input type="checkbox" name="amenities" value="Fully Furnished"> Fully Furnished</label>
               </div>
             </div>
+          </div>
 
+          <!-- STEP 4: Images -->
+          <div class="form-step" data-step="4">
             <div class="form-group full">
-              <label>Property Images</label>
+              <label>Property Images * (At least one required)</label>
               <div class="image-upload-area" id="uploadArea">
                 <i class='bx bx-image-add'></i>
                 <p>Click to upload images or drag & drop</p>
@@ -269,12 +453,18 @@
               </div>
               <div class="image-previews" id="imagePreviews"></div>
             </div>
-
           </div>
 
+          <!-- Navigation Buttons -->
           <div class="form-actions">
-            <a href="/admin-dashboard/index.html" class="btn-secondary">Cancel</a>
-            <button type="submit" class="btn-primary" id="submitBtn">Add Property</button>
+            <div>
+              <button type="button" class="btn-secondary" id="prevBtn" style="display:none;">Previous</button>
+            </div>
+            <div style="display:flex; gap:12px;">
+              <a href="/admin-dashboard/index.html" class="btn-secondary">Cancel</a>
+              <button type="button" class="btn-primary" id="nextBtn">Next</button>
+              <button type="submit" class="btn-primary" id="submitBtn" style="display:none;">Add Property</button>
+            </div>
           </div>
         </form>
       </div>
