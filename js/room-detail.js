@@ -257,12 +257,11 @@ function updatePriceCalculation() {
     document.getElementById('breakdownTotal').innerText = `${pricePrefix}${formattedTotal}`;
 }
 
-// Helper to parse DD/MM/YYYY
+// Helper to parse HTML5 Date inputs (YYYY-MM-DD)
 function parseDate(str) {
     if (!str) return null;
-    const parts = str.split('/');
-    if (parts.length !== 3) return null;
-    return new Date(parts[2], parts[1] - 1, parts[0]);
+    const date = new Date(str);
+    return isNaN(date.getTime()) ? null : date;
 }
 
 window.initHeroSwiper = function() {
@@ -274,10 +273,11 @@ window.initHeroSwiper = function() {
         pagination: { el: '.swiper-pagination', clickable: true },
     });
 
-    // Handle date changes
-    $('[data-toggle="datepicker"]').on('pick.datepicker', function (e) {
-        setTimeout(updatePriceCalculation, 100);
-    });
+    // Handle native HTML5 date changes
+    const checkInInput = document.getElementById('checkIn');
+    const checkOutInput = document.getElementById('checkOut');
+    if (checkInInput) checkInInput.addEventListener('change', updatePriceCalculation);
+    if (checkOutInput) checkOutInput.addEventListener('change', updatePriceCalculation);
 };
 
 document.addEventListener('DOMContentLoaded', loadPropertyDetails);
