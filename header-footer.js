@@ -9,11 +9,11 @@ class SpecialHeader extends HTMLElement {
       </ul>
       <ul class="nav-menu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#listings">Buy</a></li>
-        <li><a href="index.html#listings">Rent</a></li>
-        <li><a href="index.html#listings">Book</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-        <li><a href="index.html#contact">Partner</a></li>
+        <li><a href="#listings">Buy</a></li>
+        <li><a href="#listings">Rent</a></li>
+        <li><a href="#listings">Book</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Partner</a></li>
       </ul>
       <!-- end info-box --> 
     </div>
@@ -31,15 +31,15 @@ class SpecialHeader extends HTMLElement {
       <div class="site-menu">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#listings">Buy</a></li>
-          <li><a href="index.html#listings">Rent</a></li>
-          <li><a href="index.html#listings">Book</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="#listings">Buy</a></li>
+          <li><a href="#listings">Rent</a></li>
+          <li><a href="#listings">Book</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
 
       <div class="navbar-button" style="display: flex; align-items: center;">
-        <a href="index.html#contact" style="font-weight: 700; font-size: 11px; letter-spacing: 1px; color: #111;">PARTNER</a>
+        <a href="#contact" style="font-weight: 700; font-size: 11px; letter-spacing: 1px; color: #111;">PARTNER</a>
       </div>
 
       <div class="hamburger-menu">
