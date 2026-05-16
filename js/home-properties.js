@@ -239,8 +239,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const href = navLink.getAttribute('href');
         if (!href) return;
 
+        const text = navLink.innerText.toLowerCase().trim();
+
+        // Handle listings links (Buy, Rent, Book)
         if (href.includes('#listings')) {
-            const text = navLink.innerText.toLowerCase().trim();
+            e.preventDefault();
+            
+            // Apply filter based on link text
             if (text === 'buy') {
                 window.triggerSearch('buy');
             } else if (text === 'rent') {
@@ -248,6 +253,50 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (text === 'book') {
                 window.triggerSearch('book');
             }
+            
+            // Scroll to listings section
+            setTimeout(() => {
+                const listingsSection = document.getElementById('listings');
+                if (listingsSection) {
+                    // Try smooth scrollbar first
+                    if (typeof Scrollbar !== 'undefined') {
+                        const mainScrollbar = Scrollbar.get(document.querySelector('#main'));
+                        if (mainScrollbar) {
+                            mainScrollbar.scrollIntoView(listingsSection, {
+                                offsetTop: 80,
+                                alignToTop: true
+                            });
+                            return;
+                        }
+                    }
+                    // Fallback to regular scroll
+                    listingsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 200);
+        }
+        
+        // Handle contact links
+        if (href.includes('#contact')) {
+            e.preventDefault();
+            
+            setTimeout(() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    // Try smooth scrollbar first
+                    if (typeof Scrollbar !== 'undefined') {
+                        const mainScrollbar = Scrollbar.get(document.querySelector('#main'));
+                        if (mainScrollbar) {
+                            mainScrollbar.scrollIntoView(contactSection, {
+                                offsetTop: 80,
+                                alignToTop: true
+                            });
+                            return;
+                        }
+                    }
+                    // Fallback to regular scroll
+                    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 200);
         }
     });
 });

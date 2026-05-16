@@ -1,0 +1,24 @@
+/* Mobile responsive fixes */
+
+/* Navbar button base styles */
+.navbar .navbar-button {
+  display: flex;
+  align-items: center;
+}
+
+/* Hide Partner button on mobile - force hide */
+@media screen and (max-width: 991px) {
+  .navbar .navbar-button,
+  .navbar .navbar-button.desktop-only,
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Ensure Partner button shows on desktop */
+@media screen and (min-width: 992px) {
+  .navbar .navbar-button.desktop-only {
+    display: flex !important;
+    align-items: center;
+  }
+}

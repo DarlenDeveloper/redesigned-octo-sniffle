@@ -5,8 +5,6 @@ class SpecialHeader extends HTMLElement {
     <div class="layer"></div>
     <!-- end layer -->
     <div class="container">
-      <ul class="nav-menu mobile-menu">   
-      </ul>
       <ul class="nav-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="#listings">Buy</a></li>
@@ -38,7 +36,7 @@ class SpecialHeader extends HTMLElement {
         </ul>
       </div>
 
-      <div class="navbar-button" style="display: flex; align-items: center;">
+      <div class="navbar-button desktop-only">
         <a href="#contact" style="font-weight: 700; font-size: 11px; letter-spacing: 1px; color: #111;">PARTNER</a>
       </div>
 
