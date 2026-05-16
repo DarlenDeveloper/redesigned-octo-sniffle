@@ -5264,7 +5264,7 @@ only screen and (max-device-width: 767px) {
   transform: translate(-50%, -50%);
   width: 75%;
   height: 75%;
-  opacity: 0.3;
+  opacity: 0.4;
   background-image: url('../images/pixon-logo.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -5272,7 +5272,7 @@ only screen and (max-device-width: 767px) {
   pointer-events: none;
   z-index: 5;
   user-select: none;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)) contrast(0.9);
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.1));
 }
 
 .no-copy {

@@ -3,10 +3,20 @@ import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase
 
 async function loadPropertyDetails() {
     const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
+    let id = params.get('id');
 
     if (!id) {
-        console.error("No property ID provided in URL.");
+        // Fallback to localStorage if local server strips URL parameters (e.g., serve cleanUrls)
+        id = localStorage.getItem('currentPropertyId');
+        if (id) {
+            // Restore URL visually without reloading to ensure sharing functionality works
+            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + id;
+            window.history.replaceState({path: newUrl}, '', newUrl);
+        }
+    }
+
+    if (!id) {
+        console.error("No property ID provided in URL or LocalStorage.");
         return;
     }
 
@@ -74,15 +84,21 @@ async function loadPropertyDetails() {
         // Hide/Show booking logic based on category
         const breakdown = document.getElementById('bookingBreakdown');
         const inputs = document.querySelector('.booking-inputs');
-        if (p.category === 'buy') {
-            if (inputs) inputs.style.display = 'none';
-            if (breakdown) {
-                 document.getElementById('breakdownLabel').innerText = 'Total Purchase Price';
-                 updatePriceCalculation();
-            }
-        } else {
+        if (p.category === 'book') {
             if (inputs) inputs.style.display = 'block';
             updatePriceCalculation();
+        } else {
+            if (inputs) inputs.style.display = 'none';
+            if (breakdown) {
+                if (p.category === 'buy') {
+                    document.getElementById('breakdownLabel').innerText = 'Total Purchase Price';
+                } else if (p.category === 'rent') {
+                    document.getElementById('breakdownLabel').innerText = 'Total Rent Amount';
+                } else {
+                    document.getElementById('breakdownLabel').innerText = 'Total Price';
+                }
+                updatePriceCalculation();
+            }
         }
 
         // Load Images into Swiper
@@ -190,6 +206,12 @@ function updatePriceCalculation() {
 
     if (isShortStay) {
         document.getElementById('breakdownLabel').innerText = `Total for ${nights} ${nights === 1 ? 'night' : 'nights'}`;
+    } else if (p.category === 'buy') {
+        document.getElementById('breakdownLabel').innerText = 'Total Purchase Price';
+    } else if (p.category === 'rent') {
+        document.getElementById('breakdownLabel').innerText = 'Total Rent Amount';
+    } else {
+        document.getElementById('breakdownLabel').innerText = 'Total Price';
     }
     
     document.getElementById('breakdownSubtotal').innerText = `${pricePrefix}${formattedTotal}`;

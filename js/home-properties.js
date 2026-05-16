@@ -72,7 +72,7 @@ function renderProperties() {
         const card = document.createElement('div');
         card.className = 'room-box';
         card.innerHTML = `
-            <a href="room-detail.html?id=${p.id}">
+            <a href="room-detail.html?id=${p.id}" onclick="localStorage.setItem('currentPropertyId', '${p.id}')">
                 <figure>
                     <img src="${mainImage}" class="no-copy" alt="${p.title}" onerror="this.src='images/pixon-logo.jpeg'">
                     <div class="watermark-overlay"></div>
@@ -93,7 +93,7 @@ function renderProperties() {
                         return `<div class="availability-badge" style="font-size: 12px; color: #286192; font-weight: 700; margin-bottom: 5px; text-transform: uppercase;">• Available on ${dateStr}</div>`;
                     }
                 })()}
-                <h3><a href="room-detail.html?id=${p.id}">${p.title}</a></h3>
+                <h3><a href="room-detail.html?id=${p.id}" onclick="localStorage.setItem('currentPropertyId', '${p.id}')">${p.title}</a></h3>
                 <p>${p.description ? p.description.substring(0, 100) + '...' : 'Luxury living in the heart of Kampala.'}</p>
                 <div class="bottom-specs">
                     <div class="icons">
@@ -185,7 +185,7 @@ function handleSearch() {
     const category = document.getElementById('searchCategory').value.toLowerCase();
     const type = document.getElementById('searchType').value.toLowerCase();
     const location = document.getElementById('searchLocation').value.toLowerCase();
-    const budget = document.getElementById('searchBudget').value;
+    const budget = document.getElementById('searchBudgetSlider')?.value || '';
 
     filteredProperties = allProperties.filter(p => {
         const pCategory = (p.category || '').toLowerCase();
