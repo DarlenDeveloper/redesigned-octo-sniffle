@@ -596,15 +596,6 @@
 
   setTimeout(function () {
     $("body").addClass("page-loaded");
-    
-    // Auto-scroll down after preloader on homepage
-    setTimeout(function() {
-      if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
-        if (!window.location.hash) {
-          mainScrollbar.scrollTo(0, window.innerHeight * 0.7, 1200);
-        }
-      }
-    }, 500);
   }, time);
 
 
