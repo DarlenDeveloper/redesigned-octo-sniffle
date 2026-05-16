@@ -130,9 +130,44 @@
               <!-- Add Pagination -->
               <div class="swiper-pagination"></div>
             </div>
+        <!-- Secondary Info -->
+        <div class="property-details-info" style="margin-top: 60px; ">
+          <div class="property-description">
+            <h2 style="font-weight: 700; margin-bottom: 25px;">More Details</h2>
+            <p id="propDescription" style="font-size: 18px; line-height: 1.7; color: #444;">Loading property description...</p>
+
+            <div class="property-specs-grid" style="margin: 40px 0;">
+              <div class="spec-item">
+                <i class="bx bx-bed"></i>
+                <span>Bedrooms</span>
+                <strong id="propBedrooms">...</strong>
+              </div>
+              <div class="spec-item">
+                <i class="bx bx-bath"></i>
+                <span>Bathrooms</span>
+                <strong id="propBathrooms">...</strong>
+              </div>
+              <div class="spec-item">
+                <i class="bx bx-hotel"></i>
+                <span>Type</span>
+                <strong id="propType">...</strong>
+              </div>
+              <div class="spec-item">
+                <i class="bx bx-shield-check"></i>
+                <span>Security</span>
+                <strong id="propSecurity">Level 5</strong>
+              </div>
+            </div>
+
+            <h3 style="font-weight: 700; margin-top: 40px;">Top Amenities</h3>
+            <div id="propAmenities" class="amenities-grid" style="margin-top: 20px;"></div>
+            
+
+          </div>
+        </div>
           </div>
 
-          <!-- 30% Booking Card -->
+      <!-- 30% Booking Card -->
           <div class="property-sidebar-hero">
             <div class="booking-card" style="margin: 0; position: static;">
               <div class="booking-header">
@@ -146,11 +181,11 @@
                 <div class="input-row">
                   <div class="input-group">
                     <label>Check In</label>
-                    <input type="date" id="checkIn" value="2025-05-11" style="width: 100%; height: 55px; padding: 0 20px; border: 1px solid #e5e5e5; background: #fff; font-family: inherit; color: #444;">
+                    <input type="date" id="checkIn" style="width: 100%; height: 55px; padding: 0 20px; border: 1px solid #e5e5e5; background: #fff; font-family: inherit; color: #444;">
                   </div>
                   <div class="input-group">
                     <label>Check Out</label>
-                    <input type="date" id="checkOut" value="2025-05-20" style="width: 100%; height: 55px; padding: 0 20px; border: 1px solid #e5e5e5; background: #fff; font-family: inherit; color: #444;">
+                    <input type="date" id="checkOut" style="width: 100%; height: 55px; padding: 0 20px; border: 1px solid #e5e5e5; background: #fff; font-family: inherit; color: #444;">
                   </div>
                 </div>
                 <div class="input-group" style="margin-top: 15px;">
@@ -198,45 +233,7 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Secondary Info -->
-        <div class="property-details-info" style="margin-top: 60px; max-width: 70%;">
-          <div class="property-description">
-            <h2 style="font-weight: 700; margin-bottom: 25px;">Welcome to your next home</h2>
-            <p id="propDescription" style="font-size: 18px; line-height: 1.7; color: #444;">Loading property description...</p>
-
-            <div class="property-specs-grid" style="margin: 40px 0;">
-              <div class="spec-item">
-                <i class="bx bx-bed"></i>
-                <span>Bedrooms</span>
-                <strong id="propBedrooms">...</strong>
-              </div>
-              <div class="spec-item">
-                <i class="bx bx-bath"></i>
-                <span>Bathrooms</span>
-                <strong id="propBathrooms">...</strong>
-              </div>
-              <div class="spec-item">
-                <i class="bx bx-hotel"></i>
-                <span>Type</span>
-                <strong id="propType">...</strong>
-              </div>
-              <div class="spec-item">
-                <i class="bx bx-shield-check"></i>
-                <span>Security</span>
-                <strong id="propSecurity">Level 5</strong>
-              </div>
-            </div>
-
-            <h3 style="font-weight: 700; margin-top: 40px;">Top Amenities</h3>
-            <div id="propAmenities" class="amenities-grid" style="margin-top: 20px;"></div>
-            
-
-          </div>
-        </div>
-
-      </div>
+        </div></div>
     </section>
 
     <special-footer></special-footer>

@@ -9,12 +9,11 @@ class SpecialHeader extends HTMLElement {
       </ul>
       <ul class="nav-menu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#listings">PIXON REAL ESTATE</a></li>
-        <li><a href="index.html#listings">Apartments</a></li>
         <li><a href="index.html#listings">Buy</a></li>
-        <li><a href="index.html#listings">Book</a></li>
         <li><a href="index.html#listings">Rent</a></li>
-        <li><a href="index.html#contact">Contact Us</a></li>
+        <li><a href="index.html#listings">Book</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html#contact">Partner</a></li>
       </ul>
       <!-- end info-box --> 
     </div>
@@ -39,8 +38,8 @@ class SpecialHeader extends HTMLElement {
         </ul>
       </div>
 
-      <div class="navbar-button">
-        <a href="index.html#contact" class="nav-btn">Reserve Now</a>
+      <div class="navbar-button" style="display: flex; align-items: center;">
+        <a href="index.html#contact" style="font-weight: 700; font-size: 11px; letter-spacing: 1px; color: #111;">PARTNER</a>
       </div>
 
       <div class="hamburger-menu">
