@@ -1,5 +1,5 @@
 import { db } from './firebase-config.js';
-import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { doc, getDoc, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 async function loadPropertyDetails() {
     const params = new URLSearchParams(window.location.search);
@@ -147,13 +147,52 @@ async function loadPropertyDetails() {
         // WhatsApp Reservation functionality
         const reserveBtn = document.getElementById('reserveBtn');
         if (reserveBtn) {
-            reserveBtn.addEventListener('click', () => {
+            reserveBtn.addEventListener('click', async () => {
+                const nameInput = document.getElementById('inqName');
+                const phoneInput = document.getElementById('inqPhone');
+                const emailInput = document.getElementById('inqEmail');
+
+                if (nameInput && phoneInput) {
+                    if (!nameInput.value.trim() || !phoneInput.value.trim()) {
+                        alert("Please enter your Full Name and Phone Number.");
+                        return;
+                    }
+                }
+
                 const checkIn = document.getElementById('checkIn')?.value || 'N/A';
                 const checkOut = document.getElementById('checkOut')?.value || 'N/A';
                 const totalText = document.getElementById('breakdownTotal')?.innerText || 'N/A';
                 
-                let message = `Hello Pixon Real Estate! I am interested in *${p.title}* (%0ALink: ${window.location.href}).%0A%0A`;
+                // Save to Firestore Inquiries
+                try {
+                    reserveBtn.disabled = true;
+                    reserveBtn.innerText = 'Connecting...';
+                    await addDoc(collection(db, 'inquiries'), {
+                        name: nameInput?.value.trim() || 'N/A',
+                        phone: phoneInput?.value.trim() || 'N/A',
+                        email: emailInput?.value.trim() || '',
+                        propertyId: id,
+                        propertyTitle: p.title || 'Unknown',
+                        category: p.category || 'unknown',
+                        checkIn: p.category === 'book' ? checkIn : 'N/A',
+                        checkOut: p.category === 'book' ? checkOut : 'N/A',
+                        estimatedTotal: totalText,
+                        createdAt: serverTimestamp(),
+                        status: 'New'
+                    });
+                } catch (err) {
+                    console.error('Error saving inquiry:', err);
+                    // Silently fail so we don't break the WhatsApp flow if DB write fails
+                } finally {
+                    reserveBtn.disabled = false;
+                    reserveBtn.innerText = 'Reserve This Listing';
+                }
                 
+                let message = `Hello Pixon Real Estate! I am interested in *${p.title}* (%0ALink: ${window.location.href}).%0A%0A`;
+                if (nameInput && nameInput.value.trim()) {
+                    message += `*My Details*:%0AName: ${nameInput.value.trim()}%0APhone: ${phoneInput.value.trim()}%0A%0A`;
+                }
+
                 if (p.category === 'book') {
                     message += `*Service*: Short Stay%0A`;
                     message += `*Dates*: ${checkIn} to ${checkOut}%0A`;
