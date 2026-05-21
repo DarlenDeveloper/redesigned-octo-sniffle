@@ -220,6 +220,7 @@ function initializeForm() {
         category:    form.querySelector('[name="category"]').value,
         type:        form.querySelector('[name="type"]').value,
         location:    form.querySelector('[name="location"]').value,
+        currency:    form.querySelector('[name="currency"]').value,
         price:       Number(form.querySelector('[name="price"]').value),
         priceLabel:  form.querySelector('[name="priceLabel"]').value,
         bedrooms:    Number(form.querySelector('[name="bedrooms"]').value) || 0,
