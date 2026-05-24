@@ -43,13 +43,14 @@ async function loadPropertyDetails() {
         
         // Availability display
         const availText = (() => {
-            if (!p.availability) return p.status || 'Contact for availability';
+            if (!p.availability || p.availability === '') return 'Available Now';
             const availDate = new Date(p.availability);
+            if (isNaN(availDate.getTime())) return 'Available Now';
             const today = new Date();
             today.setHours(0,0,0,0);
             if (availDate <= today) return 'Available Now';
             const dateStr = availDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-            return `${dateStr}`;
+            return `Available on ${dateStr}`;
         })();
         document.getElementById('propAvailability').innerText = availText;
         document.getElementById('propStatus').innerText = p.status || 'Luxury and security guaranteed';

@@ -33,6 +33,7 @@ async function loadProperty() {
     form.querySelector('[name="category"]').value    = p.category || 'buy';
     form.querySelector('[name="type"]').value        = p.type || 'Apartment';
     form.querySelector('[name="location"]').value    = p.location || 'Kampala';
+    form.querySelector('[name="currency"]').value    = p.currency || 'UGX';
     form.querySelector('[name="price"]').value       = p.price || '';
     form.querySelector('[name="priceLabel"]').value  = p.priceLabel || 'per month';
     form.querySelector('[name="bedrooms"]').value    = p.bedrooms || '';
@@ -40,6 +41,22 @@ async function loadProperty() {
     form.querySelector('[name="status"]').value      = p.status || 'Active';
     form.querySelector('[name="availability"]').value = p.availability || '';
     form.querySelector('[name="description"]').value = p.description || '';
+    
+    // Update currency label
+    const currencyLabel = document.getElementById('editPriceCurrency');
+    if (currencyLabel) {
+      currencyLabel.textContent = `(${p.currency || 'UGX'})`;
+    }
+    
+    // Add currency change listener
+    const currencySelect = form.querySelector('[name="currency"]');
+    if (currencySelect) {
+      currencySelect.addEventListener('change', () => {
+        if (currencyLabel) {
+          currencyLabel.textContent = `(${currencySelect.value})`;
+        }
+      });
+    }
 
     // Amenities
     if (p.amenities) {
@@ -112,6 +129,7 @@ document.getElementById('editPropertyForm').addEventListener('submit', async (e)
       category:    form.querySelector('[name="category"]').value,
       type:        form.querySelector('[name="type"]').value,
       location:    form.querySelector('[name="location"]').value,
+      currency:    form.querySelector('[name="currency"]').value,
       price:       Number(form.querySelector('[name="price"]').value),
       priceLabel:  form.querySelector('[name="priceLabel"]').value,
       bedrooms:    Number(form.querySelector('[name="bedrooms"]').value) || 0,

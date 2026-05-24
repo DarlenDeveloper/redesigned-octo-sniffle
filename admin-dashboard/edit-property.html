@@ -128,7 +128,17 @@
               </select>
             </div>
             <div class="form-group">
-              <label>Price (UGX) *</label>
+              <label>Currency *</label>
+              <select name="currency" id="editCurrency" required>
+                <option value="UGX">UGX - Ugandan Shilling</option>
+                <option value="USD">USD - US Dollar</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="RWF">RWF - Rwandan Franc</option>
+                <option value="KES">KES - Kenyan Shilling</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Price <span id="editPriceCurrency">(UGX)</span> *</label>
               <input type="number" name="price" required>
             </div>
             <div class="form-group">

@@ -81,8 +81,13 @@ function renderProperties() {
             <div class="content">
                 <div class="price-line"><span>${categoryLabel}</span> ${pricePrefix}${formattedPrice}</div>
                 ${(() => {
-                    if (!p.availability) return '';
+                    if (!p.availability || p.availability === '') {
+                        return `<div class="availability-badge" style="font-size: 12px; color: #27ae60; font-weight: 700; margin-bottom: 5px; text-transform: uppercase;">• Available Now</div>`;
+                    }
                     const availDate = new Date(p.availability);
+                    if (isNaN(availDate.getTime())) {
+                        return `<div class="availability-badge" style="font-size: 12px; color: #27ae60; font-weight: 700; margin-bottom: 5px; text-transform: uppercase;">• Available Now</div>`;
+                    }
                     const today = new Date();
                     today.setHours(0,0,0,0);
                     if (availDate <= today) {
