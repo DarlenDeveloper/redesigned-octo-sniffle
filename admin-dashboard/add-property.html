@@ -370,7 +370,7 @@
               </div>
 
               <div class="form-group">
-                <label id="priceLabel">Price *</label>
+                <label>Price <span id="priceCurrencyLabel">(UGX)</span> *</label>
                 <input type="number" name="price" placeholder="e.g. 1500000" required>
               </div>
 
@@ -386,7 +386,7 @@
 
               <!-- For Rent -->
               <div class="form-group rent-only hidden">
-                <label>Security Deposit (UGX)</label>
+                <label>Security Deposit <span id="depositCurrency">(UGX)</span></label>
                 <input type="number" name="deposit" placeholder="e.g. 3000000">
               </div>
 
@@ -416,14 +416,17 @@
               </div>
 
               <div class="form-group">
-                <label>Availability Date *</label>
-                <div style="display:flex; gap:8px;">
-                  <input type="date" name="availability" id="availInput" style="flex:1;" required>
-                  <button type="button" class="btn-primary" style="padding: 8px 12px; background: #27ae60;" onclick="document.getElementById('availInput').value = new Date().toISOString().split('T')[0]">Today</button>
-                </div>
+                <label>Availability *</label>
+                <select name="availability" required>
+                  <option value="">Select Availability</option>
+                  <option value="Available">Available</option>
+                  <option value="Booked">Booked</option>
+                  <option value="Not Available">Not Available</option>
+                  <option value="Under Maintenance">Under Maintenance</option>
+                </select>
               </div>
 
-              <div class="form-group full">
+              <div class="form-group full"></div>
                 <label>Description *</label>
                 <textarea name="description" placeholder="Describe the property..." required></textarea>
               </div>

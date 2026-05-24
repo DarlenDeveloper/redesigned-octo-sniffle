@@ -104,6 +104,7 @@ function initializeForm() {
   const priceLabelSelect = document.getElementById('priceLabelSelect');
   const customTypeGroup = document.getElementById('customTypeGroup');
   const customTypeInput = document.getElementById('customTypeInput');
+  const currencySelect = document.querySelector('[name="currency"]');
 
   if (categorySelect) categorySelect.addEventListener('change', updateFieldVisibility);
   if (typeSelect) {
@@ -111,6 +112,24 @@ function initializeForm() {
       updateFieldVisibility();
       toggleCustomTypeField();
     });
+  }
+  
+  // Update currency labels when currency changes
+  if (currencySelect) {
+    currencySelect.addEventListener('change', updateCurrencyLabels);
+  }
+  
+  function updateCurrencyLabels() {
+    const currency = currencySelect.value;
+    const priceCurrencyLabel = document.getElementById('priceCurrencyLabel');
+    const depositCurrency = document.getElementById('depositCurrency');
+    
+    if (priceCurrencyLabel) {
+      priceCurrencyLabel.textContent = `(${currency})`;
+    }
+    if (depositCurrency) {
+      depositCurrency.textContent = `(${currency})`;
+    }
   }
 
   function toggleCustomTypeField() {
