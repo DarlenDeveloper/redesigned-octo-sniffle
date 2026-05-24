@@ -102,9 +102,28 @@ function initializeForm() {
   const categorySelect = document.getElementById('categorySelect');
   const typeSelect = document.getElementById('typeSelect');
   const priceLabelSelect = document.getElementById('priceLabelSelect');
+  const customTypeGroup = document.getElementById('customTypeGroup');
+  const customTypeInput = document.getElementById('customTypeInput');
 
   if (categorySelect) categorySelect.addEventListener('change', updateFieldVisibility);
-  if (typeSelect) typeSelect.addEventListener('change', updateFieldVisibility);
+  if (typeSelect) {
+    typeSelect.addEventListener('change', () => {
+      updateFieldVisibility();
+      toggleCustomTypeField();
+    });
+  }
+
+  function toggleCustomTypeField() {
+    const type = typeSelect.value;
+    if (type === 'Other') {
+      customTypeGroup.classList.remove('hidden');
+      customTypeInput.setAttribute('required', 'required');
+    } else {
+      customTypeGroup.classList.add('hidden');
+      customTypeInput.removeAttribute('required');
+      customTypeInput.value = '';
+    }
+  }
 
   function updateFieldVisibility() {
     const category = categorySelect.value;
@@ -218,7 +237,7 @@ function initializeForm() {
       const property = {
         title:       form.querySelector('[name="title"]').value.trim(),
         category:    form.querySelector('[name="category"]').value,
-        type:        form.querySelector('[name="type"]').value,
+        type:        typeSelect.value === 'Other' ? customTypeInput.value.trim() : typeSelect.value,
         location:    form.querySelector('[name="location"]').value,
         currency:    form.querySelector('[name="currency"]').value,
         price:       Number(form.querySelector('[name="price"]').value),

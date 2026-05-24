@@ -175,9 +175,26 @@ window.openEditModal = async (id) => {
   if (!property) return;
 
   const form = document.getElementById('editForm');
+  const typeSelect = form.querySelector('[name="type"]');
+  const customTypeGroup = document.getElementById('editCustomTypeGroup');
+  const customTypeInput = document.getElementById('editCustomTypeInput');
+  
   form.querySelector('[name="title"]').value = property.title || '';
   form.querySelector('[name="category"]').value = property.category || 'buy';
-  form.querySelector('[name="type"]').value = property.type || 'Apartment';
+  
+  // Check if property type is in the dropdown
+  const typeOptions = Array.from(typeSelect.options).map(opt => opt.value);
+  if (typeOptions.includes(property.type)) {
+    typeSelect.value = property.type || 'Apartment';
+    customTypeGroup.classList.add('hidden');
+    customTypeInput.value = '';
+  } else {
+    // Custom type
+    typeSelect.value = 'Other';
+    customTypeGroup.classList.remove('hidden');
+    customTypeInput.value = property.type || '';
+  }
+  
   form.querySelector('[name="location"]').value = property.location || 'Kampala';
   form.querySelector('[name="currency"]').value = property.currency || 'UGX';
   form.querySelector('[name="price"]').value = property.price || '';
@@ -198,6 +215,18 @@ window.openEditModal = async (id) => {
   modalExistingImages = property.images || [];
   modalNewFiles = [];
   renderModalImagePreviews();
+
+  // Add event listener for type change
+  typeSelect.addEventListener('change', function() {
+    if (this.value === 'Other') {
+      customTypeGroup.classList.remove('hidden');
+      customTypeInput.setAttribute('required', 'required');
+    } else {
+      customTypeGroup.classList.add('hidden');
+      customTypeInput.removeAttribute('required');
+      customTypeInput.value = '';
+    }
+  });
 
   document.getElementById('editModal').style.display = 'block';
 };
@@ -273,10 +302,14 @@ document.getElementById('editForm').addEventListener('submit', async (e) => {
       newUrls.push(url);
     }
 
+    const typeSelect = form.querySelector('[name="type"]');
+    const customTypeInput = document.getElementById('editCustomTypeInput');
+    const propertyType = typeSelect.value === 'Other' ? customTypeInput.value.trim() : typeSelect.value;
+    
     await updateDoc(doc(db, 'properties', editingPropertyId), {
       title: form.querySelector('[name="title"]').value.trim(),
       category: form.querySelector('[name="category"]').value,
-      type: form.querySelector('[name="type"]').value,
+      type: propertyType,
       location: form.querySelector('[name="location"]').value,
       currency: form.querySelector('[name="currency"]').value,
       price: Number(form.querySelector('[name="price"]').value),

@@ -881,3 +881,7 @@ tbody tr:last-child td { border-bottom: none; }
     justify-content: center;
   }
 }
+
+.hidden {
+  display: none !important;
+}
