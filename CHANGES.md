@@ -8,7 +8,7 @@ Rebranded and restructured the homepage to reflect Pixon Real Estate's three cor
 ### 1. Branding & Location Updates
 - Replaced all "421 Residences" references with "Pixon Real Estate"
 - Updated meta tags, titles, and descriptions across all pages
-- Changed location focus from Kulambiro-only to multi-area: Kololo, Nakasero, Naguru, Bugolobi, Mbuga
+- Changed location focus from Kulambiro-only to multi-area: Kololo, Nakasero, Naguru, Bugolobi, Mbuya
 - Updated footer and contact information
 
 ### 2. Hero Section
@@ -21,7 +21,7 @@ Rebranded and restructured the homepage to reflect Pixon Real Estate's three cor
 - Created 6 featured property cards with:
   - Property image with "View Details" hover overlay
   - Price tag (SHORT STAY FROM / FOR RENT FROM / FOR SALE FROM)
-  - Location name (Kololo, Nakasero, Naguru, Bugolobi, Mbuga, Kampala)
+  - Location name (Kololo, Nakasero, Naguru, Bugolobi, Mbuya, Kampala)
   - Description
   - Amenity icons (Boxicons: bed, TV, building, WiFi, bath)
 - Horizontal scrolling carousel on desktop and mobile
@@ -32,7 +32,7 @@ Rebranded and restructured the homepage to reflect Pixon Real Estate's three cor
 - Four dropdown filters:
   - Buy/Rent (Buy, Rent, Book a Stay)
   - Property Type (Apartment, House, Land)
-  - Location (Kololo, Nakasero, Naguru, Bugolobi, Mbuga)
+  - Location (Kololo, Nakasero, Naguru, Bugolobi, Mbuya)
   - Budget (price ranges in shs. and USD)
 - Search button with blue theme color (#286192)
 - Horizontal layout maintained on mobile
