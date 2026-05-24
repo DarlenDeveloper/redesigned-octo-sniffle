@@ -25,7 +25,6 @@ async function loadProperties() {
         
         // Populate dynamic filters based on actual data
         populateDynamicFilters();
-        initPriceSlider();
 
         // Timeout to simulate "premium" loading feel as requested
         setTimeout(() => {
@@ -185,7 +184,6 @@ function handleSearch() {
     const category = document.getElementById('searchCategory').value.toLowerCase();
     const type = document.getElementById('searchType').value.toLowerCase();
     const location = document.getElementById('searchLocation').value.toLowerCase();
-    const budget = document.getElementById('searchBudgetSlider')?.value || '';
 
     filteredProperties = allProperties.filter(p => {
         const pCategory = (p.category || '').toLowerCase();
@@ -195,12 +193,8 @@ function handleSearch() {
         const matchCategory = !category || pCategory === category;
         const matchType = !type || pType === type;
         const matchLocation = !location || pLocation.includes(location);
-        
-        const price = Number(p.price);
-        const maxBudget = Number(document.getElementById('searchBudgetSlider')?.value) || Infinity;
-        const matchBudget = !maxBudget || price <= maxBudget;
 
-        return matchCategory && matchType && matchLocation && matchBudget;
+        return matchCategory && matchType && matchLocation;
     });
 
     currentPage = 1;
@@ -229,8 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchBtn) {
         searchBtn.addEventListener('click', handleSearch);
     }
-
-    // Intercept nav clicks
     document.addEventListener('click', (e) => {
         const navLink = e.target.closest('a');
         if (!navLink) return;
@@ -299,30 +291,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-function initPriceSlider() {
-    const slider = document.getElementById('searchBudgetSlider');
-    const display = document.getElementById('priceValue');
-    if (!slider || !display) return;
-
-    // Find min/max from actual data
-    const prices = allProperties.map(p => Number(p.price)).filter(p => !isNaN(p));
-    if (prices.length > 0) {
-        const maxPrice = Math.max(...prices);
-        slider.max = maxPrice;
-        slider.value = maxPrice;
-        // Adjust step based on magnitude
-        slider.step = maxPrice > 1000000 ? 50000 : 5000;
-        
-        display.innerText = `shs. ${maxPrice.toLocaleString()}`;
-    }
-
-    slider.addEventListener('input', (e) => {
-        const val = Number(e.target.value);
-        display.innerText = `UGX ${val.toLocaleString()}`;
-        handleSearch(); // Trigger search dynamically
-    });
-}
 
 // Map Integration
 const locationCoords = {
