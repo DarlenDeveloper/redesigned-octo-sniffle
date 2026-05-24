@@ -38,18 +38,21 @@ async function loadPropertyDetails() {
         document.getElementById('propLocation').innerHTML = `<i class="bx bx-map" style="color: #286192;"></i> ${p.location || 'Kampala, Uganda'}`;
         document.getElementById('propDescription').innerText = p.description || 'No description available.';
         document.getElementById('propType').innerText = p.type || 'Apartment';
-        document.getElementById('propBedrooms').innerText = `${p.bedrooms || 0} Rooms`;
-        document.getElementById('propBathrooms').innerText = `${p.bathrooms || 0} Baths`;
+        document.getElementById('propBedrooms').innerText = `${p.bedrooms || 0}`;
+        document.getElementById('propBathrooms').innerText = `${p.bathrooms || 0}`;
+        
+        // Availability display
         const availText = (() => {
-            if (!p.availability) return p.status || 'Luxury and security guaranteed';
+            if (!p.availability) return p.status || 'Contact for availability';
             const availDate = new Date(p.availability);
             const today = new Date();
             today.setHours(0,0,0,0);
             if (availDate <= today) return 'Available Now';
-            const dateStr = availDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-            return `Available on ${dateStr}`;
+            const dateStr = availDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+            return `${dateStr}`;
         })();
-        document.getElementById('propStatus').innerText = availText;
+        document.getElementById('propAvailability').innerText = availText;
+        document.getElementById('propStatus').innerText = p.status || 'Luxury and security guaranteed';
 
         // Price formatting
         const price = p.price ? Number(p.price).toLocaleString() : 'TBD';
@@ -60,23 +63,44 @@ async function loadPropertyDetails() {
         document.getElementById('propPrice').innerText = `${pricePrefix}${price}`;
         document.getElementById('priceUnit').innerText = priceSuffix;
 
-        // Dynamic Amenities
+        // Dynamic Amenities with enhanced icons
         const amenitiesContainer = document.getElementById('propAmenities');
         if (amenitiesContainer) {
             if (p.amenities && p.amenities.length > 0) {
                 amenitiesContainer.innerHTML = p.amenities.map(a => {
                     let icon = 'bx-check-circle';
-                    if (a.toLowerCase().includes('serviced')) icon = 'bx-heart';
-                    if (a.toLowerCase().includes('furnished')) icon = 'bx-home-alt';
-                    if (a.toLowerCase().includes('wifi')) icon = 'bx-wifi';
-                    if (a.toLowerCase().includes('pool')) icon = 'bx-water';
-                    if (a.toLowerCase().includes('gym')) icon = 'bx-dumbbell';
-                    if (a.toLowerCase().includes('security')) icon = 'bx-shield-quarter';
+                    const lower = a.toLowerCase();
                     
-                    return `<div class="amenity-pill"><i class="bx ${icon}"></i> ${a}</div>`;
+                    // Enhanced icon mapping
+                    if (lower.includes('wifi')) icon = 'bx-wifi';
+                    else if (lower.includes('tv') || lower.includes('dstv')) icon = 'bx-tv';
+                    else if (lower.includes('ac') || lower.includes('air')) icon = 'bx-wind';
+                    else if (lower.includes('kitchen')) icon = 'bx-dish';
+                    else if (lower.includes('washing') || lower.includes('laundry')) icon = 'bxs-washer';
+                    else if (lower.includes('solar') || lower.includes('generator')) icon = 'bx-bolt-circle';
+                    else if (lower.includes('water') || lower.includes('borehole')) icon = 'bx-droplet';
+                    else if (lower.includes('warm') || lower.includes('hot')) icon = 'bx-water';
+                    else if (lower.includes('parking')) icon = 'bx-car';
+                    else if (lower.includes('security')) icon = 'bx-shield-quarter';
+                    else if (lower.includes('cctv')) icon = 'bx-cctv';
+                    else if (lower.includes('gated')) icon = 'bx-home-circle';
+                    else if (lower.includes('pool') || lower.includes('swim')) icon = 'bx-swim';
+                    else if (lower.includes('gym')) icon = 'bx-dumbbell';
+                    else if (lower.includes('elevator') || lower.includes('lift')) icon = 'bx-up-arrow-circle';
+                    else if (lower.includes('balcony') || lower.includes('terrace')) icon = 'bx-home-smile';
+                    else if (lower.includes('garden')) icon = 'bx-leaf';
+                    else if (lower.includes('study')) icon = 'bx-book-reader';
+                    else if (lower.includes('servant') || lower.includes('quarters')) icon = 'bx-home-alt';
+                    else if (lower.includes('serviced')) icon = 'bx-heart';
+                    else if (lower.includes('furnished')) icon = 'bx-home-heart';
+                    
+                    return `<div style="display: flex; align-items: center; gap: 12px; padding: 15px; background: #f9f9f9; border-radius: 10px;">
+                        <i class="bx ${icon}" style="font-size: 24px; color: #286192;"></i>
+                        <span style="font-size: 15px; font-weight: 500;">${a}</span>
+                    </div>`;
                 }).join('');
             } else {
-                amenitiesContainer.innerHTML = '<p>No amenities listed.</p>';
+                amenitiesContainer.innerHTML = '<p style="color: #717171;">No amenities listed.</p>';
             }
         }
 

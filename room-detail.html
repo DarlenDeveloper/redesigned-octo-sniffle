@@ -27,10 +27,8 @@
     .property-main-hero {
       flex: 0 0 70%;
       width: 70%;
-      border-radius: 0;
-      overflow: hidden;
+      overflow: visible;
       position: relative;
-      border: 1px solid #eee;
     }
 
     .property-sidebar-hero {
@@ -43,6 +41,9 @@
     .property-hero-slider {
       width: 100%;
       height: 600px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     .property-hero-slider img {
@@ -136,31 +137,31 @@
             <h2 style="font-weight: 700; margin-bottom: 25px;">More Details</h2>
             <p id="propDescription" style="font-size: 18px; line-height: 1.7; color: #444;">Loading property description...</p>
 
-            <div class="property-specs-grid" style="margin: 40px 0;">
-              <div class="spec-item">
-                <i class="bx bx-bed"></i>
-                <span>Bedrooms</span>
-                <strong id="propBedrooms">...</strong>
+            <div class="property-specs-grid" style="margin: 40px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px;">
+              <div class="spec-item" style="background: #f9f9f9; padding: 20px; border-radius: 12px; text-align: center;">
+                <i class="bx bx-bed" style="font-size: 32px; color: #286192; margin-bottom: 10px;"></i>
+                <span style="display: block; font-size: 13px; color: #717171; margin-bottom: 5px;">Bedrooms</span>
+                <strong id="propBedrooms" style="font-size: 20px; font-weight: 700;">...</strong>
               </div>
-              <div class="spec-item">
-                <i class="bx bx-bath"></i>
-                <span>Bathrooms</span>
-                <strong id="propBathrooms">...</strong>
+              <div class="spec-item" style="background: #f9f9f9; padding: 20px; border-radius: 12px; text-align: center;">
+                <i class="bx bx-bath" style="font-size: 32px; color: #286192; margin-bottom: 10px;"></i>
+                <span style="display: block; font-size: 13px; color: #717171; margin-bottom: 5px;">Bathrooms</span>
+                <strong id="propBathrooms" style="font-size: 20px; font-weight: 700;">...</strong>
               </div>
-              <div class="spec-item">
-                <i class="bx bx-hotel"></i>
-                <span>Type</span>
-                <strong id="propType">...</strong>
+              <div class="spec-item" style="background: #f9f9f9; padding: 20px; border-radius: 12px; text-align: center;">
+                <i class="bx bx-building" style="font-size: 32px; color: #286192; margin-bottom: 10px;"></i>
+                <span style="display: block; font-size: 13px; color: #717171; margin-bottom: 5px;">Property Type</span>
+                <strong id="propType" style="font-size: 20px; font-weight: 700;">...</strong>
               </div>
-              <div class="spec-item">
-                <i class="bx bx-shield-check"></i>
-                <span>Security</span>
-                <strong id="propSecurity">Level 5</strong>
+              <div class="spec-item" style="background: #f9f9f9; padding: 20px; border-radius: 12px; text-align: center;">
+                <i class="bx bx-calendar-check" style="font-size: 32px; color: #286192; margin-bottom: 10px;"></i>
+                <span style="display: block; font-size: 13px; color: #717171; margin-bottom: 5px;">Availability</span>
+                <strong id="propAvailability" style="font-size: 16px; font-weight: 700;">...</strong>
               </div>
             </div>
 
-            <h3 style="font-weight: 700; margin-top: 40px;">Top Amenities</h3>
-            <div id="propAmenities" class="amenities-grid" style="margin-top: 20px;"></div>
+            <h3 style="font-weight: 700; margin-top: 40px; margin-bottom: 20px;">Top Amenities</h3>
+            <div id="propAmenities" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;"></div>
             
 
           </div>
