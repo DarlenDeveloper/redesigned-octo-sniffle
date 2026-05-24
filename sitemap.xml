@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.pixonrealestate.com/</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.pixonrealestate.com/images/h1.jpg</image:loc>
+      <image:title>PIXON REAL ESTATE - Luxury Properties in Kampala</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Property Details Page -->
+  <url>
+    <loc>https://www.pixonrealestate.com/room-detail.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Note: Individual property listings should be dynamically added here -->
+  <!-- This can be generated server-side or via a build script -->
+  
+</urlset>

@@ -1,5 +1,13 @@
+# Pixon Real Estate - Robots.txt
+# Block admin dashboard from all search engines
 User-agent: *
 Disallow: /admin-dashboard/
+Disallow: /test-firebase.js
+Disallow: /.firebase/
+Disallow: /.git/
 
-User-agent: Googlebot
-Disallow: /admin-dashboard/
+# Allow all other pages
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.pixonrealestate.com/sitemap.xml

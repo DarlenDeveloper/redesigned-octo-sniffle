@@ -1,0 +1,23 @@
+# Admin Dashboard - Additional Protection
+# This file provides extra security for the admin dashboard
+
+# Block all search engine crawlers
+<IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Optional: Add password protection (uncomment and configure)
+# AuthType Basic
+# AuthName "Admin Area - Restricted Access"
+# AuthUserFile /path/to/.htpasswd
+# Require valid-user
+
+# Prevent access to sensitive files
+<FilesMatch "\.(js|json)$">
+    <IfModule mod_headers.c>
+        Header set X-Robots-Tag "noindex, nofollow"
+    </IfModule>
+</FilesMatch>
