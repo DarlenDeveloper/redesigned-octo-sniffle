@@ -54,7 +54,8 @@ async function loadPropertyDetails() {
         // Price formatting
         const price = p.price ? Number(p.price).toLocaleString() : 'TBD';
         const priceSuffix = p.priceLabel ? `/ ${p.priceLabel}` : (p.category === 'book' ? '/ night' : '');
-        const pricePrefix = (p.category === 'rent' || p.category === 'book') ? 'shs. ' : 'UGX ';
+        const currency = p.currency || 'UGX';
+        const pricePrefix = `${currency} `;
         
         document.getElementById('propPrice').innerText = `${pricePrefix}${price}`;
         document.getElementById('priceUnit').innerText = priceSuffix;
@@ -240,7 +241,8 @@ function updatePriceCalculation() {
     const isShortStay = p.category === 'book';
     const totalPrice = isShortStay ? price * nights : price;
     
-    const pricePrefix = (p.category === 'rent' || p.category === 'book') ? 'shs. ' : 'UGX ';
+    const currency = p.currency || 'UGX';
+    const pricePrefix = `${currency} `;
     const formattedTotal = totalPrice.toLocaleString();
 
     if (isShortStay) {

@@ -58,14 +58,13 @@ function renderProperties() {
         const mainImage = p.images && p.images.length > 0 ? p.images[0] : 'images/pixon-logo.jpeg';
         
         let categoryLabel = 'FOR SALE FROM';
-        let pricePrefix = 'UGX ';
+        const currency = p.currency || 'UGX';
+        let pricePrefix = `${currency} `;
         
         if (p.category === 'rent') {
             categoryLabel = 'FOR RENT';
-            pricePrefix = 'shs. ';
         } else if (p.category === 'book') {
             categoryLabel = 'SHORT STAY FROM';
-            pricePrefix = 'shs. ';
         }
 
         const formattedPrice = p.price ? Number(p.price).toLocaleString() : 'TBD';
@@ -320,7 +319,7 @@ function initPriceSlider() {
 
     slider.addEventListener('input', (e) => {
         const val = Number(e.target.value);
-        display.innerText = `shs. ${val.toLocaleString()}`;
+        display.innerText = `UGX ${val.toLocaleString()}`;
         handleSearch(); // Trigger search dynamically
     });
 }
@@ -385,6 +384,7 @@ function renderMap() {
 
         const mainImage = p.images?.length > 0 ? p.images[0] : 'images/pixon-logo.jpeg';
         const price = p.price ? Number(p.price).toLocaleString() : 'TBD';
+        const currency = p.currency || 'UGX';
 
         const marker = L.marker([jitterLat, jitterLng], {icon: customIcon}).addTo(propertyMap);
         marker.bindPopup(`
@@ -393,7 +393,7 @@ function renderMap() {
                     <img src="${mainImage}" style="width: 100%; height: 90px; object-fit: cover; border-radius: 6px; margin-bottom: 10px;">
                     <strong style="display:block; color: #111; font-size: 14px; margin-bottom: 5px; line-height: 1.2;">${p.title}</strong>
                 </a>
-                <span style="color: #286192; font-weight: 700; font-size: 13px;">UGX ${price}</span>
+                <span style="color: #286192; font-weight: 700; font-size: 13px;">${currency} ${price}</span>
             </div>
         `);
     });

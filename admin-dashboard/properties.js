@@ -46,7 +46,8 @@ function renderTable() {
     const img = p.images?.[0] || '../images/pixon-logo.jpeg';
     const statusClass = { rent: 'rented', buy: 'active', book: 'booked' }[p.category] || 'active';
     const categoryLabel = { rent: 'For Rent', buy: 'For Sale', book: 'Short Stay' }[p.category] || p.category;
-    const price = p.price ? `UGX ${Number(p.price).toLocaleString()}` : '—';
+    const currency = p.currency || 'UGX';
+    const price = p.price ? `${currency} ${Number(p.price).toLocaleString()}` : '—';
     return `
       <tr>
         <td>
