@@ -105,9 +105,12 @@ window.openEditModal = async (id) => {
   form.querySelector('[name="category"]').value = property.category || 'buy';
   form.querySelector('[name="type"]').value = property.type || 'Apartment';
   form.querySelector('[name="location"]').value = property.location || 'Kampala';
+  form.querySelector('[name="currency"]').value = property.currency || 'UGX';
   form.querySelector('[name="price"]').value = property.price || '';
+  form.querySelector('[name="priceLabel"]').value = property.priceLabel || '';
   form.querySelector('[name="status"]').value = property.status || 'Active';
   form.querySelector('[name="bedrooms"]').value = property.bedrooms || '';
+  form.querySelector('[name="bathrooms"]').value = property.bathrooms || '';
   form.querySelector('[name="availability"]').value = property.availability || '';
   form.querySelector('[name="description"]').value = property.description || '';
   
@@ -132,10 +135,10 @@ function renderModalImagePreviews() {
   // Existing
   modalExistingImages.forEach((url, index) => {
     const div = document.createElement('div');
-    div.style = 'position:relative; width:80px; height:60px;';
+    div.className = 'image-preview-item';
     div.innerHTML = `
-      <img src="${url}" style="width:100%; height:100%; object-fit:cover; border-radius:4px;">
-      <button type="button" style="position:absolute; top:-5px; right:-5px; background:red; color:white; border:none; border-radius:50%; width:18px; height:18px; font-size:12px; cursor:pointer;" onclick="removeModalExistingImage(${index})">&times;</button>
+      <img src="${url}">
+      <button type="button" onclick="removeModalExistingImage(${index})">&times;</button>
     `;
     container.appendChild(div);
   });
@@ -143,12 +146,12 @@ function renderModalImagePreviews() {
   // New
   modalNewFiles.forEach((file, index) => {
     const div = document.createElement('div');
-    div.style = 'position:relative; width:80px; height:60px;';
+    div.className = 'image-preview-item';
     const reader = new FileReader();
     reader.onload = (e) => {
       div.innerHTML = `
-        <img src="${e.target.result}" style="width:100%; height:100%; object-fit:cover; border-radius:4px; border:2px solid var(--blue);">
-        <button type="button" style="position:absolute; top:-5px; right:-5px; background:red; color:white; border:none; border-radius:50%; width:18px; height:18px; font-size:12px; cursor:pointer;" onclick="removeModalNewFile(${index})">&times;</button>
+        <img src="${e.target.result}" style="border: 2px solid var(--blue);">
+        <button type="button" onclick="removeModalNewFile(${index})">&times;</button>
       `;
     };
     reader.readAsDataURL(file);
@@ -201,9 +204,12 @@ document.getElementById('editForm').addEventListener('submit', async (e) => {
       category: form.querySelector('[name="category"]').value,
       type: form.querySelector('[name="type"]').value,
       location: form.querySelector('[name="location"]').value,
+      currency: form.querySelector('[name="currency"]').value,
       price: Number(form.querySelector('[name="price"]').value),
+      priceLabel: form.querySelector('[name="priceLabel"]').value,
       status: form.querySelector('[name="status"]').value,
       bedrooms: Number(form.querySelector('[name="bedrooms"]').value) || 0,
+      bathrooms: Number(form.querySelector('[name="bathrooms"]').value) || 0,
       availability: form.querySelector('[name="availability"]').value.trim(),
       description: form.querySelector('[name="description"]').value.trim(),
       amenities: [...form.querySelectorAll('input[name="amenities"]:checked')].map(cb => cb.value),
