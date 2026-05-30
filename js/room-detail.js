@@ -189,11 +189,11 @@ async function loadPropertyDetails() {
                 const checkOut = document.getElementById('checkOut')?.value || 'N/A';
                 const totalText = document.getElementById('breakdownTotal')?.innerText || 'N/A';
                 
-                // Save to Firestore Inquiries
+                // Save to Firestore Bookings
                 try {
                     reserveBtn.disabled = true;
                     reserveBtn.innerText = 'Connecting...';
-                    await addDoc(collection(db, 'inquiries'), {
+                    await addDoc(collection(db, 'bookings'), {
                         name: nameInput?.value.trim() || 'N/A',
                         phone: phoneInput?.value.trim() || 'N/A',
                         email: emailInput?.value.trim() || '',
