@@ -261,7 +261,13 @@
                   <option value="buy">For Sale (Buy)</option>
                   <option value="rent">For Rent</option>
                   <option value="book">Short Stay (Book)</option>
+                  <option value="other">Other (Please specify)</option>
                 </select>
+              </div>
+
+              <div class="form-group hidden" id="customCategoryGroup">
+                <label>Specify Category *</label>
+                <input type="text" name="customCategory" id="customCategoryInput" placeholder="e.g. Lease, Exchange, etc.">
               </div>
 
               <div class="form-group">
@@ -290,7 +296,7 @@
 
               <div class="form-group">
                 <label>Location *</label>
-                <select name="location" required>
+                <select name="location" id="locationSelect" required>
                   <option value="">Select location</option>
                   <option value="Kololo">Kololo</option>
                   <option value="Nakasero">Nakasero</option>
@@ -301,18 +307,30 @@
                   <option value="Ntinda">Ntinda</option>
                   <option value="Muyenga">Muyenga</option>
                   <option value="Kampala">Kampala</option>
+                  <option value="Other">Other (Please specify)</option>
                 </select>
+              </div>
+
+              <div class="form-group hidden" id="customLocationGroup">
+                <label>Specify Location *</label>
+                <input type="text" name="customLocation" id="customLocationInput" placeholder="e.g. Makerere, Kikaya, etc.">
               </div>
 
               <div class="form-group">
                 <label>Status *</label>
-                <select name="status" required>
+                <select name="status" id="statusSelect" required>
                   <option value="">Select status</option>
                   <option value="Active">Active</option>
                   <option value="Sold Out">Sold Out</option>
                   <option value="Rented">Rented</option>
                   <option value="Booked">Booked</option>
+                  <option value="Other">Other (Please specify)</option>
                 </select>
+              </div>
+
+              <div class="form-group hidden" id="customStatusGroup">
+                <label>Specify Status *</label>
+                <input type="text" name="customStatus" id="customStatusInput" placeholder="e.g. Under Negotiation, Coming Soon, etc.">
               </div>
             </div>
           </div>
@@ -333,13 +351,20 @@
               </div>
 
               <div class="form-group land-only hidden">
-                <label>Title Deed Status</label>
-                <select name="titleDeed">
+                <label>Title Deed Status *</label>
+                <select name="titleDeed" id="titleDeedSelect">
+                  <option value="">Select status</option>
                   <option value="Available">Available</option>
                   <option value="Pending">Pending</option>
                   <option value="Leasehold">Leasehold</option>
                   <option value="Freehold">Freehold</option>
+                  <option value="Other">Other (Please specify)</option>
                 </select>
+              </div>
+
+              <div class="form-group land-only hidden" id="customTitleDeedGroup">
+                <label>Specify Title Deed Status *</label>
+                <input type="text" name="customTitleDeed" id="customTitleDeedInput" placeholder="e.g. Under Dispute, etc.">
               </div>
 
               <!-- For Buildings (Not Land) -->
@@ -392,12 +417,19 @@
               </div>
 
               <div class="form-group rent-only hidden">
-                <label>Utilities Included</label>
-                <select name="utilitiesIncluded">
+                <label>Utilities Included *</label>
+                <select name="utilitiesIncluded" id="utilitiesSelect">
+                  <option value="">Select</option>
                   <option value="No">No</option>
                   <option value="Yes">Yes</option>
                   <option value="Partial">Partial</option>
+                  <option value="Other">Other (Please specify)</option>
                 </select>
+              </div>
+
+              <div class="form-group rent-only hidden" id="customUtilitiesGroup">
+                <label>Specify Utilities *</label>
+                <input type="text" name="customUtilities" id="customUtilitiesInput" placeholder="e.g. Water Only, Electricity Only, etc.">
               </div>
 
               <!-- For Book -->
@@ -418,13 +450,19 @@
 
               <div class="form-group">
                 <label>Availability *</label>
-                <select name="availability" required>
+                <select name="availability" id="availabilitySelect" required>
                   <option value="">Select Availability</option>
                   <option value="Available">Available</option>
                   <option value="Booked">Booked</option>
                   <option value="Not Available">Not Available</option>
                   <option value="Under Maintenance">Under Maintenance</option>
+                  <option value="Other">Other (Please specify)</option>
                 </select>
+              </div>
+
+              <div class="form-group hidden" id="customAvailabilityGroup">
+                <label>Specify Availability *</label>
+                <input type="text" name="customAvailability" id="customAvailabilityInput" placeholder="e.g. Available Soon, Partially Available, etc.">
               </div>
 
               <div class="form-group full">
@@ -463,6 +501,11 @@
                 <label class="amenity-check"><input type="checkbox" name="amenities" value="Servant Quarters"> Servant Quarters</label>
                 <label class="amenity-check"><input type="checkbox" name="amenities" value="Fully Serviced"> Fully Serviced</label>
                 <label class="amenity-check"><input type="checkbox" name="amenities" value="Fully Furnished"> Fully Furnished</label>
+                <label class="amenity-check"><input type="checkbox" name="amenities" value="Other"> Other (Please specify)</label>
+              </div>
+              <div class="form-group full hidden" id="customAmenityGroup">
+                <label>Specify Other Amenity *</label>
+                <input type="text" name="customAmenity" id="customAmenityInput" placeholder="e.g. Rooftop Terrace, Library, etc.">
               </div>
             </div>
           </div>
