@@ -107,7 +107,9 @@
       cursor: pointer;
     }
     .amenity-check input { width: auto; padding: 0; }
-    .image-upload-area {
+    
+    /* Upload Areas (Images & Videos) */
+    .upload-area {
       border: 2px dashed #e2e8f0;
       border-radius: 10px;
       padding: 30px;
@@ -115,10 +117,12 @@
       cursor: pointer;
       transition: border-color 0.2s;
     }
-    .image-upload-area:hover { border-color: #286192; }
-    .image-upload-area i { font-size: 36px; color: #6b7a8d; }
-    .image-upload-area p { font-size: 14px; color: #6b7a8d; margin-top: 8px; }
-    .image-previews {
+    .upload-area:hover { border-color: #286192; }
+    .upload-area i { font-size: 36px; color: #6b7a8d; }
+    .upload-area p { font-size: 14px; color: #6b7a8d; margin-top: 8px; }
+    
+    /* Preview Containers */
+    .image-previews, .video-previews {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -129,7 +133,38 @@
       border-radius: 8px;
       object-fit: cover;
       border: 1px solid #e2e8f0;
+      position: relative;
     }
+    .video-thumb {
+      width: 120px; height: 80px;
+      border-radius: 8px;
+      background: #f0f4f8;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .video-thumb i {
+      font-size: 28px;
+      color: #286192;
+    }
+    .video-name {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(26, 35, 50, 0.9);
+      color: white;
+      font-size: 10px;
+      padding: 4px;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
     .form-actions {
       display: flex;
       gap: 12px;
@@ -170,11 +205,19 @@
       display: none;
     }
     .hidden { display: none !important; }
+    .info-text {
+      font-size: 12px;
+      color: #6b7a8d;
+      margin-top: 6px;
+    }
     @media (max-width: 768px) {
       .form-grid { grid-template-columns: 1fr; }
       .form-group.full { grid-column: 1; }
       .amenities-grid { grid-template-columns: 1fr 1fr; }
       .step-label { font-size: 10px; }
+      .image-previews, .video-previews { gap: 8px; }
+      .preview-thumb { width: 70px; height: 60px; }
+      .video-thumb { width: 100px; height: 70px; }
     }
   </style>
 </head>
@@ -240,7 +283,7 @@
           </div>
           <div class="step" data-step="4">
             <div class="step-circle">4</div>
-            <div class="step-label">Images & Finish</div>
+            <div class="step-label">Media & Finish</div>
           </div>
         </div>
 
@@ -510,16 +553,29 @@
             </div>
           </div>
 
-          <!-- STEP 4: Images -->
+          <!-- STEP 4: Media (Images & Videos) -->
           <div class="form-step" data-step="4">
+            <!-- Images Section -->
             <div class="form-group full">
               <label>Property Images * (At least one required)</label>
-              <div class="image-upload-area" id="uploadArea">
+              <div class="upload-area" id="uploadArea">
                 <i class='bx bx-image-add'></i>
                 <p>Click to upload images or drag & drop</p>
                 <input type="file" id="imageInput" multiple accept="image/*" style="display:none">
               </div>
               <div class="image-previews" id="imagePreviews"></div>
+            </div>
+
+            <!-- Videos Section -->
+            <div class="form-group full">
+              <label>Property Videos (Optional)</label>
+              <div class="upload-area" id="uploadVideoArea">
+                <i class='bx bx-video-plus'></i>
+                <p>Click to upload videos or drag & drop</p>
+                <p class="info-text">Supported formats: MP4, WebM, MOV (Max 100MB each)</p>
+                <input type="file" id="videoInput" multiple accept="video/mp4,video/webm,video/quicktime" style="display:none">
+              </div>
+              <div class="video-previews" id="videoPreviews"></div>
             </div>
           </div>
 
