@@ -101,19 +101,84 @@ function initializeForm() {
   // Dynamic field visibility based on category and type
   const categorySelect = document.getElementById('categorySelect');
   const typeSelect = document.getElementById('typeSelect');
+  const locationSelect = document.getElementById('locationSelect');
+  const statusSelect = document.getElementById('statusSelect');
+  const availabilitySelect = document.getElementById('availabilitySelect');
+  const titleDeedSelect = document.getElementById('titleDeedSelect');
+  const utilitiesSelect = document.getElementById('utilitiesSelect');
   const priceLabelSelect = document.getElementById('priceLabelSelect');
+  
+  // Custom field groups
+  const customCategoryGroup = document.getElementById('customCategoryGroup');
+  const customCategoryInput = document.getElementById('customCategoryInput');
   const customTypeGroup = document.getElementById('customTypeGroup');
   const customTypeInput = document.getElementById('customTypeInput');
+  const customLocationGroup = document.getElementById('customLocationGroup');
+  const customLocationInput = document.getElementById('customLocationInput');
+  const customStatusGroup = document.getElementById('customStatusGroup');
+  const customStatusInput = document.getElementById('customStatusInput');
+  const customAvailabilityGroup = document.getElementById('customAvailabilityGroup');
+  const customAvailabilityInput = document.getElementById('customAvailabilityInput');
+  const customTitleDeedGroup = document.getElementById('customTitleDeedGroup');
+  const customTitleDeedInput = document.getElementById('customTitleDeedInput');
+  const customUtilitiesGroup = document.getElementById('customUtilitiesGroup');
+  const customUtilitiesInput = document.getElementById('customUtilitiesInput');
+  const customAmenityGroup = document.getElementById('customAmenityGroup');
+  const customAmenityInput = document.getElementById('customAmenityInput');
+  
   const currencySelect = document.querySelector('[name="currency"]');
 
-  if (categorySelect) categorySelect.addEventListener('change', updateFieldVisibility);
+  if (categorySelect) categorySelect.addEventListener('change', () => {
+    updateFieldVisibility();
+    toggleCustomField(categorySelect, customCategoryGroup, customCategoryInput);
+  });
   if (typeSelect) {
     typeSelect.addEventListener('change', () => {
       updateFieldVisibility();
-      toggleCustomTypeField();
+      toggleCustomField(typeSelect, customTypeGroup, customTypeInput);
     });
   }
-  
+  if (locationSelect) {
+    locationSelect.addEventListener('change', () => {
+      toggleCustomField(locationSelect, customLocationGroup, customLocationInput);
+    });
+  }
+  if (statusSelect) {
+    statusSelect.addEventListener('change', () => {
+      toggleCustomField(statusSelect, customStatusGroup, customStatusInput);
+    });
+  }
+  if (availabilitySelect) {
+    availabilitySelect.addEventListener('change', () => {
+      toggleCustomField(availabilitySelect, customAvailabilityGroup, customAvailabilityInput);
+    });
+  }
+  if (titleDeedSelect) {
+    titleDeedSelect.addEventListener('change', () => {
+      toggleCustomField(titleDeedSelect, customTitleDeedGroup, customTitleDeedInput);
+    });
+  }
+  if (utilitiesSelect) {
+    utilitiesSelect.addEventListener('change', () => {
+      toggleCustomField(utilitiesSelect, customUtilitiesGroup, customUtilitiesInput);
+    });
+  }
+
+  // Amenity checkbox handler
+  document.querySelectorAll('input[name="amenities"]').forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      const otherChecked = document.querySelector('input[name="amenities"][value="Other"]:checked');
+      if (otherChecked) {
+        customAmenityGroup.classList.remove('hidden');
+        customAmenityInput.setAttribute('required', 'required');
+      } else {
+        customAmenityGroup.classList.add('hidden');
+        customAmenityInput.removeAttribute('required');
+        customAmenityInput.value = '';
+      }
+    });
+  });
+
   // Update currency labels when currency changes
   if (currencySelect) {
     currencySelect.addEventListener('change', updateCurrencyLabels);
@@ -132,15 +197,14 @@ function initializeForm() {
     }
   }
 
-  function toggleCustomTypeField() {
-    const type = typeSelect.value;
-    if (type === 'Other') {
-      customTypeGroup.classList.remove('hidden');
-      customTypeInput.setAttribute('required', 'required');
+  function toggleCustomField(selectElement, groupElement, inputElement) {
+    if (selectElement.value === 'Other' || selectElement.value === 'other') {
+      groupElement.classList.remove('hidden');
+      inputElement.setAttribute('required', 'required');
     } else {
-      customTypeGroup.classList.add('hidden');
-      customTypeInput.removeAttribute('required');
-      customTypeInput.value = '';
+      groupElement.classList.add('hidden');
+      inputElement.removeAttribute('required');
+      inputElement.value = '';
     }
   }
 
@@ -248,23 +312,23 @@ function initializeForm() {
       btn.textContent = 'Saving to database...';
       console.log('Saving to Firestore...');
 
-      // Collect amenities
+      // Collect amenities - handle "Other" option
       const amenities = [...form.querySelectorAll('input[name="amenities"]:checked')]
-        .map(cb => cb.value);
+        .map(cb => cb.value === 'Other' ? customAmenityInput.value.trim() : cb.value);
 
       // Build property object
       const property = {
         title:       form.querySelector('[name="title"]').value.trim(),
-        category:    form.querySelector('[name="category"]').value,
+        category:    categorySelect.value === 'other' ? customCategoryInput.value.trim() : categorySelect.value,
         type:        typeSelect.value === 'Other' ? customTypeInput.value.trim() : typeSelect.value,
-        location:    form.querySelector('[name="location"]').value,
+        location:    locationSelect.value === 'Other' ? customLocationInput.value.trim() : locationSelect.value,
+        status:      statusSelect.value === 'Other' ? customStatusInput.value.trim() : statusSelect.value,
         currency:    form.querySelector('[name="currency"]').value,
         price:       Number(form.querySelector('[name="price"]').value),
         priceLabel:  form.querySelector('[name="priceLabel"]').value,
         bedrooms:    Number(form.querySelector('[name="bedrooms"]').value) || 0,
         bathrooms:   Number(form.querySelector('[name="bathrooms"]').value) || 0,
-        status:      form.querySelector('[name="status"]').value,
-        availability: form.querySelector('[name="availability"]').value.trim(),
+        availability: availabilitySelect.value === 'Other' ? customAvailabilityInput.value.trim() : availabilitySelect.value,
         description: form.querySelector('[name="description"]').value.trim(),
         amenities,
         images:      imageUrls,
@@ -276,7 +340,14 @@ function initializeForm() {
       optionalFields.forEach(field => {
         const input = form.querySelector(`[name="${field}"]`);
         if (input && input.value) {
-          property[field] = input.type === 'number' ? Number(input.value) : input.value;
+          // Handle special case for titleDeed "Other"
+          if (field === 'titleDeed' && input.value === 'Other') {
+            property[field] = customTitleDeedInput.value.trim();
+          } else if (field === 'utilitiesIncluded' && input.value === 'Other') {
+            property[field] = customUtilitiesInput.value.trim();
+          } else {
+            property[field] = input.type === 'number' ? Number(input.value) : input.value;
+          }
         }
       });
 
