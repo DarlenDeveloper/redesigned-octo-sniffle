@@ -238,10 +238,10 @@ function initializeForm() {
     }
   }
 
-  // Image preview
+  // ========== IMAGE UPLOAD ==========
   const uploadArea = document.getElementById('uploadArea');
   const imageInput = document.getElementById('imageInput');
-  const previews   = document.getElementById('imagePreviews');
+  const imagePreviews = document.getElementById('imagePreviews');
   let selectedFiles = [];
 
   uploadArea.addEventListener('click', () => imageInput.click());
@@ -258,12 +258,12 @@ function initializeForm() {
   uploadArea.addEventListener('drop', (e) => {
     e.preventDefault();
     uploadArea.style.borderColor = '#e2e8f0';
-    handleFiles(e.dataTransfer.files);
+    handleImageFiles(e.dataTransfer.files);
   });
 
-  imageInput.addEventListener('change', () => handleFiles(imageInput.files));
+  imageInput.addEventListener('change', () => handleImageFiles(imageInput.files));
 
-  function handleFiles(files) {
+  function handleImageFiles(files) {
     const newFiles = [...files];
     selectedFiles = [...selectedFiles, ...newFiles];
     newFiles.forEach(file => {
@@ -273,10 +273,75 @@ function initializeForm() {
         img.src = e.target.result;
         img.className = 'preview-thumb';
         img.title = file.name;
-        previews.appendChild(img);
+        imagePreviews.appendChild(img);
       };
       reader.readAsDataURL(file);
     });
+  }
+
+  // ========== VIDEO UPLOAD ==========
+  const uploadVideoArea = document.getElementById('uploadVideoArea');
+  const videoInput = document.getElementById('videoInput');
+  const videoPreviews = document.getElementById('videoPreviews');
+  let selectedVideoFiles = [];
+
+  const MAX_VIDEO_SIZE = 100 * 1024 * 1024; // 100MB
+  const ALLOWED_VIDEO_TYPES = ['video/mp4', 'video/webm', 'video/quicktime'];
+
+  uploadVideoArea.addEventListener('click', () => videoInput.click());
+
+  uploadVideoArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadVideoArea.style.borderColor = '#286192';
+  });
+
+  uploadVideoArea.addEventListener('dragleave', () => {
+    uploadVideoArea.style.borderColor = '#e2e8f0';
+  });
+
+  uploadVideoArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadVideoArea.style.borderColor = '#e2e8f0';
+    handleVideoFiles(e.dataTransfer.files);
+  });
+
+  videoInput.addEventListener('change', () => handleVideoFiles(videoInput.files));
+
+  function handleVideoFiles(files) {
+    const newFiles = [...files];
+    
+    for (let file of newFiles) {
+      // Validate file type
+      if (!ALLOWED_VIDEO_TYPES.includes(file.type)) {
+        alert(`Invalid file type: ${file.name}. Only MP4, WebM, and MOV are allowed.`);
+        continue;
+      }
+      
+      // Validate file size
+      if (file.size > MAX_VIDEO_SIZE) {
+        alert(`File too large: ${file.name}. Maximum size is 100MB.`);
+        continue;
+      }
+      
+      selectedVideoFiles.push(file);
+      createVideoPreview(file);
+    }
+  }
+
+  function createVideoPreview(file) {
+    const videoThumb = document.createElement('div');
+    videoThumb.className = 'video-thumb';
+    
+    const icon = document.createElement('i');
+    icon.className = 'bx bx-play-circle';
+    
+    const nameLabel = document.createElement('div');
+    nameLabel.className = 'video-name';
+    nameLabel.textContent = file.name.length > 20 ? file.name.substring(0, 17) + '...' : file.name;
+    
+    videoThumb.appendChild(icon);
+    videoThumb.appendChild(nameLabel);
+    videoPreviews.appendChild(videoThumb);
   }
 
   // Submit
@@ -309,6 +374,22 @@ function initializeForm() {
         imageUrls.push(url);
       }
 
+      // Upload videos (optional)
+      const videoUrls = [];
+      if (selectedVideoFiles.length > 0) {
+        for (let i = 0; i < selectedVideoFiles.length; i++) {
+          const file = selectedVideoFiles[i];
+          btn.textContent = `Uploading video ${i + 1}/${selectedVideoFiles.length}...`;
+          console.log(`Uploading: ${file.name} (${file.size} bytes)`);
+          const storageRef = ref(storage, `properties/videos/${Date.now()}_${file.name}`);
+          const snapshot   = await uploadBytes(storageRef, file);
+          console.log(`Uploaded: ${file.name}`);
+          const url = await getDownloadURL(snapshot.ref);
+          console.log(`Video URL: ${url}`);
+          videoUrls.push(url);
+        }
+      }
+
       btn.textContent = 'Saving to database...';
       console.log('Saving to Firestore...');
 
@@ -332,6 +413,7 @@ function initializeForm() {
         description: form.querySelector('[name="description"]').value.trim(),
         amenities,
         images:      imageUrls,
+        videos:      videoUrls, // Optional videos
         createdAt:   serverTimestamp(),
       };
 
@@ -356,8 +438,10 @@ function initializeForm() {
 
       successMsg.style.display = 'block';
       form.reset();
-      previews.innerHTML = '';
+      imagePreviews.innerHTML = '';
+      videoPreviews.innerHTML = '';
       selectedFiles = [];
+      selectedVideoFiles = [];
       currentStep = 1;
       showStep(1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
